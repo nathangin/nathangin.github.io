@@ -106,3 +106,55 @@ footer {
   color: #666;
   font-size: 0.9rem;
 }
+
+
+/*Recent Changes 10/15 after adding some projects and images*/
+/* --- About Section --- */
+.about {
+  margin-top: 3rem;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.about-content img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.about-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.about-text p {
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+/* --- Project Cards --- */
+.project-card {
+  background-color: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.project-card h3 {
+  margin-top: 0;
+}
+
+.project-card iframe {
+  border: none;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
