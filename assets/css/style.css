@@ -158,3 +158,75 @@ footer {
   margin-top: 1rem;
   border-radius: 8px;
 }
+
+/*Navigation Bar and Updates*/
+.navbar {
+  position: sticky;
+  top: 0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0.8rem 1.2rem;
+}
+
+.nav-logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #0078ff;
+}
+
+/* --- General Container --- */
+.container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* --- Sections --- */
+section {
+  margin-top: 3rem;
+}
+
+h2 {
+  border-bottom: 3px solid #0078ff;
+  display: inline-block;
+  padding-bottom: 0.4rem;
+}
+
+/* --- Lists --- */
+.skills ul {
+  list-style: square inside;
+  line-height: 1.7;
+}
+
+.experience .exp-item {
+  margin-bottom: 1.5rem;
+}
+
+/* --- Smooth Scrolling --- */
+html {
+  scroll-behavior: smooth;
+}
