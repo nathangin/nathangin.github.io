@@ -3,156 +3,1049 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nathan Gin | Portfolio</title>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Nathan Gin | Data Scientist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    html {
-      scroll-behavior: smooth;
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #11111a;
+      --bg3: #1a1a28;
+      --accent: #6c63ff;
+      --accent2: #00d4a8;
+      --accent3: #ff6b6b;
+      --text: #e8e8f0;
+      --text2: #9090a8;
+      --text3: #5a5a72;
+      --border: rgba(108,99,255,0.18);
+      --card: rgba(255,255,255,0.035);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    /* --- NOISE TEXTURE OVERLAY --- */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* --- GRID PATTERN BG --- */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(108,99,255,0.04) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(108,99,255,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* --- NAV --- */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,15,0.72);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--accent2);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--text2);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.25s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* --- HERO --- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 6rem;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--accent2);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 2.5rem;
+      height: 1px;
+      background: var(--accent2);
+    }
+
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      line-height: 1.0;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--text2);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-radius: 6px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(108,99,255,0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.75rem 1.5rem;
+      background: transparent;
+      color: var(--text2);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .btn-secondary:hover {
+      color: var(--text);
+      border-color: rgba(108,99,255,0.4);
+    }
+
+    /* Floating orb decoration */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+      opacity: 0.18;
+    }
+    .orb-1 { width: 500px; height: 500px; background: var(--accent); top: -100px; right: -80px; animation: drift 8s ease-in-out infinite; }
+    .orb-2 { width: 300px; height: 300px; background: var(--accent2); bottom: 80px; right: 200px; animation: drift 11s ease-in-out infinite reverse; }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(-30px, 20px); }
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text3);
+      letter-spacing: 0.1em;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--text3), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* --- SECTION SHARED --- */
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 7rem 6rem;
+    }
+
+    .section-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent2);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 1.5rem;
+      height: 1px;
+      background: var(--accent2);
+    }
+
+    h2.section-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--text);
+      margin-bottom: 3.5rem;
+      line-height: 1.1;
+    }
+
+    /* --- ABOUT --- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-photo-wrap img {
+      width: 100%;
+      border-radius: 4px;
+      filter: grayscale(20%);
+      display: block;
+    }
+
+    .about-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 10px -10px -10px 10px;
+      border: 1px solid rgba(108,99,255,0.3);
+      border-radius: 4px;
+      z-index: -1;
+    }
+
+    .about-text p {
+      font-size: 1rem;
+      color: var(--text2);
+      line-height: 1.85;
+      margin-bottom: 1.25rem;
+    }
+
+    .about-text p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .about-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      padding: 0.3rem 0.7rem;
+      border-radius: 4px;
+      border: 1px solid;
+    }
+
+    .badge-purple { color: #9d94ff; border-color: rgba(108,99,255,0.3); background: rgba(108,99,255,0.08); }
+    .badge-teal   { color: #00d4a8; border-color: rgba(0,212,168,0.3);  background: rgba(0,212,168,0.06); }
+    .badge-red    { color: #ff6b6b; border-color: rgba(255,107,107,0.3); background: rgba(255,107,107,0.06); }
+
+    /* --- SKILLS (interactive) --- */
+    .skills-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .skills-tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2.5rem;
+    }
+
+    .skill-tab {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--text3);
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+
+    .skill-tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .skill-tab:hover:not(.active) { color: var(--text2); }
+
+    .skill-panel { display: none; }
+    .skill-panel.active { display: block; }
+
+    .skill-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .chip {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text2);
+      transition: all 0.2s;
+      cursor: default;
+    }
+
+    .chip:hover {
+      background: rgba(108,99,255,0.1);
+      border-color: rgba(108,99,255,0.35);
+      color: var(--text);
+    }
+
+    /* --- EXPERIENCE TIMELINE --- */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      padding-bottom: 3rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.375rem;
+      top: 8px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(108,99,255,0.6);
+    }
+
+    .timeline-item:last-child { padding-bottom: 0; }
+
+    .tl-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--accent2);
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+
+    .tl-company {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .tl-role {
+      font-size: 0.82rem;
+      color: var(--text3);
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+
+    .tl-desc {
+      font-size: 0.92rem;
+      color: var(--text2);
+      line-height: 1.75;
+    }
+
+    /* --- PROJECTS --- */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem 1.75rem;
+      cursor: pointer;
+      transition: transform 0.25s, border-color 0.25s, background 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(108,99,255,0.35);
+      background: rgba(108,99,255,0.06);
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    .project-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--accent2);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
+    }
+
+    .project-card p {
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .project-link {
+      font-size: 0.78rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: gap 0.2s;
+    }
+
+    .project-link:hover { gap: 0.6rem; }
+
+    /* Modal */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(5,5,10,0.85);
+      backdrop-filter: blur(12px);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 800px;
+      max-height: 88vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-header h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--text);
+    }
+
+    .modal-header p {
+      font-size: 0.82rem;
+      color: var(--text2);
+      margin-top: 0.3rem;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: var(--text3);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0 0.3rem;
+      transition: color 0.2s;
+      line-height: 1;
+    }
+
+    .modal-close:hover { color: var(--text); }
+
+    .modal-body {
+      flex: 1;
+      overflow: auto;
+    }
+
+    .modal-body iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+      display: block;
+    }
+
+    /* --- CONTACT CTA --- */
+    .cta {
+      text-align: center;
+      padding: 8rem 6rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-inner {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--text);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .cta h2 em { font-style: italic; color: var(--accent2); }
+
+    .cta p {
+      color: var(--text2);
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    /* --- FOOTER --- */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer p {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text3);
+    }
+
+    /* --- CURSOR --- */
+    .cursor-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s;
+    }
+
+    .cursor-ring {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(108,99,255,0.5);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transition: transform 0.12s, width 0.3s, height 0.3s, border-color 0.3s;
+    }
+
+    /* --- SCROLL ANIMATIONS --- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      section { padding: 5rem 2rem; }
+      .hero { padding: 0 2rem; }
+      .cta { padding: 6rem 2rem; }
+      footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-photo-wrap { max-width: 220px; }
+      nav { padding: 0.8rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links { gap: 1rem; }
+      .hero h1 { font-size: 3rem; }
+      .scroll-hint { left: 2rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Navigation Bar -->
-<nav class="navbar">
-  <div class="nav-container">
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav>
+    <span class="nav-logo">ng.dev</span>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skillset</a></li>
+      <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
     </ul>
-  </div>
-</nav>
+  </nav>
 
-<!-- Header -->
-<header id="top">
-  <div class="container">
-    <h1 class="site-title">Nathan Gin</h1>
-    <p class="subtitle">MS in Statistics @ UC Irvine | Data Science & Analytics | LLMs + Biostatistics Research</p>
-    <div class="links">
-      <a href="assets/Intern Resume Nathan Gin September 2025.pdf" target="_blank">📄 Resume</a>
-      <a href="https://github.com/nathangin" target="_blank">💻 GitHub</a>
-      <a href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">🔗 LinkedIn</a>
-      <a href="mailto:nathanbsgin@gmail.com">✉️ Email</a>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <div class="hero-eyebrow">MS Statistics · UC Irvine</div>
+    <h1>Nathan<br><em>Gin</em></h1>
+    <p class="hero-desc">Data scientist building at the intersection of statistical inference, machine learning, and healthcare AI. From clinical trial analysis to enterprise RAG systems.</p>
+
+    <div class="hero-links">
+      <a class="btn-primary" href="assets/Intern Resume Nathan Gin September 2025.pdf" target="_blank">↓ Resume</a>
+      <a class="btn-secondary" href="https://github.com/nathangin" target="_blank">GitHub ↗</a>
+      <a class="btn-secondary" href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">LinkedIn ↗</a>
+      <a class="btn-secondary" href="mailto:nathanbsgin@gmail.com">Email</a>
     </div>
-  </div>
-</header>
 
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      scroll
+    </div>
+  </section>
 
-  <!-- About Me -->
-  <section id="about" class="about container">
-    <h2>About Me</h2>
-    <div class="about-content">
-      <img src="assets/Nathan Gin LinkedIn Photo.png" alt="Nathan Gin photo" />
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label">01 / About</div>
+    <h2 class="section-title">Who I am</h2>
+    <div class="about-grid reveal">
+      <div class="about-photo-wrap">
+        <img src="assets/Nathan Gin LinkedIn Photo.png" alt="Nathan Gin" />
+      </div>
       <div class="about-text">
-        <p>Hi, I’m Nathan — a Master’s student in Statistics at UC Irvine with a strong background in data science and analytics. I’m passionate about applying statistical modeling, machine learning, and statistical inference to solve complex problems in technology and healthcare.</p>
-        <p>I’ve worked on projects involving LLM-powered chatbots, machine learning pipelines, and clinical data analysis.</p>
+        <p>Hi, I'm Nathan — a Master's student in <strong>Statistics at UC Irvine</strong> with a deep interest in applying rigorous statistical methods to real-world problems. I gravitate toward problems where data is messy, stakes are high, and models actually need to work.</p>
+        <p>My work spans <strong>LLM-powered systems</strong>, clinical biostatistics, machine learning pipelines, and data engineering. I enjoy building things that are both technically sound and genuinely useful — whether that's an enterprise chatbot or a longitudinal dose-response analysis.</p>
+        <p>Outside code, I'm drawn to the intersection of AI and healthcare, where careful statistical thinking can have meaningful impact.</p>
+        <div class="about-badges">
+          <span class="badge badge-purple">Bayesian Modeling</span>
+          <span class="badge badge-purple">LLM Integration</span>
+          <span class="badge badge-teal">Biostatistics</span>
+          <span class="badge badge-teal">Clinical Trials</span>
+          <span class="badge badge-red">Machine Learning</span>
+          <span class="badge badge-red">NLP</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <main>
-    <section id="projects" class="projects container">
-      <h2>Projects</h2>
-      <div class="project-list">
+  <!-- SKILLS -->
+  <section id="skills" class="skills-section">
+    <div class="section-label">02 / Skillset</div>
+    <h2 class="section-title">Tools of the trade</h2>
 
-        <div class="project-card">
-          <h3>Capstone Project & Final Presentation</h3>
-          <p>Analyzed stem cell treatment effectiveness for spinal cord injury using statistical models and automated deep learning–based motion tracking.</p>
-          <iframe src="assets/CapstoneProject.pdf" width="100%" height="500px"></iframe>
-          <iframe src="assets/Final Presentation.pdf" width="100%" height="500px"></iframe>
-        </div>
+    <div class="skills-tabs">
+      <div class="skill-tab active" data-tab="lang">Languages</div>
+      <div class="skill-tab" data-tab="libs">Libraries</div>
+      <div class="skill-tab" data-tab="tools">Tools</div>
+      <div class="skill-tab" data-tab="areas">Core Areas</div>
+    </div>
 
-        <!-- Beta Carotene Analysis -->
-        <div class="project-card">
-          <h3>Beta-Carotene Supplementation and Serum Concentration Analysis</h3>
-          <p>This statistical analysis investigates how varying doses of beta-carotene supplementation affect serum concentrations over time. Using a longitudinal dataset with 46 participants, the study models dose-response effects, post-treatment decay, and explores interactions by gender and metabolic factors.</p>
-          <iframe src="assets/BetaCarotene-Final-2.pdf" width="100%" height="500px"></iframe>
-        </div>
-
-        <div class="project-card">
-          <h3>Stats-Qual-DA.pdf</h3>
-          <p>Stats-Qual-DA.pdf</p>
-          <iframe src="assets/Stats-Qual-DA.pdf" width="100%" height="500px"></iframe>
-        </div>
-
-        <div class="project-card">
-          <h3>Stats 295 Clinical Trials Final.pdf</h3>
-          <p>Stats 295 Clinical Trials Final.pdf</p>
-          <iframe src="assets/Stats%20295%20Clinical%20Trials%20Final.pdf" width="100%" height="500px"></iframe>
-        </div>
-
-        <div class="project-card">
-          <h3>TrialGPT Stats 295 Clinical Trials</h3>
-          <p>Presentation of use of AI in clinical trials to improve efficiency and accuracy for patient to trial matching.</p>
-          <iframe src="assets/TrialGPT Stats 295 Clinical Trials (1).pdf" width="100%" height="500px"></iframe>
-        </div>
-
-        <div class="project-card">
-          <h3>CS 273</h3>
-          <p>CS 273</p>
-          <iframe src="assets/newreport.pdf" width="100%" height="500px"></iframe>
-        </div>
-
-        <div class="project-card">
-          <h3>Stroke Data Analysis</h3>
-          <p>Statistical and machine learning exploration of stroke-related clinical data, comparing logistic regression and decision tree models.</p>
-          <iframe src="assets/Stroke Data Analysis.pdf" width="100%" height="500px"></iframe>
-          <iframe src="assets/Stroke Data Analysis ML.pdf" width="100%" height="500px"></iframe>
-        </div>
-        
-        <div class="project-card">
-          <h3>Classification Methods for Fashion-MNIST</h3>
-          <p>Comparison of classification algorithms for Fashion-MNIST dataset, evaluating accuracy and generalization performance.</p>
-          <iframe src="assets/An Investigation of Classification Methods for Fashion-MNIST.pdf" width="100%" height="500px"></iframe>
-        </div>
-
-        
-
+    <div class="skill-panel active" id="panel-lang">
+      <div class="skill-chips">
+        <span class="chip">Python</span>
+        <span class="chip">R</span>
+        <span class="chip">SQL</span>
+        <span class="chip">C++</span>
+        <span class="chip">HTML</span>
+        <span class="chip">CSS</span>
       </div>
-    </section>
-  </main>
+    </div>
 
-  <!-- Skillset -->
-  <section id="skills" class="skills container">
-    <h2>Skillset</h2>
-    <ul>
-      <li><b>Languages:</b> Python, R, SQL, C++, CSS, HTML</li>
-      <li><b>Frameworks & Libraries:</b> scikit-learn, TensorFlow, DeepLabCut, lme4, lmerTest</li>
-      <li><b>Tools:</b> Databricks, Delta Lake, ServiceNow, FastAPI, Azure API Management</li>
-      <li><b>Analytics & Visualization:</b> Tableau, Google Data Studio, Google Analytics</li>
-      <li><b>Core Areas:</b> Machine Learning, Bayesian Modeling, Biostatistics, ETL Pipelines, LLM Integration</li>
-    </ul>
+    <div class="skill-panel" id="panel-libs">
+      <div class="skill-chips">
+        <span class="chip">scikit-learn</span>
+        <span class="chip">TensorFlow</span>
+        <span class="chip">DeepLabCut</span>
+        <span class="chip">lme4</span>
+        <span class="chip">lmerTest</span>
+        <span class="chip">pandas</span>
+        <span class="chip">NumPy</span>
+        <span class="chip">FastAPI</span>
+      </div>
+    </div>
+
+    <div class="skill-panel" id="panel-tools">
+      <div class="skill-chips">
+        <span class="chip">Databricks</span>
+        <span class="chip">Delta Lake</span>
+        <span class="chip">ServiceNow</span>
+        <span class="chip">Azure API Management</span>
+        <span class="chip">Tableau</span>
+        <span class="chip">Google Data Studio</span>
+        <span class="chip">Google Analytics</span>
+      </div>
+    </div>
+
+    <div class="skill-panel" id="panel-areas">
+      <div class="skill-chips">
+        <span class="chip">Machine Learning</span>
+        <span class="chip">Bayesian Modeling</span>
+        <span class="chip">Biostatistics</span>
+        <span class="chip">ETL Pipelines</span>
+        <span class="chip">LLM Integration</span>
+        <span class="chip">Vector Search</span>
+        <span class="chip">RAG Systems</span>
+        <span class="chip">Clinical Data Analysis</span>
+      </div>
+    </div>
   </section>
 
-  <!-- Experience -->
-  <section id="experience" class="experience container">
-    <h2>Work Experience</h2>
-    <div class="exp-item">
-      <h3>Handshake — AI Trainer, (Oct–Jan 2025)</h3>
-      <p>Worked to optimize and improve AI image generation.</p>
-    </div>
-    <div class="exp-item">
-      <h3>Tarsus Pharmaceuticals — IT Intern, ServiceNow Enterprise RAG Chatbot (Jun–Sep 2025)</h3>
-      <p>Developed an enterprise RAG chatbot integrating ServiceNow, Databricks, and vector search; built ingestion and embedding pipelines; implemented secure authentication and API management.</p>
-    </div>
-    <div class="exp-item">
-      <h3>Outlier AI — Data Science AI Trainer (Jan 2024–Mar 2025)</h3>
-      <p>Optimized and evaluated large language model responses for technical correctness and truthfulness.</p>
-    </div>
-    <div class="exp-item">
-      <h3>Field AI — Data Labeler (May–Oct 2024)</h3>
-      <p>Annotated data for autonomous vehicle navigation, ensuring precise labeling for machine learning models.</p>
-    </div>
-    <div class="exp-item">
-      <h3>Cepheid — Global Access Digital Research & Analysis Intern (2021–2022)</h3>
-      <p>Developed dashboards, improved SEO, and monitored search performance to enhance product visibility.</p>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">03 / Experience</div>
+    <h2 class="section-title">Where I've worked</h2>
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="tl-date">Jun – Sep 2025</div>
+        <div class="tl-company">Tarsus Pharmaceuticals</div>
+        <div class="tl-role">IT Intern — Enterprise RAG Chatbot</div>
+        <div class="tl-desc">Built an enterprise RAG chatbot integrating ServiceNow, Databricks, and vector search. Designed ingestion and embedding pipelines from scratch, implemented secure authentication and Azure API Management for production deployment.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-date">Jan 2024 – Mar 2025</div>
+        <div class="tl-company">Outlier AI</div>
+        <div class="tl-role">Data Science AI Trainer</div>
+        <div class="tl-desc">Evaluated and optimized large language model outputs for technical correctness and reasoning quality. Developed evaluation rubrics for data science and statistics tasks.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-date">Oct – Jan 2025</div>
+        <div class="tl-company">Handshake</div>
+        <div class="tl-role">AI Trainer</div>
+        <div class="tl-desc">Worked to optimize and improve AI image generation models through structured feedback and quality assessment workflows.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-date">May – Oct 2024</div>
+        <div class="tl-company">Field AI</div>
+        <div class="tl-role">Data Labeler</div>
+        <div class="tl-desc">Annotated datasets for autonomous vehicle navigation models, ensuring precise labeling standards for safety-critical machine learning systems.</div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="tl-date">2021 – 2022</div>
+        <div class="tl-company">Cepheid</div>
+        <div class="tl-role">Global Access Digital Research & Analysis Intern</div>
+        <div class="tl-desc">Developed analytics dashboards, improved SEO strategy, and monitored search performance to enhance global product visibility for diagnostic devices.</div>
+      </div>
+
     </div>
   </section>
 
+  <!-- PROJECTS -->
+  <section id="projects" style="background: var(--bg2); border-top: 1px solid var(--border);">
+    <div class="section-label">04 / Projects</div>
+    <h2 class="section-title">Selected work</h2>
+
+    <div class="projects-grid">
+
+      <div class="project-card reveal" onclick="openModal('Capstone: Spinal Cord Injury Analysis', 'Analyzed stem cell treatment effectiveness for spinal cord injury using statistical models and automated deep learning–based motion tracking with DeepLabCut.', 'assets/CapstoneProject.pdf')">
+        <div class="project-tag">Biostatistics · Deep Learning</div>
+        <h3>Spinal Cord Injury &amp; Stem Cell Treatment</h3>
+        <p>Statistical models and automated motion tracking to assess stem cell treatment efficacy in preclinical spinal cord injury research.</p>
+        <span class="project-link">View Paper →</span>
+      </div>
+
+      <div class="project-card reveal" onclick="openModal('Beta-Carotene Supplementation Analysis', 'Longitudinal study modeling dose-response effects on serum concentrations, post-treatment decay, and interactions by gender and metabolic factors across 46 participants.', 'assets/BetaCarotene-Final-2.pdf')">
+        <div class="project-tag">Longitudinal Modeling · R</div>
+        <h3>Beta-Carotene Dose-Response Analysis</h3>
+        <p>Longitudinal analysis of supplementation effects on serum concentrations across 46 participants — modeling decay curves and gender interactions.</p>
+        <span class="project-link">View Paper →</span>
+      </div>
+
+      <div class="project-card reveal" onclick="openModal('TrialGPT: AI in Clinical Trials', 'Presentation on AI-powered patient-to-trial matching using large language models to improve efficiency and accuracy in clinical trial enrollment.', 'assets/TrialGPT Stats 295 Clinical Trials (1).pdf')">
+        <div class="project-tag">LLMs · Clinical Trials</div>
+        <h3>TrialGPT: AI-Powered Patient Matching</h3>
+        <p>Exploration of LLMs for clinical trial patient matching — improving enrollment accuracy and reducing friction in the trial discovery process.</p>
+        <span class="project-link">View Slides →</span>
+      </div>
+
+      <div class="project-card reveal" onclick="openModal('Stroke Data Analysis', 'Statistical and ML exploration comparing logistic regression and decision tree models on stroke-related clinical data.', 'assets/Stroke Data Analysis.pdf')">
+        <div class="project-tag">Machine Learning · Clinical Data</div>
+        <h3>Stroke Risk: ML Model Comparison</h3>
+        <p>Statistical and machine learning exploration of stroke-related clinical data — logistic regression vs. decision trees, with performance analysis.</p>
+        <span class="project-link">View Paper →</span>
+      </div>
+
+      <div class="project-card reveal" onclick="openModal('Classification Methods for Fashion-MNIST', 'Comparative evaluation of classification algorithms on the Fashion-MNIST dataset, analyzing accuracy, generalization, and computational efficiency.', 'assets/An Investigation of Classification Methods for Fashion-MNIST.pdf')">
+        <div class="project-tag">Computer Vision · Classification</div>
+        <h3>Fashion-MNIST Classification Study</h3>
+        <p>Comparative evaluation of classification algorithms — analyzing accuracy, generalization, and tradeoffs across different model families.</p>
+        <span class="project-link">View Paper →</span>
+      </div>
+
+      <div class="project-card reveal" onclick="openModal('Clinical Trials Final Report', 'Final report for Stats 295 covering clinical trial design, analysis methods, and statistical inference.', 'assets/Stats 295 Clinical Trials Final.pdf')">
+        <div class="project-tag">Clinical Trials · Statistics</div>
+        <h3>Clinical Trial Design &amp; Analysis</h3>
+        <p>Comprehensive report on trial design principles, statistical methodology, and inference — applied to real clinical study frameworks.</p>
+        <span class="project-link">View Report →</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="cta" id="contact">
+    <div class="cta-inner reveal">
+      <div class="section-label" style="justify-content: center;">05 / Contact</div>
+      <h2>Let's build something <em>meaningful</em></h2>
+      <p>I'm actively looking for data science internships and research roles. If you're working on interesting problems at the intersection of AI and healthcare — or anywhere in data — I'd love to connect.</p>
+      <div class="hero-links" style="justify-content: center;">
+        <a class="btn-primary" href="mailto:nathanbsgin@gmail.com">✉ Get in touch</a>
+        <a class="btn-secondary" href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">LinkedIn ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
     <p>© 2025 Nathan Gin. All rights reserved.</p>
+    <p>Built with care · MS Statistics, UC Irvine</p>
   </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <h3 id="modalTitle"></h3>
+          <p id="modalDesc"></p>
+        </div>
+        <button class="modal-close" onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <iframe id="modalIframe" src="" title="Project PDF"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Custom cursor
+    const dot = document.getElementById('cursorDot');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      dot.style.left = mx - 3 + 'px';
+      dot.style.top = my - 3 + 'px';
+    });
+
+    function animateCursor() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx - 18 + 'px';
+      ring.style.top = ry - 18 + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.querySelectorAll('a, button, .project-card, .skill-tab, .chip').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        ring.style.width = '52px';
+        ring.style.height = '52px';
+        ring.style.borderColor = 'rgba(108,99,255,0.8)';
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.style.width = '36px';
+        ring.style.height = '36px';
+        ring.style.borderColor = 'rgba(108,99,255,0.5)';
+      });
+    });
+
+    // Skill tabs
+    document.querySelectorAll('.skill-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.skill-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.skill-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Stagger timeline items
+    document.querySelectorAll('.timeline-item').forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.12) + 's';
+    });
+
+    // Modal
+    function openModal(title, desc, src) {
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalDesc').textContent = desc;
+      document.getElementById('modalIframe').src = src;
+      document.getElementById('modalOverlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.getElementById('modalIframe').src = '';
+      document.body.style.overflow = '';
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target === document.getElementById('modalOverlay')) closeModal();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
 </body>
 </html>
