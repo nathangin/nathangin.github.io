@@ -654,17 +654,6 @@
       color: var(--text3);
     }
 
-    /* --- STATS BAR --- */
-    .stats-bar { display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap; }
-    .stat-item { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; flex: 1; min-width: 120px; }
-    .stat-num { font-family: 'DM Serif Display', serif; font-size: 2.8rem; color: var(--accent); line-height: 1; }
-    .stat-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--text3); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; }
-    .stat-divider { width: 1px; height: 48px; background: var(--border); flex-shrink: 0; }
-    .featured-card { border-color: rgba(108,99,255,0.3); background: rgba(108,99,255,0.05); }
-    .project-metrics { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
-    .metric { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; padding: 0.2rem 0.55rem; border-radius: 3px; background: rgba(0,212,168,0.07); border: 1px solid rgba(0,212,168,0.2); color: var(--accent2); }
-    .project-card.hidden { display: none; }
-
     /* --- CURSOR --- */
     .cursor-dot {
       width: 6px;
@@ -749,7 +738,7 @@
       <a class="btn-primary" href="assets/Intern Resume Nathan Gin September 2025.pdf" target="_blank">↓ Resume</a>
       <a class="btn-secondary" href="https://github.com/nathangin" target="_blank">GitHub ↗</a>
       <a class="btn-secondary" href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">LinkedIn ↗</a>
-      <a class="btn-secondary" href="/cdn-cgi/l/email-protection#3f515e4b575e515d4c5856517f58525e5653115c5052">Email</a>
+      <a class="btn-secondary" href="mailto:nathanbsgin@gmail.com">Email</a>
     </div>
 
     <div class="scroll-hint">
@@ -888,36 +877,11 @@
     </div>
   </section>
 
-  <!-- STATS BAR -->
-  <section style="background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3rem 6rem;">
-    <div class="stats-bar reveal">
-      <div class="stat-item">
-        <span class="stat-num" data-target="9">0</span>
-        <span class="stat-label">Projects completed</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-num" data-target="5">0</span>
-        <span class="stat-label">Industry roles</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-num" data-target="254">0</span>
-        <span class="stat-label">Texas counties modeled</span>
-      </div>
-      <div class="stat-divider"></div>
-      <div class="stat-item">
-        <span class="stat-num" data-target="64">0</span>
-        <span class="stat-label">K customers in A/B study</span>
-      </div>
-    </div>
-  </section>
-
   <!-- PROJECTS -->
   <section id="projects" style="background: var(--bg); border-top: 1px solid var(--border);">
     <div class="section-label">04 / Projects</div>
     <h2 class="section-title">Selected work</h2>
-
+ 
     <!-- Filter tabs -->
     <div class="skills-tabs" style="margin-bottom: 2.5rem;">
       <div class="skill-tab active" data-filter="all">All</div>
@@ -927,9 +891,9 @@
       <div class="skill-tab" data-filter="bio">Biostatistics</div>
       <div class="skill-tab" data-filter="llm">LLMs</div>
     </div>
-
+ 
     <div class="projects-grid" id="projectsGrid">
-
+ 
       <!-- FEATURED: Bayesian Spatial -->
       <div class="project-card reveal featured-card" data-cat="bayes bio" onclick="openModal('Bayesian CAR Model: Obesity in Texas', 'Fit a Bayesian hierarchical model with a conditional autoregressive (CAR) prior on 254 Texas counties using 2025 County Health Rankings data. Key finding: physical inactivity (β=0.38) and insufficient sleep (β=0.41) are dominant predictors; the spatial model reduced DIC by 13 points over OLS.', 'assets/STATS295_Spatial_Final_Reformatted.pdf')">
         <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
@@ -945,7 +909,7 @@
         </div>
         <span class="project-link">View Paper →</span>
       </div>
-
+ 
       <!-- FEATURED: A/B Testing -->
       <div class="project-card reveal featured-card" data-cat="causal ml" onclick="openModal('Multi-Arm A/B Testing & Causal Evaluation of Marketing Emails', 'Analyzed a 64,000-customer randomized marketing experiment using Difference-in-Means, Direct Method (S-learner with Gradient Boosting), and Double Robust estimators. Applied Causal Forests for CATE estimation across customer segments. Validated all estimators on a synthetic dataset with known ground truth.', 'assets/newreport.pdf')">
         <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
@@ -961,7 +925,7 @@
         </div>
         <span class="project-link">View Paper →</span>
       </div>
-
+ 
       <!-- FEATURED: Hospital Readmission -->
       <div class="project-card reveal featured-card" data-cat="ml bio" onclick="openModal('Predicting Hospital Readmission in Diabetes Patients', 'Built and compared Logistic Regression, Random Forests, SVM (RBF), and MLP models on 100K+ clinical encounters. Engineered features from ICD-9 codes, medication use, and utilization variables. Tuned Random Forest achieved best ROC-AUC of 0.69.', 'assets/Stroke Data Analysis ML.pdf')">
         <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.5rem;">
@@ -977,49 +941,49 @@
         </div>
         <span class="project-link">View Paper →</span>
       </div>
-
+ 
       <div class="project-card reveal" data-cat="bio" onclick="openModal('Capstone: Spinal Cord Injury Analysis', 'Analyzed stem cell treatment effectiveness for spinal cord injury using statistical models and automated deep learning–based motion tracking with DeepLabCut.', 'assets/CapstoneProject.pdf')">
         <div class="project-tag">Biostatistics · Deep Learning</div>
         <h3>Spinal Cord Injury &amp; Stem Cell Treatment</h3>
         <p>Statistical models and automated motion tracking to assess stem cell treatment efficacy in preclinical spinal cord injury research.</p>
         <span class="project-link">View Paper →</span>
       </div>
-
+ 
       <div class="project-card reveal" data-cat="bio" onclick="openModal('Beta-Carotene Supplementation Analysis', 'Longitudinal study modeling dose-response effects on serum concentrations, post-treatment decay, and interactions by gender and metabolic factors across 46 participants.', 'assets/BetaCarotene-Final-2.pdf')">
         <div class="project-tag">Longitudinal Modeling · R</div>
         <h3>Beta-Carotene Dose-Response Analysis</h3>
         <p>Longitudinal analysis of supplementation effects on serum concentrations across 46 participants — modeling decay curves and gender interactions.</p>
         <span class="project-link">View Paper →</span>
       </div>
-
+ 
       <div class="project-card reveal" data-cat="llm bio" onclick="openModal('TrialGPT: AI in Clinical Trials', 'Presentation on AI-powered patient-to-trial matching using large language models to improve efficiency and accuracy in clinical trial enrollment.', 'assets/TrialGPT Stats 295 Clinical Trials (1).pdf')">
         <div class="project-tag">LLMs · Clinical Trials</div>
         <h3>TrialGPT: AI-Powered Patient Matching</h3>
         <p>Exploration of LLMs for clinical trial patient matching — improving enrollment accuracy and reducing friction in the trial discovery process.</p>
         <span class="project-link">View Slides →</span>
       </div>
-
+ 
       <div class="project-card reveal" data-cat="ml bio" onclick="openModal('Stroke Data Analysis', 'Statistical and ML exploration comparing logistic regression and decision tree models on stroke-related clinical data.', 'assets/Stroke Data Analysis.pdf')">
         <div class="project-tag">Machine Learning · Clinical Data</div>
         <h3>Stroke Risk: ML Model Comparison</h3>
         <p>Statistical and machine learning exploration of stroke-related clinical data — logistic regression vs. decision trees, with performance analysis.</p>
         <span class="project-link">View Paper →</span>
       </div>
-
+ 
       <div class="project-card reveal" data-cat="ml" onclick="openModal('Classification Methods for Fashion-MNIST', 'Comparative evaluation of classification algorithms on the Fashion-MNIST dataset, analyzing accuracy, generalization, and computational efficiency.', 'assets/An Investigation of Classification Methods for Fashion-MNIST.pdf')">
         <div class="project-tag">Computer Vision · Classification</div>
         <h3>Fashion-MNIST Classification Study</h3>
         <p>Comparative evaluation of classification algorithms — analyzing accuracy, generalization, and tradeoffs across different model families.</p>
         <span class="project-link">View Paper →</span>
       </div>
-
+ 
       <div class="project-card reveal" data-cat="bio causal" onclick="openModal('Clinical Trials Final Report', 'Final report for Stats 295 covering clinical trial design, analysis methods, and statistical inference.', 'assets/Stats%20295%20Clinical%20Trials%20Final.pdf')">
         <div class="project-tag">Clinical Trials · Statistics</div>
         <h3>Clinical Trial Design &amp; Analysis</h3>
         <p>Comprehensive report on trial design principles, statistical methodology, and inference — applied to real clinical study frameworks.</p>
         <span class="project-link">View Report →</span>
       </div>
-
+ 
     </div>
   </section>
 
@@ -1030,7 +994,7 @@
       <h2>Let's build something <em>meaningful</em></h2>
       <p>I'm actively looking for data science internships and research roles. If you're working on interesting problems at the intersection of AI and healthcare — or anywhere in data — I'd love to connect.</p>
       <div class="hero-links" style="justify-content: center;">
-        <a class="btn-primary" href="/cdn-cgi/l/email-protection#4a242b3e222b2428392d23240a2d272b232664292527">✉ Get in touch</a>
+        <a class="btn-primary" href="mailto:nathanbsgin@gmail.com">✉ Get in touch</a>
         <a class="btn-secondary" href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">LinkedIn ↗</a>
       </div>
     </div>
@@ -1058,7 +1022,7 @@
     </div>
   </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script>
     // Custom cursor
     const dot = document.getElementById('cursorDot');
     const ring = document.getElementById('cursorRing');
@@ -1095,58 +1059,12 @@
     // Skill tabs
     document.querySelectorAll('.skill-tab').forEach(tab => {
       tab.addEventListener('click', () => {
-        const parent = tab.closest('.skills-tabs') || tab.parentElement;
-        parent.querySelectorAll('.skill-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.skill-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.skill-panel').forEach(p => p.classList.remove('active'));
         tab.classList.add('active');
-
-        // Skill panel logic
-        if (tab.dataset.tab) {
-          document.querySelectorAll('.skill-panel').forEach(p => p.classList.remove('active'));
-          const panel = document.getElementById('panel-' + tab.dataset.tab);
-          if (panel) panel.classList.add('active');
-        }
-
-        // Project filter logic
-        if (tab.dataset.filter !== undefined) {
-          const filter = tab.dataset.filter;
-          document.querySelectorAll('#projectsGrid .project-card').forEach(card => {
-            if (filter === 'all') {
-              card.classList.remove('hidden');
-            } else {
-              const cats = card.dataset.cat || '';
-              card.classList.toggle('hidden', !cats.includes(filter));
-            }
-          });
-        }
+        document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
       });
     });
-
-    // Stat counter animation
-    function animateCounters() {
-      document.querySelectorAll('.stat-num').forEach(el => {
-        const target = parseInt(el.dataset.target);
-        const duration = 1200;
-        const step = target / (duration / 16);
-        let current = 0;
-        const timer = setInterval(() => {
-          current = Math.min(current + step, target);
-          el.textContent = Math.floor(current);
-          if (current >= target) clearInterval(timer);
-        }, 16);
-      });
-    }
-
-    // Trigger counter when stats bar enters view
-    const statsObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          animateCounters();
-          statsObserver.disconnect();
-        }
-      });
-    }, { threshold: 0.4 });
-    const statsBar = document.querySelector('.stats-bar');
-    if (statsBar) statsObserver.observe(statsBar);
 
     // Scroll reveal
     const observer = new IntersectionObserver(entries => {
@@ -1180,4 +1098,12 @@
     }
 
     function handleOverlayClick(e) {
-      if (e.targe
+      if (e.target === document.getElementById('modalOverlay')) closeModal();
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+</body>
+</html>
