@@ -371,7 +371,7 @@
       <div class="gscreen active" id="gStart">
         <div class="g-title">Guess the <em>Distribution</em></div>
         <p class="g-sub">A histogram appears. Pick which distribution generated it. 8 rounds, 15 seconds each. The x-axis shows real data values. Fun fact after every answer.</p>
-        <div class="g-pills"><span class="g-pill">Normal</span><span class="g-pill">Exponential</span><span class="g-pill">Uniform</span><span class="g-pill">Bimodal</span><span class="g-pill">Log-normal</span><span class="g-pill">Beta(0,1)</span><span class="g-pill">Chi-squared</span><span class="g-pill">Poisson</span></div>
+        <div class="g-pills"><span class="g-pill">Normal</span><span class="g-pill">Exponential</span><span class="g-pill">Uniform</span><span class="g-pill">Bimodal</span><span class="g-pill">Log-normal</span><span class="g-pill">Beta (0,1)</span><span class="g-pill">U-shaped Beta</span><span class="g-pill">Poisson</span></div>
         <button class="g-btn-play" onclick="gStart()">Play</button>
       </div>
       <div class="gscreen" id="gPlay">
@@ -497,14 +497,15 @@ var GD=[
   {name:'Log-normal',hint:'Gradual rise to a peak, then a long slow right tail',fact:'Income, city populations, and stock prices follow log-normal distributions. When a quantity grows through random multiplicative factors rather than additive ones, the log ends up normally distributed.',s:function(){return Math.exp(gNorm()*0.35+2.2);}},
   {name:'Log-normal',hint:'Gradual rise to a peak, then a long slow right tail',fact:'File sizes on your computer, human reaction times, and rainfall amounts all follow log-normal distributions. The key: values cannot go below zero, but can stretch far to the right.',s:function(){return Math.exp(gNorm()*0.4+1.8);}},
   {name:'Beta (0 to 1)',hint:'Axis always spans 0 to 1 — skewed toward one end',fact:'The Beta distribution is the natural prior for probabilities in Bayesian statistics. Observe 7 successes in 10 trials with a uniform prior and your posterior is Beta(8,4), peaking near 0.7.',s:function(){var a=2.5,b=6;return gGam(a)/(gGam(a)+gGam(b));}},
-  {name:'Chi-squared',hint:'Hump near low values, gradual right tail — not as extreme as exponential',fact:'Chi-squared with k degrees of freedom is the sum of k squared standard normal variables. That is why it appears in goodness-of-fit tests: you are summing squared standardized residuals.',s:function(){var s=0;for(var i=0;i<10;i++)s+=Math.pow(gNorm(),2);return s;}},
+  {name:'U-shaped Beta',hint:'High at both ends, dips in the middle — the opposite of a bell curve',fact:'A Beta distribution with both parameters less than 1 produces a U-shape. It models situations where extreme values are most likely — like the proportion of time a machine is either fully idle or fully busy, rarely in between.',s:function(){var a=0.3,b=0.3;return gGam(a)/(gGam(a)+gGam(b));}},
+  {name:'U-shaped Beta',hint:'High at both ends, dips in the middle — the opposite of a bell curve',fact:'U-shaped distributions appear in electoral data: candidates often win by landslide or lose badly, with close races being rarer. The Beta(0.5, 0.5) is called the arcsine distribution and has a special role in random walk theory.',s:function(){var a=0.4,b=0.4;return gGam(a)/(gGam(a)+gGam(b));}},
   {name:'Poisson',hint:'Discrete integer counts — bars sit at whole numbers only',fact:'The Poisson distribution was used in the 1800s to model Prussian soldiers kicked to death by horses per year. One of the first applications of statistics to rare accident data.',s:function(){var lam=6,L=Math.exp(-lam),k=0,p=1;do{k++;p*=Math.random();}while(p>L);return k-1;}}
 ];
 function gShuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;}return b;}
 function gShow(id){document.querySelectorAll('.gscreen').forEach(function(s){s.classList.remove('active');});document.getElementById(id).classList.add('active');}
 var gQ,gR,gSc,gStr,gBest,gTL,gTI,gAns,gT0,gTimes,gChart=null,G_TOT=8,G_TIME=15;
-var DALL=['Normal','Exponential','Uniform','Bimodal','Log-normal','Beta (0 to 1)','Chi-squared','Poisson'];
-var DDESCS={'Normal':'Symmetric bell curve','Exponential':'Spikes near zero, sharp drop-off','Uniform':'Perfectly flat, equal height','Bimodal':'Two peaks with a valley','Log-normal':'Gradual rise then long right tail','Beta (0 to 1)':'Bounded 0 to 1, skewed','Chi-squared':'Hump near low values, moderate tail','Poisson':'Discrete integer counts'};
+var DALL=['Normal','Exponential','Uniform','Bimodal','Log-normal','Beta (0 to 1)','U-shaped Beta','Poisson'];
+var DDESCS={'Normal':'Symmetric bell curve','Exponential':'Spikes near zero, sharp drop-off','Uniform':'Perfectly flat, equal height','Bimodal':'Two peaks with a valley','Log-normal':'Gradual rise then long right tail','Beta (0 to 1)':'Bounded 0 to 1, skewed right','U-shaped Beta':'High at both ends, low in the middle','Poisson':'Discrete integer counts'};
 function gStart(){gSc=0;gR=0;gStr=0;gBest=0;gTimes=[];gQ=gShuf(GD).slice(0,G_TOT);gShow('gPlay');var d=document.getElementById('gDots');d.innerHTML='';for(var i=0;i<G_TOT;i++){var dot=document.createElement('div');dot.className='g-dot'+(i===0?' curr':'');dot.id='gd'+i;d.appendChild(dot);}gLoad();}
 function gLoad(){
   clearInterval(gTI);gAns=false;
@@ -539,7 +540,7 @@ function gLoad(){
 }
 function gDrawH(samp,name,hint){
   var canvas=document.getElementById('gCanvas');
-  var isBeta=(name==='Beta (0 to 1)');
+  var isBeta=(name==='Beta (0 to 1)'||name==='U-shaped Beta');
   var isPoisson=(name==='Poisson');
   var BINS=isPoisson?20:28;
   var mn,mx,counts,labels;
