@@ -50,8 +50,9 @@
     .tag-v{color:#a99eff;border-color:rgba(124,109,250,0.28);background:rgba(124,109,250,0.07);}
     .tag-t{color:#00c9a0;border-color:rgba(0,201,160,0.25);background:rgba(0,201,160,0.06);}
     .tag-r{color:#f06080;border-color:rgba(240,96,128,0.25);background:rgba(240,96,128,0.06);}
+    /* LIVE STRIP */
     .live-strip{background:var(--bg2);border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);position:relative;z-index:1;}
-    .live-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--edge);}
+    .live-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:1px;background:var(--edge);}
     .live-card{background:var(--bg2);padding:2.2rem 2rem;display:flex;flex-direction:column;gap:0.55rem;}
     .live-label{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--ink3);letter-spacing:0.14em;text-transform:uppercase;display:flex;align-items:center;}
     .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--teal);margin-right:0.45rem;flex-shrink:0;animation:blink 2s ease-in-out infinite;}
@@ -68,6 +69,8 @@
     .currently-list{display:flex;flex-direction:column;gap:0.55rem;}
     .currently-item{font-size:0.82rem;font-weight:300;color:var(--ink2);line-height:1.5;display:flex;gap:0.5rem;}
     .currently-item::before{content:'/';color:var(--violet);font-family:'JetBrains Mono',monospace;flex-shrink:0;font-size:0.78rem;}
+    @media(max-width:700px){.live-inner{grid-template-columns:1fr;}}
+    /* SKILLS */
     .skills-bg{background:var(--bg2);border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);position:relative;z-index:1;}
     .stab-row{display:flex;border-bottom:1px solid var(--edge);margin-bottom:2.2rem;}
     .stab{font-size:0.78rem;color:var(--ink3);padding:0.65rem 1.3rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.2s,border-color 0.2s;user-select:none;}
@@ -77,6 +80,7 @@
     .spanel.on{display:flex;flex-wrap:wrap;gap:0.5rem;}
     .chip{font-family:'JetBrains Mono',monospace;font-size:0.72rem;padding:0.35rem 0.8rem;border-radius:3px;background:rgba(255,255,255,0.03);border:1px solid var(--edge);color:var(--ink2);transition:background 0.18s,color 0.18s,border-color 0.18s;cursor:default;}
     .chip:hover{background:rgba(124,109,250,0.1);border-color:rgba(124,109,250,0.3);color:var(--ink);}
+    /* TIMELINE */
     .timeline{padding-left:1.2rem;border-left:1px solid var(--edge);}
     .tl-item{position:relative;padding-left:2rem;padding-bottom:2.8rem;}
     .tl-item:last-child{padding-bottom:0;}
@@ -85,6 +89,7 @@
     .tl-co{font-family:'Lora',serif;font-size:1.25rem;font-weight:400;color:var(--ink);margin-bottom:0.15rem;}
     .tl-role{font-size:0.78rem;color:var(--ink3);margin-bottom:0.65rem;}
     .tl-body{font-size:0.9rem;font-weight:300;color:var(--ink2);line-height:1.75;}
+    /* PROJECTS */
     .proj-bg{background:var(--bg2);border-top:1px solid var(--edge);position:relative;z-index:1;}
     .ftab-row{display:flex;border-bottom:1px solid var(--edge);margin-bottom:2.2rem;flex-wrap:wrap;}
     .ftab{font-size:0.78rem;color:var(--ink3);padding:0.65rem 1.3rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.2s,border-color 0.2s;user-select:none;}
@@ -105,6 +110,7 @@
     .pnum{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--teal);background:rgba(0,201,160,0.07);border:1px solid rgba(0,201,160,0.18);padding:0.18rem 0.5rem;border-radius:2px;}
     .plink{font-size:0.78rem;color:var(--violet);font-weight:500;display:inline-flex;align-items:center;gap:0.25rem;transition:gap 0.18s;}
     .pcard:hover .plink{gap:0.5rem;}
+    /* GAME */
     .game-bg{border-top:1px solid var(--edge);position:relative;z-index:1;}
     .game-bg>.section-inner{max-width:740px;}
     #gWidget{background:var(--bg2);border:1px solid var(--edge);border-radius:10px;overflow:hidden;min-height:480px;}
@@ -134,7 +140,9 @@
     .g-dot.ok{background:var(--teal);}
     .g-dot.bad{background:#f06080;}
     .g-qlabel{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--ink3);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;}
-    .g-chart{position:relative;width:100%;height:165px;margin-bottom:1rem;}
+    .g-chart{position:relative;width:100%;height:165px;margin-bottom:0.4rem;}
+    .g-axis{display:flex;justify-content:space-between;margin-bottom:0.8rem;padding:0 2px;}
+    .g-axis span{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--ink3);}
     .g-choices{display:grid;grid-template-columns:1fr 1fr;gap:0.55rem;margin-bottom:0.9rem;}
     .g-choice{background:rgba(255,255,255,0.025);border:1px solid rgba(124,109,250,0.16);border-radius:6px;padding:0.65rem 0.85rem;cursor:pointer;text-align:left;transition:background 0.15s,border-color 0.15s;font-family:'Inter',sans-serif;}
     .g-choice:hover:not(:disabled){background:rgba(124,109,250,0.09);border-color:rgba(124,109,250,0.38);}
@@ -164,6 +172,45 @@
     .g-end-msg{font-size:0.86rem;color:var(--ink2);margin-bottom:1.6rem;line-height:1.65;max-width:380px;margin-left:auto;margin-right:auto;}
     .g-btn-again{background:transparent;color:var(--violet);border:1px solid rgba(124,109,250,0.35);border-radius:6px;padding:0.6rem 1.6rem;font-size:0.84rem;cursor:pointer;transition:background 0.2s;font-family:'Inter',sans-serif;}
     .g-btn-again:hover{background:rgba(124,109,250,0.09);}
+    /* MODEL SELECTOR */
+    .model-bg{background:var(--bg2);border-top:1px solid var(--edge);position:relative;z-index:1;}
+    .model-bg>.section-inner{max-width:740px;}
+    #mSelector{background:var(--bg);border:1px solid var(--edge);border-radius:10px;overflow:hidden;min-height:300px;padding:1.6rem;}
+    .ms-progress{height:2px;background:rgba(255,255,255,0.06);border-radius:1px;margin-bottom:1.4rem;overflow:hidden;}
+    .ms-pfill{height:100%;background:var(--teal);border-radius:1px;transition:width 0.35s ease;}
+    .ms-bc{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:1.4rem;min-height:22px;}
+    .ms-bc-step{font-size:0.72rem;color:var(--ink3);display:flex;align-items:center;gap:5px;}
+    .ms-bc-step span{background:rgba(255,255,255,0.04);border:1px solid var(--edge);border-radius:3px;padding:2px 8px;cursor:pointer;transition:border-color 0.15s;}
+    .ms-bc-step span:hover{border-color:rgba(124,109,250,0.3);}
+    .ms-bc-arrow{font-size:0.65rem;color:var(--ink3);}
+    .ms-q-card{background:var(--bg2);border:1px solid var(--edge);border-radius:8px;padding:1.2rem 1.4rem;margin-bottom:1rem;}
+    .ms-q-tag{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--ink3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.45rem;}
+    .ms-q-text{font-size:1rem;font-weight:500;color:var(--ink);line-height:1.4;margin-bottom:0.8rem;}
+    .ms-q-hint{font-size:0.8rem;color:var(--ink2);line-height:1.6;padding-left:0.7rem;border-left:2px solid var(--edge);margin-bottom:0.9rem;}
+    .ms-choices{display:flex;flex-direction:column;gap:7px;}
+    .ms-choice{background:rgba(255,255,255,0.02);border:1px solid var(--edge);border-radius:7px;padding:0.65rem 1rem;text-align:left;cursor:pointer;transition:background 0.15s,border-color 0.15s;display:flex;align-items:flex-start;gap:10px;font-family:'Inter',sans-serif;}
+    .ms-choice:hover{background:rgba(124,109,250,0.07);border-color:rgba(124,109,250,0.3);}
+    .ms-choice-icon{width:20px;height:20px;border-radius:50%;background:rgba(124,109,250,0.15);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:500;color:#a99eff;}
+    .ms-choice-main{font-size:0.88rem;font-weight:500;color:var(--ink);}
+    .ms-choice-sub{font-size:0.75rem;color:var(--ink2);margin-top:2px;}
+    .ms-result{background:var(--bg2);border:1px solid var(--edge);border-radius:8px;padding:1.2rem 1.4rem;margin-bottom:1rem;}
+    .ms-result-name{font-family:'Lora',serif;font-size:1.4rem;font-weight:400;color:var(--ink);margin-bottom:0.2rem;}
+    .ms-result-sub{font-size:0.8rem;color:var(--ink2);margin-bottom:1rem;}
+    .ms-result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
+    .ms-box{background:rgba(255,255,255,0.03);border-radius:6px;padding:0.7rem 0.9rem;}
+    .ms-box-label{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--ink3);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem;}
+    .ms-box-val{font-size:0.82rem;color:var(--ink2);line-height:1.55;}
+    .ms-assumptions{margin-bottom:0.9rem;}
+    .ms-assume-label{font-size:0.75rem;font-weight:500;color:var(--ink2);margin-bottom:0.35rem;}
+    .ms-assume-row{display:flex;gap:6px;align-items:flex-start;font-size:0.8rem;color:var(--ink2);margin-bottom:4px;line-height:1.5;}
+    .ms-dot{width:4px;height:4px;border-radius:50%;background:var(--ink3);margin-top:7px;flex-shrink:0;}
+    .ms-alts{margin-top:0.7rem;}
+    .ms-alts-label{font-size:0.75rem;font-weight:500;color:var(--ink2);margin-bottom:0.35rem;}
+    .ms-alt-pills{display:flex;flex-wrap:wrap;gap:5px;}
+    .ms-alt-pill{font-size:0.72rem;padding:2px 9px;background:rgba(255,255,255,0.03);border:1px solid var(--edge);border-radius:3px;color:var(--ink2);cursor:default;}
+    .ms-restart{background:transparent;border:1px solid var(--edge);border-radius:6px;padding:0.5rem 1.1rem;font-size:0.8rem;color:var(--ink2);cursor:pointer;transition:background 0.15s;margin-top:0.5rem;font-family:'Inter',sans-serif;}
+    .ms-restart:hover{background:rgba(255,255,255,0.04);}
+    /* MODAL */
     .overlay{display:none;position:fixed;inset:0;background:rgba(5,5,10,0.88);backdrop-filter:blur(14px);z-index:200;align-items:center;justify-content:center;}
     .overlay.open{display:flex;}
     .modal{background:var(--bg2);border:1px solid var(--edge);border-radius:8px;width:90%;max-width:820px;max-height:88vh;overflow:hidden;display:flex;flex-direction:column;}
@@ -174,6 +221,7 @@
     .modal-close:hover{color:var(--ink);}
     .modal-bd{flex:1;overflow:auto;}
     .modal-bd iframe{width:100%;height:600px;border:none;display:block;}
+    /* CTA / FOOTER */
     .cta-wrap{text-align:center;padding:8rem 3rem;position:relative;z-index:1;}
     .cta-wrap h2{font-family:'Lora',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;color:var(--ink);margin:0.6rem 0 1rem;line-height:1.15;}
     .cta-wrap h2 em{font-style:italic;color:var(--teal);}
@@ -185,7 +233,7 @@
     .reveal.in{opacity:1;transform:translateY(0);}
     .cur-dot{width:5px;height:5px;background:var(--violet);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;}
     .cur-ring{width:32px;height:32px;border:1px solid rgba(124,109,250,0.45);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:width 0.28s,height 0.28s,border-color 0.28s;}
-    @media(max-width:860px){nav{padding:0.8rem 1.5rem;}.section-inner{padding:4rem 1.5rem;}.live-inner{grid-template-columns:1fr;}.hero{padding:0 1.5rem;}.scroll-hint{left:1.5rem;}.about-grid{grid-template-columns:1fr;gap:2.5rem;}.photo-wrap{max-width:200px;}footer{padding:2rem 1.5rem;flex-direction:column;gap:0.8rem;}.cta-wrap{padding:6rem 1.5rem;}}
+    @media(max-width:860px){nav{padding:0.8rem 1.5rem;}.section-inner{padding:4rem 1.5rem;}.hero{padding:0 1.5rem;}.scroll-hint{left:1.5rem;}.about-grid{grid-template-columns:1fr;gap:2.5rem;}.photo-wrap{max-width:200px;}footer{padding:2rem 1.5rem;flex-direction:column;gap:0.8rem;}.cta-wrap{padding:6rem 1.5rem;}}
     @media(max-width:540px){.nav-links{gap:1.2rem;}.hero h1{font-size:2.8rem;}}
   </style>
 </head>
@@ -200,6 +248,7 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#game">Play</a></li>
+    <li><a href="#models">Models</a></li>
   </ul>
 </nav>
 <section class="hero" id="top">
@@ -207,12 +256,12 @@
   <div class="orb orb-b"></div>
   <div class="hero-label">MS Statistics, UC Irvine</div>
   <h1>Nathan<br><span>Gin</span></h1>
-  <p class="hero-sub">I work at the edge of statistics and machine learning, mostly on healthcare and AI problems. Currently finishing my master's and looking for what's next.</p>
+  <p class="hero-sub">Data engineer and AI consultant at Tarsus Pharmaceuticals. MS Statistics at UC Irvine. Building agentic AI systems, Databricks pipelines, and statistical models that actually matter.</p>
   <div class="hero-links">
     <a class="btn-fill" href="assets/Intern Resume Nathan Gin September 2025.pdf" target="_blank">Resume</a>
     <a class="btn-ghost" href="https://github.com/nathangin" target="_blank">GitHub</a>
     <a class="btn-ghost" href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">LinkedIn</a>
-    <a class="btn-ghost" href="mailto:nathanbsgin@gmail.com">Email</a>
+    <a class="btn-ghost" href="/cdn-cgi/l/email-protection#ee808f9a868f808c9d898780ae89838f8782c08d8183">Email</a>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
 </section>
@@ -223,13 +272,13 @@
     <div class="about-grid reveal">
       <div class="photo-wrap"><img src="assets/Nathan Gin LinkedIn Photo.png" alt="Nathan Gin" /></div>
       <div class="about-body">
-        <p>Hi, I'm Nathan. I'm finishing a <strong>Master's in Statistics at UC Irvine</strong>, where my work has ranged from Bayesian spatial models to building production RAG chatbots. I like problems where getting the statistics wrong actually matters.</p>
-        <p>On the applied side, I interned at <strong>Tarsus Pharmaceuticals</strong> building an enterprise RAG system on Databricks, and I've spent time doing AI evaluation and data annotation work. On the research side I've worked on clinical biostatistics, causal inference, and longitudinal modeling.</p>
-        <p>I'm looking for <strong>data science and ML roles</strong> where I can do work that's technically rigorous and actually ships.</p>
+        <p>Hi, I'm Nathan. I'm finishing a <strong>Master's in Statistics at UC Irvine</strong> while working full-time at <strong>Tarsus Pharmaceuticals</strong> as a Data Engineer and AI Consultant. My day-to-day spans building production Databricks pipelines, designing agentic AI workflows with MCP servers and Microsoft Copilot Studio, and advising on statistical analysis of commercial data.</p>
+        <p>On the research side I've worked on Bayesian spatial models, causal inference, clinical biostatistics, and longitudinal modeling. I like problems where the statistical rigor actually changes the answer.</p>
+        <p>I'm open to <strong>data science and ML roles</strong> that sit at the intersection of rigorous statistics and production engineering.</p>
         <div class="tag-row">
           <span class="tag tag-v">Bayesian modeling</span>
-          <span class="tag tag-v">LLM systems</span>
-          <span class="tag tag-t">Biostatistics</span>
+          <span class="tag tag-v">Agentic AI / MCP</span>
+          <span class="tag tag-t">Databricks / Delta Lake</span>
           <span class="tag tag-t">Clinical trials</span>
           <span class="tag tag-r">Machine learning</span>
           <span class="tag tag-r">Causal inference</span>
@@ -241,30 +290,21 @@
 <div class="live-strip">
   <div class="live-inner">
     <div class="live-card">
-      <div class="live-label"><span class="live-dot"></span>San Mateo, CA &mdash; right now</div>
+      <div class="live-label"><span class="live-dot"></span>San Mateo, CA</div>
       <div class="weather-row">
-        <span class="weather-icon" id="wxIcon">...</span>
+        <span class="weather-icon" id="wxIcon">&#x2026;</span>
         <span class="live-main" id="wxTemp">--</span>
       </div>
-      <div class="live-sub" id="wxDesc">fetching weather</div>
+      <div class="live-sub" id="wxDesc">loading weather</div>
       <div class="live-sub" id="wxExtra"></div>
     </div>
     <div class="live-card">
-      <div class="live-label"><span class="live-dot"></span>Where I am</div>
+      <div class="live-label"><span class="live-dot"></span>Local time</div>
       <div class="clock-stack">
-        <div class="clock-row"><span class="clock-city">San Mateo</span><span class="clock-time" id="clockSM">--:--</span></div>
-        <div class="clock-row"><span class="clock-city">Irvine (UCI)</span><span class="clock-time" id="clockIrvine">--:--</span></div>
+        <div class="clock-row"><span class="clock-city">San Mateo (PT)</span><span class="clock-time" id="clockSM">--:--</span></div>
+        <div class="clock-row"><span class="clock-city">Tokyo (JST)</span><span class="clock-time" id="clockTokyo">--:--</span></div>
       </div>
       <div class="live-sub" id="clockDate"></div>
-    </div>
-    <div class="live-card">
-      <div class="live-label"><span class="live-dot"></span>Currently</div>
-      <div class="currently-list">
-        <div class="currently-item">finishing my MS thesis at UCI</div>
-        <div class="currently-item">reading <em>The Elements of Statistical Learning</em></div>
-        <div class="currently-item">looking for full-time DS / ML roles</div>
-        <div class="currently-item">thinking about spatial Bayes for public health</div>
-      </div>
     </div>
   </div>
 </div>
@@ -278,10 +318,10 @@
       <div class="stab" data-p="tools">Tools</div>
       <div class="stab" data-p="areas">Methods</div>
     </div>
-    <div class="spanel on" id="sp-lang"><span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL</span><span class="chip">C++</span><span class="chip">HTML / CSS</span></div>
-    <div class="spanel" id="sp-libs"><span class="chip">scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">DeepLabCut</span><span class="chip">lme4 / lmerTest</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">FastAPI</span><span class="chip">CARBayes</span></div>
-    <div class="spanel" id="sp-tools"><span class="chip">Databricks</span><span class="chip">Delta Lake</span><span class="chip">ServiceNow</span><span class="chip">Azure API Management</span><span class="chip">Tableau</span><span class="chip">Google Data Studio</span><span class="chip">Google Analytics</span></div>
-    <div class="spanel" id="sp-areas"><span class="chip">Bayesian modeling</span><span class="chip">Spatial statistics</span><span class="chip">Causal inference</span><span class="chip">Longitudinal analysis</span><span class="chip">Machine learning</span><span class="chip">RAG / LLM integration</span><span class="chip">ETL pipelines</span><span class="chip">Clinical trial design</span></div>
+    <div class="spanel on" id="sp-lang"><span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL / PostgreSQL</span><span class="chip">C++</span><span class="chip">HTML / CSS / JS</span></div>
+    <div class="spanel" id="sp-libs"><span class="chip">scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">PyTorch</span><span class="chip">DeepLabCut</span><span class="chip">lme4 / lmerTest</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">FastAPI</span><span class="chip">CARBayes</span></div>
+    <div class="spanel" id="sp-tools"><span class="chip">Databricks</span><span class="chip">Delta Live Tables</span><span class="chip">Unity Catalog</span><span class="chip">Microsoft Copilot Studio</span><span class="chip">Azure API Management</span><span class="chip">ServiceNow</span><span class="chip">Okta</span><span class="chip">Salesforce</span><span class="chip">Tableau</span><span class="chip">Google Data Studio</span><span class="chip">Smartsheet</span></div>
+    <div class="spanel" id="sp-areas"><span class="chip">Agentic AI workflows</span><span class="chip">MCP server integration</span><span class="chip">RAG systems</span><span class="chip">Bayesian modeling</span><span class="chip">Spatial statistics</span><span class="chip">Causal inference</span><span class="chip">Longitudinal analysis</span><span class="chip">Machine learning</span><span class="chip">ETL pipelines</span><span class="chip">Clinical trial design</span></div>
   </div>
 </div>
 <div id="experience">
@@ -289,11 +329,12 @@
     <div class="eyebrow">Experience</div>
     <h2 class="title">Where I've worked</h2>
     <div class="timeline">
-      <div class="tl-item reveal"><div class="tl-when">Jun 2025 &ndash; Sep 2025</div><div class="tl-co">Tarsus Pharmaceuticals</div><div class="tl-role">IT Intern, Enterprise RAG Chatbot</div><div class="tl-body">Built a RAG chatbot on top of ServiceNow and Databricks with vector search, ingestion pipelines, and Azure API Management for auth. Designed the whole thing from scratch and got it to production.</div></div>
-      <div class="tl-item reveal"><div class="tl-when">Jan 2024 &ndash; Mar 2025</div><div class="tl-co">Outlier AI</div><div class="tl-role">Data Science AI Trainer</div><div class="tl-body">Evaluated LLM outputs for technical correctness across data science and math tasks. Wrote rubrics and flagged systematic failure modes in model reasoning.</div></div>
-      <div class="tl-item reveal"><div class="tl-when">Oct 2024 &ndash; Jan 2025</div><div class="tl-co">Handshake</div><div class="tl-role">AI Trainer</div><div class="tl-body">Gave structured feedback on AI image generation quality to improve model outputs.</div></div>
+      <div class="tl-item reveal"><div class="tl-when">Jan 2026 &ndash; Present</div><div class="tl-co">Tarsus Pharmaceuticals</div><div class="tl-role">Data Engineer &amp; AI Consultant</div><div class="tl-body">Building production data pipelines in Databricks using Delta Live Tables and Unity Catalog. Architecting agentic AI workflows that connect Databricks Genie MCP servers and vector search to Microsoft Copilot Studio, deploying chatbot fleets in Teams for cross-functional self-service. Advising on experimental design and statistical analysis of commercial and marketing data.</div></div>
+      <div class="tl-item reveal"><div class="tl-when">Jun 2025 &ndash; Sep 2025</div><div class="tl-co">Tarsus Pharmaceuticals</div><div class="tl-role">IT Intern &mdash; Data Analyst &amp; AI Engineer</div><div class="tl-body">Designed an enterprise RAG chatbot integrating ServiceNow, Databricks, vector search, and LLMs, cutting response time from days to seconds. Built OAuth 2.0 ingestion pipelines with full/incremental sync to Delta tables. Configured Azure API Management for routing, auth, and CORS; built a single-page HTML/CSS/JS UI with Okta authentication.</div></div>
+      <div class="tl-item reveal"><div class="tl-when">Jan 2024 &ndash; Mar 2025 &nbsp;&middot;&nbsp; Oct 2025 &ndash; Jan 2026</div><div class="tl-co">Outlier AI / Handshake AI</div><div class="tl-role">Data Science AI Trainer</div><div class="tl-body">Evaluated LLM outputs for technical correctness across data science and math tasks. Wrote rubrics and flagged systematic failure modes in model reasoning.</div></div>
+      <div class="tl-item reveal"><div class="tl-when">Mar 2025 &ndash; Jun 2025</div><div class="tl-co">UC Irvine</div><div class="tl-role">Teaching Assistant &mdash; ICS 31 Intro to Python</div><div class="tl-body">Ran weekly review sessions and assisted students in labs and lectures for Introduction to Programming in Python.</div></div>
       <div class="tl-item reveal"><div class="tl-when">May 2024 &ndash; Oct 2024</div><div class="tl-co">Field AI</div><div class="tl-role">Data Labeler</div><div class="tl-body">Annotated sensor data for autonomous vehicle navigation, with a focus on precision for safety-critical edge cases.</div></div>
-      <div class="tl-item reveal"><div class="tl-when">2021 &ndash; 2022</div><div class="tl-co">Cepheid</div><div class="tl-role">Global Access Digital Research &amp; Analysis Intern</div><div class="tl-body">Built analytics dashboards, ran SEO audits, and tracked search performance to improve visibility for global health diagnostics products.</div></div>
+      <div class="tl-item reveal"><div class="tl-when">Jun 2021 &ndash; Sep 2022</div><div class="tl-co">Cepheid</div><div class="tl-role">Global Access Digital Research &amp; Analysis Intern</div><div class="tl-body">Built interactive dashboards in Google Data Studio to visualize QC metrics. Improved search performance 7% in impressions and 15% in position. Analyzed media sentiment and tracked sales data in Salesforce and Smartsheet.</div></div>
     </div>
   </div>
 </div>
@@ -310,14 +351,14 @@
       <div class="ftab" data-f="llm">LLMs</div>
     </div>
     <div class="proj-grid">
-      <div class="pcard reveal" data-c="bayes bio" onclick="openModal('Bayesian CAR Model: Obesity in Texas','Fit a Bayesian hierarchical model with a conditional autoregressive prior on all 254 Texas counties. Physical inactivity and insufficient sleep were the dominant predictors. The spatial model outperformed OLS by 13 DIC points.','assets/STATS295_Spatial_Final_Reformatted.pdf')"><div class="pcard-top"><div class="ptag">Bayesian / Spatial / R</div><span class="pfeat">Featured</span></div><h3>Bayesian CAR Model: Obesity in Texas</h3><p>County-level obesity rates modeled with a Bayesian hierarchical CAR prior and MCMC across all 254 Texas counties.</p><div class="pnums"><span class="pnum">254 counties</span><span class="pnum">Moran I = 0.41</span><span class="pnum">DIC -13 vs OLS</span></div><span class="plink">View paper &rarr;</span></div>
-      <div class="pcard reveal" data-c="causal ml" onclick="openModal('Multi-Arm A/B Test and Causal Evaluation','Analyzed a 64,000-customer randomized marketing experiment using Difference-in-Means, Direct Method, and Double Robust estimators. Applied Causal Forests for CATE estimation and validated on synthetic data.','assets/newreport.pdf')"><div class="pcard-top"><div class="ptag">Causal inference / Python</div><span class="pfeat">Featured</span></div><h3>Multi-Arm A/B Test: Marketing Emails</h3><p>Full causal analysis of a 64K-customer email experiment with heterogeneous treatment effect estimation.</p><div class="pnums"><span class="pnum">64K customers</span><span class="pnum">3 estimators</span><span class="pnum">Causal Forests</span></div><span class="plink">View paper &rarr;</span></div>
-      <div class="pcard reveal" data-c="ml bio" onclick="openModal('Hospital Readmission Prediction','Compared Logistic Regression, Random Forests, SVM, and MLP on 100K+ diabetic patient encounters. Tuned Random Forest achieved ROC-AUC of 0.69.','assets/Stroke Data Analysis ML.pdf')"><div class="pcard-top"><div class="ptag">ML / Healthcare / scikit-learn</div><span class="pfeat">Featured</span></div><h3>Hospital Readmission Prediction</h3><p>Four-model comparison on 100K+ diabetic patient encounters with feature engineering from ICD-9 codes.</p><div class="pnums"><span class="pnum">100K+ encounters</span><span class="pnum">ROC-AUC 0.69</span><span class="pnum">4 model families</span></div><span class="plink">View paper &rarr;</span></div>
-      <div class="pcard reveal" data-c="bio" onclick="openModal('Spinal Cord Injury and Stem Cell Treatment','Analyzed stem cell treatment effectiveness using statistical models and automated motion tracking with DeepLabCut.','assets/CapstoneProject.pdf')"><div class="pcard-top"><div class="ptag">Biostatistics / DeepLabCut</div></div><h3>Spinal Cord Injury: Stem Cell Study</h3><p>Assessed stem cell treatment efficacy in preclinical spinal cord injury research.</p><span class="plink">View paper &rarr;</span></div>
+      <div class="pcard reveal" data-c="bayes bio" onclick="openModal('Bayesian CAR Model: Obesity in Texas','Fit a Bayesian hierarchical model with a conditional autoregressive prior on all 254 Texas counties. Physical inactivity and insufficient sleep were the dominant predictors. Spatial model outperformed OLS by 13 DIC points.','assets/STATS295_Spatial_Final_Reformatted.pdf')"><div class="pcard-top"><div class="ptag">Bayesian / Spatial / R</div><span class="pfeat">Featured</span></div><h3>Bayesian CAR Model: Obesity in Texas</h3><p>County-level obesity rates modeled with a Bayesian hierarchical CAR prior and MCMC across all 254 Texas counties.</p><div class="pnums"><span class="pnum">254 counties</span><span class="pnum">Moran I = 0.41</span><span class="pnum">DIC -13 vs OLS</span></div><span class="plink">View paper &rarr;</span></div>
+      <div class="pcard reveal" data-c="causal ml" onclick="openModal('Multi-Arm A/B Test and Causal Evaluation','Analyzed a 64,000-customer randomized marketing experiment using DiM, Direct Method with Gradient Boosting, and Double Robust estimators. Causal Forests for CATE. Validated on synthetic data.','assets/newreport.pdf')"><div class="pcard-top"><div class="ptag">Causal inference / Python</div><span class="pfeat">Featured</span></div><h3>Multi-Arm A/B Test: Marketing Emails</h3><p>Full causal analysis of a 64K-customer email experiment with heterogeneous treatment effect estimation.</p><div class="pnums"><span class="pnum">64K customers</span><span class="pnum">3 estimators</span><span class="pnum">Causal Forests</span></div><span class="plink">View paper &rarr;</span></div>
+      <div class="pcard reveal" data-c="ml bio" onclick="openModal('Hospital Readmission Prediction','Compared LR, Random Forests, SVM, and MLP on 100K+ diabetic patient encounters. Tuned Random Forest achieved ROC-AUC of 0.69.','assets/Stroke Data Analysis ML.pdf')"><div class="pcard-top"><div class="ptag">ML / Healthcare / scikit-learn</div><span class="pfeat">Featured</span></div><h3>Hospital Readmission Prediction</h3><p>Four-model comparison on 100K+ diabetic patient encounters with feature engineering from ICD-9 codes.</p><div class="pnums"><span class="pnum">100K+ encounters</span><span class="pnum">ROC-AUC 0.69</span><span class="pnum">4 model families</span></div><span class="plink">View paper &rarr;</span></div>
+      <div class="pcard reveal" data-c="bio" onclick="openModal('Spinal Cord Injury and Stem Cell Treatment','Analyzed stem cell treatment effectiveness using statistical models and automated motion tracking with DeepLabCut.','assets/CapstoneProject.pdf')"><div class="pcard-top"><div class="ptag">Biostatistics / DeepLabCut</div></div><h3>Spinal Cord Injury: Stem Cell Study</h3><p>Assessed stem cell treatment efficacy in preclinical spinal cord injury research using statistical models.</p><span class="plink">View paper &rarr;</span></div>
       <div class="pcard reveal" data-c="bio" onclick="openModal('Beta-Carotene Dose-Response Analysis','Longitudinal study modeling dose-response effects on serum concentrations across 46 participants.','assets/BetaCarotene-Final-2.pdf')"><div class="pcard-top"><div class="ptag">Longitudinal / Mixed models / R</div></div><h3>Beta-Carotene Dose-Response</h3><p>Longitudinal modeling of supplementation effects including decay curves and gender interactions.</p><span class="plink">View paper &rarr;</span></div>
       <div class="pcard reveal" data-c="llm bio" onclick="openModal('TrialGPT: AI in Clinical Trials','Presentation on AI-powered patient-to-trial matching using large language models.','assets/TrialGPT Stats 295 Clinical Trials (1).pdf')"><div class="pcard-top"><div class="ptag">LLMs / Clinical trials</div></div><h3>TrialGPT: Patient-Trial Matching</h3><p>How large language models can improve patient matching in clinical trials.</p><span class="plink">View slides &rarr;</span></div>
       <div class="pcard reveal" data-c="ml bio" onclick="openModal('Stroke Data Analysis','Comparing logistic regression and decision tree models on stroke-related clinical data.','assets/Stroke Data Analysis.pdf')"><div class="pcard-top"><div class="ptag">ML / Clinical data</div></div><h3>Stroke Risk: Model Comparison</h3><p>Logistic regression vs. decision trees on stroke clinical data.</p><span class="plink">View paper &rarr;</span></div>
-      <div class="pcard reveal" data-c="ml" onclick="openModal('Classification Methods for Fashion-MNIST','Comparative evaluation of classifiers on Fashion-MNIST analyzing accuracy, generalization, and computational cost.','assets/An Investigation of Classification Methods for Fashion-MNIST.pdf')"><div class="pcard-top"><div class="ptag">Computer vision / Classification</div></div><h3>Fashion-MNIST Classification</h3><p>Compared multiple classifiers on Fashion-MNIST across accuracy, generalization, and cost.</p><span class="plink">View paper &rarr;</span></div>
+      <div class="pcard reveal" data-c="ml" onclick="openModal('Classification Methods for Fashion-MNIST','Comparative evaluation of classifiers on Fashion-MNIST analyzing accuracy and generalization.','assets/An Investigation of Classification Methods for Fashion-MNIST.pdf')"><div class="pcard-top"><div class="ptag">Computer vision / Classification</div></div><h3>Fashion-MNIST Classification</h3><p>Compared multiple classifiers on Fashion-MNIST across accuracy, generalization, and cost.</p><span class="plink">View paper &rarr;</span></div>
       <div class="pcard reveal" data-c="bio causal" onclick="openModal('Clinical Trial Design and Analysis','Final report covering clinical trial design, analysis methods, and statistical inference.','assets/Stats%20295%20Clinical%20Trials%20Final.pdf')"><div class="pcard-top"><div class="ptag">Clinical trials / Statistics</div></div><h3>Clinical Trial Design and Analysis</h3><p>Trial design methodology and statistical inference applied to real clinical study frameworks.</p><span class="plink">View report &rarr;</span></div>
     </div>
   </div>
@@ -329,20 +370,22 @@
     <div id="gWidget">
       <div class="gscreen active" id="gStart">
         <div class="g-title">Guess the <em>Distribution</em></div>
-        <p class="g-sub">A histogram appears. Pick which distribution generated it. 8 rounds, 12 seconds each. Fun fact after every answer.</p>
-        <div class="g-pills"><span class="g-pill">Normal</span><span class="g-pill">Exponential</span><span class="g-pill">Uniform</span><span class="g-pill">Bimodal</span><span class="g-pill">Log-normal</span><span class="g-pill">Beta</span><span class="g-pill">Chi-squared</span><span class="g-pill">Poisson</span></div>
+        <p class="g-sub">A histogram appears. Pick which distribution generated it. 8 rounds, 15 seconds each. The x-axis shows real data values. Fun fact after every answer.</p>
+        <div class="g-pills"><span class="g-pill">Normal</span><span class="g-pill">Exponential</span><span class="g-pill">Uniform</span><span class="g-pill">Bimodal</span><span class="g-pill">Log-normal</span><span class="g-pill">Beta(0,1)</span><span class="g-pill">Chi-squared</span><span class="g-pill">Poisson</span></div>
         <button class="g-btn-play" onclick="gStart()">Play</button>
       </div>
       <div class="gscreen" id="gPlay">
         <div class="g-hud">
           <div class="g-hud-item"><span class="g-hud-label">Round</span><span class="g-hud-val" id="gRound">1/8</span></div>
           <div class="g-tbar-wrap"><div class="g-tbar" id="gTBar"></div></div>
-          <div class="g-hud-item"><span class="g-hud-label">Time</span><span class="g-hud-val gt" id="gTVal">12</span></div>
+          <div class="g-hud-item"><span class="g-hud-label">Time</span><span class="g-hud-val gt" id="gTVal">15</span></div>
           <div class="g-hud-item" style="margin-left:0.8rem;"><span class="g-hud-label">Score</span><span class="g-hud-val gv" id="gScore">0</span></div>
         </div>
         <div class="g-dots" id="gDots"></div>
         <div class="g-qlabel">What distribution generated this data?</div>
         <div class="g-chart"><canvas id="gCanvas" style="width:100%;height:165px;"></canvas></div>
+        <div class="g-axis"><span id="gAxisL"></span><span id="gAxisM"></span><span id="gAxisR"></span></div>
+        <div id="gHint" style="font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--teal);letter-spacing:0.06em;text-align:center;margin-bottom:0.8rem;min-height:1rem;"></div>
         <div class="g-choices" id="gChoices"></div>
         <div class="g-fact" id="gFact">
           <div class="g-verdict" id="gVerdict"></div>
@@ -366,13 +409,24 @@
     </div>
   </div>
 </div>
+<div class="model-bg" id="models">
+  <div class="section-inner">
+    <div class="eyebrow">Tool</div>
+    <h2 class="title">Which model should I use?</h2>
+    <div id="mSelector">
+      <div class="ms-progress"><div class="ms-pfill" id="msPFill" style="width:0%"></div></div>
+      <div class="ms-bc" id="msBc"></div>
+      <div id="msMain"></div>
+    </div>
+  </div>
+</div>
 <div class="cta-wrap" id="contact">
   <div class="reveal">
     <div class="eyebrow" style="justify-content:center;">Contact</div>
     <h2>Open to what's next. <em>Get in touch.</em></h2>
-    <p>Actively looking for data science and ML roles. If you're working on something interesting, especially in healthcare or AI, I'd genuinely like to hear about it.</p>
+    <p>Actively looking for data science and ML roles. If you're working on something interesting, especially in healthcare or AI, I'd like to hear about it.</p>
     <div class="cta-btns">
-      <a class="btn-fill" href="mailto:nathanbsgin@gmail.com">Send an email</a>
+      <a class="btn-fill" href="/cdn-cgi/l/email-protection#2e404f5a464f404c5d4947406e49434f4742004d4143">Send an email</a>
       <a class="btn-ghost" href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">LinkedIn</a>
     </div>
   </div>
@@ -390,52 +444,265 @@
     <div class="modal-bd"><iframe id="mFrame" src="" title="PDF viewer"></iframe></div>
   </div>
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
-var curDot=document.getElementById('curDot'),curRing=document.getElementById('curRing'),mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;curDot.style.left=(mx-2.5)+'px';curDot.style.top=(my-2.5)+'px';});
-(function tick(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;curRing.style.left=(rx-16)+'px';curRing.style.top=(ry-16)+'px';requestAnimationFrame(tick);})();
-document.querySelectorAll('a,button,.pcard,.stab,.ftab,.chip,.g-choice,.g-btn-play,.g-btn-next,.g-btn-again').forEach(function(el){el.addEventListener('mouseenter',function(){curRing.style.width='46px';curRing.style.height='46px';curRing.style.borderColor='rgba(124,109,250,0.75)';});el.addEventListener('mouseleave',function(){curRing.style.width='32px';curRing.style.height='32px';curRing.style.borderColor='rgba(124,109,250,0.45)';});});
+/* ---- CURSOR ---- */
+var cDot=document.getElementById('curDot'),cRing=document.getElementById('curRing'),mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cDot.style.left=(mx-2.5)+'px';cDot.style.top=(my-2.5)+'px';});
+(function tick(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;cRing.style.left=(rx-16)+'px';cRing.style.top=(ry-16)+'px';requestAnimationFrame(tick);})();
+document.querySelectorAll('a,button,.pcard,.stab,.ftab,.chip,.g-choice,.ms-choice').forEach(function(el){
+  el.addEventListener('mouseenter',function(){cRing.style.width='46px';cRing.style.height='46px';cRing.style.borderColor='rgba(124,109,250,0.75)';});
+  el.addEventListener('mouseleave',function(){cRing.style.width='32px';cRing.style.height='32px';cRing.style.borderColor='rgba(124,109,250,0.45)';});
+});
+/* ---- REVEAL ---- */
 var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
-var WX={0:['☀️','Clear'],1:['🌤','Mostly clear'],2:['⛅','Partly cloudy'],3:['☁️','Overcast'],45:['🌫','Foggy'],48:['🌫','Icy fog'],51:['🌦','Light drizzle'],53:['🌦','Drizzle'],55:['🌧','Heavy drizzle'],61:['🌧','Light rain'],63:['🌧','Rain'],65:['🌧','Heavy rain'],71:['🌨','Light snow'],73:['🌨','Snow'],75:['❄️','Heavy snow'],80:['🌦','Showers'],81:['🌧','Heavy showers'],95:['⛈','Thunderstorm']};
-fetch('https://api.open-meteo.com/v1/forecast?latitude=37.563&longitude=-122.3255&current=temperature_2m,apparent_temperature,weather_code,relative_humidity,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FLos_Angeles').then(function(r){return r.json();}).then(function(d){var c=d.current,wx=WX[c.weather_code]||['🌡',''];document.getElementById('wxIcon').textContent=wx[0];document.getElementById('wxTemp').textContent=Math.round(c.temperature_2m)+'°F';document.getElementById('wxDesc').textContent=wx[1]+', feels like '+Math.round(c.apparent_temperature)+'°F';document.getElementById('wxExtra').textContent='Humidity '+Math.round(c.relative_humidity)+'%  ·  Wind '+Math.round(c.wind_speed_10m)+' mph';}).catch(function(){document.getElementById('wxDesc').textContent='weather unavailable';});
-function fmtTime(tz){return new Date().toLocaleTimeString('en-US',{timeZone:tz,hour:'numeric',minute:'2-digit',hour12:true});}
-function fmtDate(tz){return new Date().toLocaleDateString('en-US',{timeZone:tz,weekday:'long',month:'long',day:'numeric'});}
-function tickClocks(){document.getElementById('clockSM').textContent=fmtTime('America/Los_Angeles');document.getElementById('clockIrvine').textContent=fmtTime('America/Los_Angeles');document.getElementById('clockDate').textContent=fmtDate('America/Los_Angeles');}
-tickClocks();setInterval(tickClocks,1000);
+/* ---- WEATHER ---- */
+var WX={0:['&#9728;','Clear'],1:['&#127780;','Mostly clear'],2:['&#9925;','Partly cloudy'],3:['&#9729;','Overcast'],45:['&#127787;','Foggy'],48:['&#127787;','Icy fog'],51:['&#127782;','Light drizzle'],53:['&#127782;','Drizzle'],55:['&#127783;','Heavy drizzle'],61:['&#127783;','Light rain'],63:['&#127783;','Rain'],65:['&#127783;','Heavy rain'],71:['&#127784;','Light snow'],73:['&#127784;','Snow'],75:['&#10052;','Heavy snow'],80:['&#127782;','Showers'],81:['&#127783;','Heavy showers'],95:['&#9928;','Thunderstorm'],99:['&#9928;','Thunderstorm + hail']};
+fetch('https://api.open-meteo.com/v1/forecast?latitude=37.563&longitude=-122.3255&current=temperature_2m,apparent_temperature,weather_code,relative_humidity_2m,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FLos_Angeles')
+  .then(function(r){return r.json();})
+  .then(function(d){
+    var c=d.current,wx=WX[c.weather_code]||['&#127777;',''];
+    document.getElementById('wxIcon').innerHTML=wx[0];
+    document.getElementById('wxTemp').textContent=Math.round(c.temperature_2m)+'\u00b0F';
+    document.getElementById('wxDesc').textContent=wx[1]+', feels like '+Math.round(c.apparent_temperature)+'\u00b0F';
+    document.getElementById('wxExtra').textContent='Humidity '+Math.round(c.relative_humidity_2m)+'%  \u00b7  Wind '+Math.round(c.wind_speed_10m)+' mph';
+  })
+  .catch(function(){document.getElementById('wxDesc').textContent='Check weather.com for San Mateo';});
+/* ---- CLOCKS ---- */
+function fmtT(tz){return new Date().toLocaleTimeString('en-US',{timeZone:tz,hour:'numeric',minute:'2-digit',hour12:true});}
+function fmtD(tz){return new Date().toLocaleDateString('en-US',{timeZone:tz,weekday:'long',month:'long',day:'numeric'});}
+function tickC(){document.getElementById('clockSM').textContent=fmtT('America/Los_Angeles');document.getElementById('clockTokyo').textContent=fmtT('Asia/Tokyo');document.getElementById('clockDate').textContent=fmtD('America/Los_Angeles');}
+tickC();setInterval(tickC,1000);
+/* ---- SKILL TABS ---- */
 document.querySelectorAll('.stab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.stab').forEach(function(t){t.classList.remove('on');});document.querySelectorAll('.spanel').forEach(function(p){p.classList.remove('on');});tab.classList.add('on');var panel=document.getElementById('sp-'+tab.getAttribute('data-p'));if(panel)panel.classList.add('on');});});
+/* ---- PROJECT FILTER ---- */
 document.querySelectorAll('.ftab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.ftab').forEach(function(t){t.classList.remove('on');});tab.classList.add('on');var f=tab.getAttribute('data-f');document.querySelectorAll('.pcard').forEach(function(card){if(f==='all'){card.classList.remove('hide');}else{var c=card.getAttribute('data-c')||'';card.classList.toggle('hide',c.indexOf(f)===-1);}});});});
+/* ---- MODAL ---- */
 function openModal(title,desc,src){document.getElementById('mTitle').textContent=title;document.getElementById('mDesc').textContent=desc;document.getElementById('mFrame').src=src;document.getElementById('overlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeModal(){document.getElementById('overlay').classList.remove('open');document.getElementById('mFrame').src='';document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+/* ---- GAME ---- */
+function gNorm(){var u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
+function gGam(a){if(a<1)return gGam(1+a)*Math.pow(Math.random(),1/a);var d=a-1/3,c=1/Math.sqrt(9*d),x,v;do{do{x=gNorm();v=1+c*x;}while(v<=0);v=v*v*v;}while(Math.random()>=1-0.331*x*x*x*x&&Math.log(Math.random())>=0.5*x*x+d*(1-v+Math.log(v)));return d*v;}
 var GD=[
-  {name:'Normal',desc:'Bell-shaped, symmetric',fact:'The normal distribution appears everywhere because of the Central Limit Theorem: the average of many independent random variables tends toward normal regardless of their original distribution.',s:function(){var u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)*1.2+5;}},
-  {name:'Normal',desc:'Bell-shaped, symmetric',fact:'Francis Galton demonstrated the normal distribution with a bean machine — a board of pegs where balls fall randomly left or right. The piles at the bottom always form a perfect bell curve.',s:function(){var u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)*0.9+5;}},
-  {name:'Exponential',desc:'Right-skewed, memoryless',fact:'The exponential distribution is memoryless: if you have already waited 5 minutes for a bus, your expected remaining wait is the same as when you first arrived. It models time between random events like server requests.',s:function(){return -Math.log(1-Math.random())*1.5;}},
-  {name:'Exponential',desc:'Right-skewed, memoryless',fact:'Call centers use the exponential distribution to model time between incoming calls. Almost all of queuing theory is built on exponential inter-arrival times.',s:function(){return -Math.log(1-Math.random())*2;}},
-  {name:'Uniform',desc:'Flat, equal probability everywhere',fact:'A truly uniform distribution is rare in nature. But your computer\'s random number generator produces uniform random numbers — almost every other distribution is generated by transforming those uniform samples.',s:function(){return Math.random()*8+1;}},
-  {name:'Bimodal',desc:'Two distinct peaks',fact:'Bimodal distributions often reveal a hidden mixture of two groups. Human height looks bimodal when men and women are combined. Two humps are a clue to ask: what are the two populations here?',s:function(){var u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();var g=Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)*0.7;return Math.random()<0.5?g+2.5:g+7;}},
-  {name:'Bimodal',desc:'Two distinct peaks',fact:'The Old Faithful geyser in Yellowstone has a famously bimodal eruption duration: short ones cluster around 2 minutes, long ones around 4.5 minutes. One of the most cited real-world examples in introductory statistics.',s:function(){var u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();var g=Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)*0.65;return Math.random()<0.45?g+3:g+7;}},
-  {name:'Log-normal',desc:'Right-skewed, multiplicative growth',fact:'Income, city populations, and stock prices follow log-normal distributions. When a quantity grows through random multiplicative factors rather than additive ones, the logarithm ends up normally distributed.',s:function(){var u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.exp(Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)*0.6+1.2);}},
-  {name:'Log-normal',desc:'Right-skewed, multiplicative growth',fact:'File sizes on your hard drive follow a log-normal distribution. So does the duration of human conversations, word frequencies in books, and the population sizes of cities worldwide.',s:function(){var u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.exp(Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)*0.5+0.8);}},
-  {name:'Beta',desc:'Bounded between 0 and 1',fact:'The Beta distribution is the natural choice for modeling probabilities in Bayesian statistics. Observe 7 successes in 10 trials with a uniform prior, and your posterior belief is a Beta(8,4) concentrated around 0.7.',s:function(){return gGam(2.5)/(gGam(2.5)+gGam(5))*9+0.5;}},
-  {name:'Chi-squared',desc:'Right-skewed, sum of squared normals',fact:'Chi-squared with k degrees of freedom is the sum of k squared standard normal variables. That is why it appears in goodness-of-fit tests — you are summing squared standardized residuals.',s:function(){var s=0;for(var i=0;i<3;i++){var u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();var z=Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);s+=z*z;}return s;}},
-  {name:'Poisson',desc:'Count of events per interval',fact:'The Poisson distribution was used in the 1800s to model the number of Prussian soldiers kicked to death by horses per year — one of the first applications of statistics to rare accident data.',s:function(){var L=Math.exp(-4),k=0,p=1;do{k++;p*=Math.random();}while(p>L);return k-1;}}
+  {name:'Normal',hint:'Symmetric bell — equal tails on both sides',fact:'The normal distribution appears everywhere due to the Central Limit Theorem: the average of many independent random variables tends toward normal regardless of the original distribution.',s:function(){return gNorm()*2+20;}},
+  {name:'Normal',hint:'Symmetric bell — equal tails on both sides',fact:'Francis Galton demonstrated the normal distribution with a bean machine — balls falling through rows of pegs always pile into a perfect bell curve at the bottom.',s:function(){return gNorm()*4+50;}},
+  {name:'Exponential',hint:'Spikes at zero, then drops sharply — almost nothing in the right tail',fact:'The exponential is memoryless: having already waited 5 minutes for a bus, your expected remaining wait is unchanged. It models time between random events like server requests or radioactive decay.',s:function(){return -Math.log(1-Math.random())*1.2;}},
+  {name:'Exponential',hint:'Spikes at zero, then drops sharply — almost nothing in the right tail',fact:'Call centers use the exponential distribution to model time between incoming calls. Almost all of queuing theory is built on exponential inter-arrival times.',s:function(){return -Math.log(1-Math.random())*0.8;}},
+  {name:'Uniform',hint:'Perfectly flat — every bar the same height',fact:'Your computer\'s random number generator produces uniform random numbers. Almost every other distribution is generated by transforming uniform samples through mathematical functions.',s:function(){return Math.random()*20+5;}},
+  {name:'Uniform',hint:'Perfectly flat — every bar the same height',fact:'Monte Carlo simulations rely entirely on uniform samples. Every Bayesian MCMC sampler and physics simulation ultimately starts from a uniform draw.',s:function(){return Math.random()*50;}},
+  {name:'Bimodal',hint:'Two clear humps with a valley between them',fact:'Bimodal distributions reveal a hidden mixture of two groups. Human height is bimodal when men and women are pooled. Two humps prompt the question: what are the two populations?',s:function(){return Math.random()<0.5?gNorm()*1.2+6:gNorm()*1.2+16;}},
+  {name:'Bimodal',hint:'Two clear humps with a valley between them',fact:'Old Faithful eruption durations are famously bimodal: short eruptions cluster around 2 minutes, long ones around 4.5 minutes. One of the most cited real-world examples in introductory statistics.',s:function(){return Math.random()<0.45?gNorm()*0.7+3:gNorm()*1.1+10;}},
+  {name:'Log-normal',hint:'Gradual rise to a peak, then a long slow right tail',fact:'Income, city populations, and stock prices follow log-normal distributions. When a quantity grows through random multiplicative factors rather than additive ones, the log ends up normally distributed.',s:function(){return Math.exp(gNorm()*0.35+2.2);}},
+  {name:'Log-normal',hint:'Gradual rise to a peak, then a long slow right tail',fact:'File sizes on your computer, human reaction times, and rainfall amounts all follow log-normal distributions. The key: values cannot go below zero, but can stretch far to the right.',s:function(){return Math.exp(gNorm()*0.4+1.8);}},
+  {name:'Beta (0 to 1)',hint:'Axis always spans 0 to 1 — skewed toward one end',fact:'The Beta distribution is the natural prior for probabilities in Bayesian statistics. Observe 7 successes in 10 trials with a uniform prior and your posterior is Beta(8,4), peaking near 0.7.',s:function(){var a=2.5,b=6;return gGam(a)/(gGam(a)+gGam(b));}},
+  {name:'Chi-squared',hint:'Hump near low values, gradual right tail — not as extreme as exponential',fact:'Chi-squared with k degrees of freedom is the sum of k squared standard normal variables. That is why it appears in goodness-of-fit tests: you are summing squared standardized residuals.',s:function(){var s=0;for(var i=0;i<10;i++)s+=Math.pow(gNorm(),2);return s;}},
+  {name:'Poisson',hint:'Discrete integer counts — bars sit at whole numbers only',fact:'The Poisson distribution was used in the 1800s to model Prussian soldiers kicked to death by horses per year. One of the first applications of statistics to rare accident data.',s:function(){var lam=6,L=Math.exp(-lam),k=0,p=1;do{k++;p*=Math.random();}while(p>L);return k-1;}}
 ];
-function gGam(a){if(a<1)return gGam(1+a)*Math.pow(Math.random(),1/a);var d=a-1/3,c=1/Math.sqrt(9*d),x,v;do{do{var u1=0,u2=0;while(!u1)u1=Math.random();while(!u2)u2=Math.random();x=Math.sqrt(-2*Math.log(u1))*Math.cos(2*Math.PI*u2);v=1+c*x;}while(v<=0);v=v*v*v;}while(Math.random()>=1-0.331*(x*x)*(x*x)&&Math.log(Math.random())>=0.5*x*x+d*(1-v+Math.log(v)));return d*v;}
 function gShuf(a){var b=a.slice();for(var i=b.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=b[i];b[i]=b[j];b[j]=t;}return b;}
 function gShow(id){document.querySelectorAll('.gscreen').forEach(function(s){s.classList.remove('active');});document.getElementById(id).classList.add('active');}
-var gQ,gR,gSc,gStr,gBest,gTL,gTI,gAns,gT0,gTimes,gChart=null,G_TOT=8;
-var DALL=['Normal','Exponential','Uniform','Bimodal','Log-normal','Beta','Chi-squared','Poisson'];
-var DDESCS={'Normal':'Bell-shaped, symmetric','Exponential':'Right-skewed, memoryless','Uniform':'Flat, equal everywhere','Bimodal':'Two distinct peaks','Log-normal':'Right-skewed, multiplicative','Beta':'Bounded between 0 and 1','Chi-squared':'Sum of squared normals','Poisson':'Count of events per interval'};
+var gQ,gR,gSc,gStr,gBest,gTL,gTI,gAns,gT0,gTimes,gChart=null,G_TOT=8,G_TIME=15;
+var DALL=['Normal','Exponential','Uniform','Bimodal','Log-normal','Beta (0 to 1)','Chi-squared','Poisson'];
+var DDESCS={'Normal':'Symmetric bell curve','Exponential':'Spikes near zero, sharp drop-off','Uniform':'Perfectly flat, equal height','Bimodal':'Two peaks with a valley','Log-normal':'Gradual rise then long right tail','Beta (0 to 1)':'Bounded 0 to 1, skewed','Chi-squared':'Hump near low values, moderate tail','Poisson':'Discrete integer counts'};
 function gStart(){gSc=0;gR=0;gStr=0;gBest=0;gTimes=[];gQ=gShuf(GD).slice(0,G_TOT);gShow('gPlay');var d=document.getElementById('gDots');d.innerHTML='';for(var i=0;i<G_TOT;i++){var dot=document.createElement('div');dot.className='g-dot'+(i===0?' curr':'');dot.id='gd'+i;d.appendChild(dot);}gLoad();}
-function gLoad(){clearInterval(gTI);gAns=false;var q=gQ[gR];document.getElementById('gRound').textContent=(gR+1)+'/'+G_TOT;document.getElementById('gScore').textContent=gSc;document.getElementById('gFact').className='g-fact';document.getElementById('gNext').className='g-btn-next';var samp=[];for(var i=0;i<400;i++)samp.push(q.s());gDrawH(samp);var wr=gShuf(DALL.filter(function(n){return n!==q.name;})).slice(0,3);var opts=gShuf([q.name].concat(wr));var grid=document.getElementById('gChoices');grid.innerHTML='';opts.forEach(function(name){var btn=document.createElement('button');btn.className='g-choice';btn.innerHTML='<span class="g-cname">'+name+'</span><span class="g-cdesc">'+DDESCS[name]+'</span>';btn.onclick=function(){if(!gAns)gCheck(name,q,btn);};grid.appendChild(btn);});gTL=12;gT0=Date.now();document.getElementById('gTVal').textContent=12;document.getElementById('gTVal').className='g-hud-val gt';document.getElementById('gTBar').style.width='100%';document.getElementById('gTBar').style.background='var(--teal)';gTI=setInterval(function(){gTL--;document.getElementById('gTVal').textContent=gTL;document.getElementById('gTBar').style.width=((gTL/12)*100)+'%';if(gTL<=4){document.getElementById('gTVal').className='g-hud-val gu';document.getElementById('gTBar').style.background='#f06080';}if(gTL<=0){clearInterval(gTI);if(!gAns)gTimeout(q);}},1000);}
-function gDrawH(samp){var canvas=document.getElementById('gCanvas'),BINS=24,mn=Math.min.apply(null,samp),mx=Math.max.apply(null,samp),w=(mx-mn)/BINS,counts=new Array(BINS).fill(0);samp.forEach(function(v){var b=Math.min(Math.floor((v-mn)/w),BINS-1);counts[b]++;});if(gChart){gChart.destroy();gChart=null;}gChart=new Chart(canvas,{type:'bar',data:{labels:counts.map(function(_,i){return i;}),datasets:[{data:counts,backgroundColor:'rgba(124,109,250,0.6)',borderColor:'rgba(124,109,250,0.85)',borderWidth:1,borderRadius:2,borderSkipped:false}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:350},plugins:{legend:{display:false},tooltip:{enabled:false}},scales:{x:{display:false,grid:{display:false}},y:{display:false,grid:{display:false}}},layout:{padding:{top:4,bottom:4}}}});}
-function gCheck(chosen,q,btn){clearInterval(gTI);gAns=true;var el=Math.min(Math.round((Date.now()-gT0)/1000),12);gTimes.push(el);var ok=chosen===q.name;if(ok){var pts=Math.max(10,50-el*3);gSc+=pts;gStr++;if(gStr>gBest)gBest=gStr;btn.className='g-choice correct';document.getElementById('gVerdict').textContent='Correct! +'+pts+' pts';document.getElementById('gVerdict').className='g-verdict ok';}else{gStr=0;btn.className='g-choice wrong';document.querySelectorAll('.g-choice').forEach(function(b){if(b.querySelector('.g-cname').textContent===q.name)b.className='g-choice correct';});document.getElementById('gVerdict').textContent='Not quite — that was '+q.name;document.getElementById('gVerdict').className='g-verdict bad';}document.querySelectorAll('.g-choice').forEach(function(b){b.disabled=true;});document.getElementById('gScore').textContent=gSc;document.getElementById('gFText').textContent=q.fact;document.getElementById('gFact').className='g-fact show';document.getElementById('gNext').className='g-btn-next show';var dot=document.getElementById('gd'+gR);if(dot)dot.className='g-dot '+(ok?'ok':'bad');var nxt=document.getElementById('gd'+(gR+1));if(nxt)nxt.className='g-dot curr';}
-function gTimeout(q){gAns=true;gTimes.push(12);gStr=0;document.querySelectorAll('.g-choice').forEach(function(b){b.disabled=true;if(b.querySelector('.g-cname').textContent===q.name)b.className='g-choice correct';});document.getElementById('gVerdict').textContent="Time's up — that was "+q.name;document.getElementById('gVerdict').className='g-verdict bad';document.getElementById('gFText').textContent=q.fact;document.getElementById('gFact').className='g-fact show';document.getElementById('gNext').className='g-btn-next show';var dot=document.getElementById('gd'+gR);if(dot)dot.className='g-dot bad';var nxt=document.getElementById('gd'+(gR+1));if(nxt)nxt.className='g-dot curr';}
+function gLoad(){
+  clearInterval(gTI);gAns=false;
+  var q=gQ[gR];
+  document.getElementById('gRound').textContent=(gR+1)+'/'+G_TOT;
+  document.getElementById('gScore').textContent=gSc;
+  document.getElementById('gFact').className='g-fact';
+  document.getElementById('gNext').className='g-btn-next';
+  var samp=[];for(var i=0;i<500;i++)samp.push(q.s());
+  gDrawH(samp,q.name,q.hint);
+  var wr=gShuf(DALL.filter(function(n){return n!==q.name;})).slice(0,3);
+  var opts=gShuf([q.name].concat(wr));
+  var grid=document.getElementById('gChoices');grid.innerHTML='';
+  opts.forEach(function(name){
+    var btn=document.createElement('button');btn.className='g-choice';
+    btn.innerHTML='<span class="g-cname">'+name+'</span><span class="g-cdesc">'+DDESCS[name]+'</span>';
+    btn.onclick=function(){if(!gAns)gCheck(name,q,btn);};
+    grid.appendChild(btn);
+  });
+  gTL=G_TIME;gT0=Date.now();
+  document.getElementById('gTVal').textContent=gTL;
+  document.getElementById('gTVal').className='g-hud-val gt';
+  document.getElementById('gTBar').style.width='100%';
+  document.getElementById('gTBar').style.background='var(--teal)';
+  gTI=setInterval(function(){
+    gTL--;
+    document.getElementById('gTVal').textContent=gTL;
+    document.getElementById('gTBar').style.width=((gTL/G_TIME)*100)+'%';
+    if(gTL<=5){document.getElementById('gTVal').className='g-hud-val gu';document.getElementById('gTBar').style.background='#f06080';}
+    if(gTL<=0){clearInterval(gTI);if(!gAns)gTimeout(q);}
+  },1000);
+}
+function gDrawH(samp,name,hint){
+  var canvas=document.getElementById('gCanvas');
+  var isBeta=(name==='Beta (0 to 1)');
+  var isPoisson=(name==='Poisson');
+  var BINS=isPoisson?20:28;
+  var mn,mx,counts,labels;
+  if(isBeta){mn=0;mx=1;}
+  else if(isPoisson){mn=Math.min.apply(null,samp);mx=Math.max.apply(null,samp);}
+  else{mn=Math.min.apply(null,samp);mx=Math.max.apply(null,samp);}
+  var range=mx-mn||1;
+  /* For Poisson use integer buckets so bars sit at whole numbers */
+  if(isPoisson){
+    counts={};samp.forEach(function(v){var k=Math.round(v);counts[k]=(counts[k]||0)+1;});
+    var keys=[];for(var k2=mn;k2<=mx;k2++)keys.push(k2);
+    labels=keys.map(function(k){return ''+k;});
+    var cArr=keys.map(function(k){return counts[k]||0;});
+    counts=cArr;
+    document.getElementById('gAxisL').textContent=Math.round(mn)+'';
+    document.getElementById('gAxisM').textContent=Math.round(mn+(mx-mn)/2)+'';
+    document.getElementById('gAxisR').textContent=Math.round(mx)+'';
+  } else {
+    var w=range/BINS;
+    counts=new Array(BINS).fill(0);
+    samp.forEach(function(v){var b=Math.min(Math.floor((v-mn)/w),BINS-1);if(b>=0)counts[b]++;});
+    labels=counts.map(function(_,i){return (mn+i*w).toFixed(1);});
+    var mid=mn+range/2;
+    document.getElementById('gAxisL').textContent=isBeta?'0.0':mn.toFixed(1);
+    document.getElementById('gAxisM').textContent=isBeta?'0.5':mid.toFixed(1);
+    document.getElementById('gAxisR').textContent=isBeta?'1.0':mx.toFixed(1);
+  }
+  /* Show shape hint */
+  var hintEl=document.getElementById('gHint');
+  if(hintEl)hintEl.textContent=hint||'';
+  if(gChart){gChart.destroy();gChart=null;}
+  gChart=new Chart(canvas,{type:'bar',data:{labels:labels,datasets:[{data:counts,backgroundColor:'rgba(124,109,250,0.6)',borderColor:'rgba(124,109,250,0.85)',borderWidth:isPoisson?2:1,borderRadius:2,borderSkipped:false,barPercentage:isPoisson?0.6:0.95,categoryPercentage:isPoisson?0.7:1}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:350},plugins:{legend:{display:false},tooltip:{enabled:false}},scales:{x:{display:false,grid:{display:false}},y:{display:false,grid:{display:false}}},layout:{padding:{top:4,bottom:4}}}});
+}
+function gCheck(chosen,q,btn){
+  clearInterval(gTI);gAns=true;
+  var el=Math.min(Math.round((Date.now()-gT0)/1000),G_TIME);gTimes.push(el);
+  var ok=chosen===q.name;
+  if(ok){var pts=Math.max(10,60-el*3);gSc+=pts;gStr++;if(gStr>gBest)gBest=gStr;btn.className='g-choice correct';document.getElementById('gVerdict').textContent='Correct! +'+pts+' pts';document.getElementById('gVerdict').className='g-verdict ok';}
+  else{gStr=0;btn.className='g-choice wrong';document.querySelectorAll('.g-choice').forEach(function(b){if(b.querySelector('.g-cname').textContent===q.name)b.className='g-choice correct';});document.getElementById('gVerdict').textContent='Not quite \u2014 that was '+q.name;document.getElementById('gVerdict').className='g-verdict bad';}
+  document.querySelectorAll('.g-choice').forEach(function(b){b.disabled=true;});
+  document.getElementById('gScore').textContent=gSc;
+  document.getElementById('gFText').textContent=q.fact;
+  document.getElementById('gFact').className='g-fact show';
+  document.getElementById('gNext').className='g-btn-next show';
+  var dot=document.getElementById('gd'+gR);if(dot)dot.className='g-dot '+(ok?'ok':'bad');
+  var nxt=document.getElementById('gd'+(gR+1));if(nxt)nxt.className='g-dot curr';
+}
+function gTimeout(q){
+  gAns=true;gTimes.push(G_TIME);gStr=0;
+  document.querySelectorAll('.g-choice').forEach(function(b){b.disabled=true;if(b.querySelector('.g-cname').textContent===q.name)b.className='g-choice correct';});
+  document.getElementById('gVerdict').textContent="Time's up \u2014 that was "+q.name;
+  document.getElementById('gVerdict').className='g-verdict bad';
+  document.getElementById('gFText').textContent=q.fact;
+  document.getElementById('gFact').className='g-fact show';
+  document.getElementById('gNext').className='g-btn-next show';
+  var dot=document.getElementById('gd'+gR);if(dot)dot.className='g-dot bad';
+  var nxt=document.getElementById('gd'+(gR+1));if(nxt)nxt.className='g-dot curr';
+}
 function gNextRound(){gR++;if(gR>=G_TOT)gEnd();else gLoad();}
-function gEnd(){clearInterval(gTI);if(gChart){gChart.destroy();gChart=null;}var nR=document.querySelectorAll('.g-dot.ok').length,avg=gTimes.length?Math.round(gTimes.reduce(function(a,b){return a+b;},0)/gTimes.length):0;document.getElementById('gFinalScore').textContent=gSc;document.getElementById('gEndCorrect').textContent=nR;document.getElementById('gEndStreak').textContent=gBest;document.getElementById('gEndTime').textContent=avg+'s';var pct=nR/G_TOT,title,msg;if(pct===1){title='Perfect score';msg='Every distribution identified correctly. Your statistical intuition is well calibrated.';}else if(pct>=0.75){title='Strong work';msg='Solid shape recognition. The tricky ones are usually log-normal vs. exponential — both have long right tails.';}else if(pct>=0.5){title='Not bad';msg='Try looking for symmetry first, then skew direction, then whether there is one peak or two.';}else if(pct>=0.25){title='Room to grow';msg='Distribution shape is a learnable skill. Right tail length and peak count are your two best clues.';}else{title='Keep at it';msg='Stats is genuinely hard. Play again — you will start to see the patterns quickly.';}document.getElementById('gEndTitle').textContent=title;document.getElementById('gEndMsg').textContent=msg;gShow('gEnd');}
+function gEnd(){
+  clearInterval(gTI);if(gChart){gChart.destroy();gChart=null;}
+  var nR=document.querySelectorAll('.g-dot.ok').length;
+  var avg=gTimes.length?Math.round(gTimes.reduce(function(a,b){return a+b;},0)/gTimes.length):0;
+  document.getElementById('gFinalScore').textContent=gSc;
+  document.getElementById('gEndCorrect').textContent=nR;
+  document.getElementById('gEndStreak').textContent=gBest;
+  document.getElementById('gEndTime').textContent=avg+'s';
+  var pct=nR/G_TOT,title,msg;
+  if(pct===1){title='Perfect score';msg='Every distribution identified correctly. Your statistical intuition is well calibrated.';}
+  else if(pct>=0.75){title='Strong work';msg='Solid shape recognition. Exponential vs. log-normal trips most people \u2014 both have long right tails but different mass near zero.';}
+  else if(pct>=0.5){title='Not bad';msg='Look for symmetry first, then skew direction, then one vs. two peaks. The axis labels help \u2014 Beta always lives between 0 and 1.';}
+  else if(pct>=0.25){title='Room to grow';msg='Distribution shape is a learnable skill. Right tail length, peak count, and axis range are your three main clues.';}
+  else{title='Keep at it';msg='Stats is genuinely hard. Play again \u2014 you will start to see the patterns quickly.';}
+  document.getElementById('gEndTitle').textContent=title;
+  document.getElementById('gEndMsg').textContent=msg;
+  gShow('gEnd');
+}
+/* ---- MODEL SELECTOR ---- */
+var MS_TREE={id:'root',q:'What type of outcome variable do you have?',hint:'The outcome type is the most important factor. It determines which distributional assumptions are reasonable.',choices:[{label:'Continuous',desc:'Numeric, any value \u2014 height, income, blood pressure, test score',next:'continuous'},{label:'Binary',desc:'Two outcomes \u2014 yes/no, survived/died, disease/healthy',next:'binary'},{label:'Count or rate',desc:'Non-negative integers \u2014 ER visits, events per interval',next:'count'},{label:'Time to event',desc:'How long until something happens \u2014 death, relapse, failure',next:'survival'},{label:'Ordinal or nominal categorical',desc:'Ordered levels or unordered groups \u2014 mild/moderate/severe',next:'categorical'}]};
+var MS_NODES={
+  continuous:{q:'What is your data structure?',hint:'Repeated or clustered data violates independence assumptions of standard regression.',choices:[{label:'Independent observations',desc:'One row per subject, no repeats',next:'cont_indep'},{label:'Repeated / longitudinal',desc:'Multiple measurements per subject over time',next:'cont_rep'},{label:'Clustered or hierarchical',desc:'Subjects nested in schools, clinics, hospitals',next:'cont_clust'}]},
+  cont_indep:{q:'How many predictors and what is your goal?',choices:[{label:'One continuous predictor \u2014 estimate association',desc:'Classic bivariate relationship',next:'R_simpleLR'},{label:'Multiple predictors \u2014 test specific effects',desc:'Adjust for confounders; coefficient inference',next:'R_multLR'},{label:'Compare group means \u2014 one categorical predictor',desc:'Two or more groups',next:'cont_groups'},{label:'Prediction / variable selection',desc:'Build best predictive model out-of-sample',next:'R_predict'}]},
+  cont_groups:{q:'How many groups?',choices:[{label:'Two groups',desc:'e.g. treatment vs. control',next:'R_ttest'},{label:'Three or more groups',desc:'e.g. multiple doses or treatments',next:'R_anova'}]},
+  cont_rep:{q:'What is your aim?',choices:[{label:'Compare means across time points',desc:'Within-subject effects, balanced data',next:'R_rmAnova'},{label:'Model individual trajectories over time',desc:'Subject-specific slopes and intercepts',next:'R_lme'},{label:'Population-average marginal effect',desc:'Many subjects, moderate time points',next:'R_gee'}]},
+  cont_clust:{q:'Subject-specific or population-average estimates?',choices:[{label:'Subject-specific \u2014 random effects',desc:'Model individual variation explicitly',next:'R_lme'},{label:'Population-average \u2014 marginal',desc:'Average effect in the population',next:'R_gee'}]},
+  binary:{q:'Are observations independent?',choices:[{label:'Yes \u2014 independent subjects',desc:'Standard cross-sectional or prospective design',next:'bin_indep'},{label:'Matched pairs or repeated binary',desc:'Case-control matched pairs, crossover',next:'R_condLogistic'},{label:'Clustered / multilevel binary',desc:'Subjects nested within clinics or groups',next:'R_mixedLogistic'}]},
+  bin_indep:{q:'What is your primary goal?',choices:[{label:'Estimate odds ratios, adjust for confounders',desc:'Inference on regression coefficients',next:'R_logistic'},{label:'Estimate risk ratio directly',desc:'Absolute risk; outcome prevalence > 10%',next:'R_logBin'},{label:'Prediction / classification',desc:'Maximize AUC or accuracy',next:'R_classify'}]},
+  count:{q:'Is there overdispersion or excess zeros?',hint:'In Poisson, mean equals variance. If variance >> mean, data are overdispersed. If far more zeros than expected, zero-inflation is likely.',choices:[{label:'No \u2014 variance roughly equals mean',desc:'Standard Poisson assumption holds',next:'R_poisson'},{label:'Yes \u2014 variance >> mean (overdispersed)',desc:'Extra variability beyond Poisson',next:'R_negbin'},{label:'Yes \u2014 too many zeros',desc:'Structural zero-inflation present',next:'R_zeroInfl'},{label:'Rate per person-time (unequal follow-up)',desc:'Different subjects observed different lengths',next:'R_poissonOffset'}]},
+  survival:{q:'Does the hazard ratio stay constant over time?',hint:'The proportional hazards assumption: the ratio of hazards between groups is constant. Check with Schoenfeld residuals or log-log plots.',choices:[{label:'Yes \u2014 hazard ratio is constant',desc:'Proportional hazards assumption holds',next:'R_cox'},{label:'No covariates \u2014 just describe survival',desc:'Kaplan-Meier curves and log-rank test',next:'R_km'},{label:'PH assumption is violated',desc:'Hazards cross or have time-varying effects',next:'R_aft'}]},
+  categorical:{q:'Is your outcome ordered?',choices:[{label:'Ordered \u2014 ordinal',desc:'Mild/moderate/severe; Likert scales; pain rating',next:'R_ordinal'},{label:'Unordered \u2014 nominal',desc:'Blood type; treatment choice; region',next:'R_multinomial'}]},
+  R_simpleLR:{result:true,name:'Simple linear regression',sub:'One predictor, continuous outcome',use:'Quantify the linear relationship between one predictor and a continuous outcome.',q:'Is there a linear association? What is its magnitude and direction?',assumptions:['Linearity','Independence of errors','Homoscedasticity','Normal residuals'],when:'Estimating how a one-unit increase in X associates with Y. Produces slope, intercept, and R\u00b2.',alts:['Spline regression (nonlinear)','Polynomial regression','Pearson correlation (association only)']},
+  R_multLR:{result:true,name:'Multiple linear regression',sub:'Several predictors, continuous outcome',use:'Estimate the independent effect of each predictor while adjusting for others.',q:'What is the effect of X\u2081 after holding X\u2082, X\u2083 constant?',assumptions:['Linearity','No perfect multicollinearity','Independence','Homoscedasticity','Normal residuals'],when:'Observational studies adjusting for confounders; RCTs adjusting for baseline covariates.',alts:['Ridge / LASSO (regularized)','Robust regression (outliers)','Quantile regression (median target)']},
+  R_ttest:{result:true,name:'Two-sample t-test',sub:'Compare means, two independent groups',use:'Test whether two group means differ significantly.',q:'Is the difference in means statistically and practically significant?',assumptions:['Independence between groups','Normality within groups or large n','Equal or unequal variance (Welch correction available)'],when:'Comparing treatment vs. control on a continuous endpoint. Use Mann-Whitney U when normality is implausible and n is small.',alts:['Welch t-test (unequal variances)','Mann-Whitney U (nonparametric)','Permutation test']},
+  R_anova:{result:true,name:'One-way ANOVA',sub:'Compare means across 3+ groups',use:'Test the omnibus null that all group means are equal.',q:'Do means differ across groups? Which pairs differ post-hoc?',assumptions:['Independence','Normality within groups','Homogeneity of variance'],when:'Multi-arm trials, dose-response studies. Follow with Tukey HSD or Bonferroni pairwise tests.',alts:['Welch ANOVA (unequal variances)','Kruskal-Wallis (nonparametric)','ANCOVA (covariate adjustment)']},
+  R_rmAnova:{result:true,name:'Repeated-measures ANOVA',sub:'Within-subject design, balanced data',use:'Compare means across time points or conditions within subjects.',q:'Does the mean outcome change significantly across conditions?',assumptions:['Sphericity (test with Mauchly; correct with Greenhouse-Geisser)','Normality of differences','Complete balanced data'],when:'Crossover trials, pre/post/follow-up designs with small number of balanced time points.',alts:['Linear mixed model (missing data, unbalanced)','GEE','Friedman test (nonparametric)']},
+  R_lme:{result:true,name:'Linear mixed-effects model',sub:'Random intercepts and/or slopes',use:'Model subject-specific trajectories and population effects simultaneously.',q:'How does the trajectory differ across subjects? What is the average effect?',assumptions:['Normality of random effects and residuals','Correctly specified random effects structure'],when:'Longitudinal clinical trials, multi-site studies. Handles unbalanced designs and missing data under MAR.',alts:['GEE (marginal)','Repeated-measures ANOVA (balanced only)','Bayesian hierarchical model']},
+  R_gee:{result:true,name:'Generalized estimating equations',sub:'Population-average marginal model',use:'Estimate average treatment effects in correlated data without modeling individual variation.',q:'What is the average effect in the population?',assumptions:['Correctly specified mean model','Working correlation structure (results robust even if misspecified)','Large number of clusters'],when:'Cluster-randomized trials, public health studies where the target is the population mean, not individuals.',alts:['LME (subject-specific)','Mixed-effects logistic (binary outcome)']},
+  R_predict:{result:true,name:'Regularized regression or tree models',sub:'LASSO, Ridge, Random Forest, XGBoost',use:'Build a model that generalizes well to new data; automated variable selection.',q:'Which variables matter? How well does the model predict out-of-sample?',assumptions:['LASSO/Ridge: same as OLS but tolerates multicollinearity','Trees: no distributional assumptions'],when:'High-dimensional data; when prediction accuracy matters more than interpretation. Evaluate with cross-validation.',alts:['Stepwise selection (weaker)','Elastic Net','Gradient boosting','Neural networks']},
+  R_logistic:{result:true,name:'Logistic regression',sub:'Binary outcome, independent observations',use:'Estimate odds ratios; model probability of an event as a function of predictors.',q:'What is the odds ratio for each predictor? Is the model well-calibrated?',assumptions:['Independence','Linear log-odds relationship for continuous predictors','No perfect separation','Events per variable \u2265 10\u201320 recommended'],when:'Case-control studies, cohort studies, RCTs with a binary endpoint.',alts:['Probit regression','Penalized logistic (small n or rare events)','Firth logistic (separation)']},
+  R_logBin:{result:true,name:'Log-binomial or modified Poisson',sub:'Estimate risk ratios directly',use:'Estimate relative risk rather than odds ratio when outcome is common (> 10%).',q:'What is the risk ratio? Odds ratio overstates effect for common outcomes.',assumptions:['Same as logistic regression','Log-binomial may fail to converge \u2014 modified Poisson is more stable'],when:'Cross-sectional studies with prevalent outcomes; when risk ratio is the target estimand.',alts:['Logistic + marginal standardization','Logistic + Zou-Donner correction']},
+  R_condLogistic:{result:true,name:'Conditional logistic / McNemar test',sub:'Matched pairs or within-subject binary',use:'Account for matching when comparing binary outcomes in pairs.',q:'Does exposure affect the outcome within matched pairs?',assumptions:['Correct matching structure','Conditional independence given the match'],when:'Matched case-control studies; crossover trials with binary endpoints.',alts:['Mixed-effects logistic regression','GEE with binary outcome']},
+  R_mixedLogistic:{result:true,name:'Mixed-effects logistic / GEE (binary)',sub:'Clustered binary data',use:'Account for within-cluster correlation in binary outcomes.',q:'Subject-specific odds (mixed effects) or population-average odds (GEE)?',assumptions:['Same as standard logistic within each cluster','Correct specification of random effects or working correlation'],when:'Cluster-randomized trials, multi-site studies, family studies.',alts:['Conditional logistic (matched data)','Robust sandwich standard errors']},
+  R_classify:{result:true,name:'Classification methods',sub:'Random Forest, XGBoost, penalized logistic, SVM',use:'Maximize predictive accuracy; handle high-dimensional or nonlinear features.',q:'What is the AUC? Sensitivity/specificity at the chosen threshold?',assumptions:['Varies by method; tree methods have no distributional assumptions'],when:'Clinical prediction models, diagnostic scores, EHR phenotyping. Evaluate with cross-validation.',alts:['Regularized logistic (LASSO)','LDA / QDA','Neural networks']},
+  R_poisson:{result:true,name:'Poisson regression',sub:'Count outcome, mean \u2248 variance',use:'Model counts as a log-linear function of predictors.',q:'What is the incidence rate ratio for each predictor?',assumptions:['Non-negative integer counts','Mean equals variance','Independence','Log-linear mean'],when:'Number of adverse events, doctor visits, mutations. Include offset = log(follow-up time) to model rates.',alts:['Negative binomial (overdispersed)','Zero-inflated Poisson','Quasi-Poisson (robust variance)']},
+  R_negbin:{result:true,name:'Negative binomial regression',sub:'Overdispersed count data',use:'Model counts with extra variance beyond Poisson; adds a dispersion parameter.',q:'What is the IRR? Is the dispersion parameter significantly above zero?',assumptions:['Non-negative integer counts','Gamma-Poisson mixture','Independence'],when:'Hospital readmissions, seizure counts, ED visits \u2014 any count with high subject-to-subject variability.',alts:['Zero-inflated negative binomial','Quasi-Poisson (simpler)','Hurdle model']},
+  R_zeroInfl:{result:true,name:'Zero-inflated or hurdle model',sub:'Excess zeros in count data',use:'Separately model the probability of a structural zero and the count among non-zeros.',q:'Does the zero-generating process differ from the count process?',assumptions:['Two-part generative process','Logistic submodel for zero-inflation; Poisson or NB for counts'],when:'Healthcare utilization (many people use no services), ecological abundance, survey data with structural zeros.',alts:['Negative binomial (if zeros not structurally distinct)','Tobit regression']},
+  R_poissonOffset:{result:true,name:'Poisson / NB with offset',sub:'Rate per person-time',use:'Model event rates when subjects have unequal follow-up; use log(time) as offset.',q:'What is the incidence rate per unit time for each group?',assumptions:['Poisson or NB count mechanism','Proportional rates','Offset correctly specified'],when:'Cohort studies with variable follow-up, disease surveillance, mortality rates.',alts:['Cox proportional hazards (if censoring is the main issue)','Piecewise exponential model']},
+  R_cox:{result:true,name:'Cox proportional hazards',sub:'Semi-parametric survival regression',use:'Estimate hazard ratios for each covariate, leaving baseline hazard unspecified.',q:'What is the HR for each predictor? Does proportional hazards hold?',assumptions:['Proportional hazards \u2014 constant HR over time','Non-informative censoring','Linear log-hazard for continuous predictors'],when:'Time-to-event analysis with covariates: clinical trials, cancer registry, observational studies. The most widely used survival model.',alts:['Stratified Cox (relax PH for one variable)','Cox with time-varying covariates','Fine-Gray (competing risks)']},
+  R_km:{result:true,name:'Kaplan-Meier + log-rank test',sub:'Nonparametric survival description',use:'Estimate and compare survival curves between groups without covariate adjustment.',q:'Do groups differ in their survival experience?',assumptions:['Non-informative censoring','Random sample within groups'],when:'Descriptive survival analysis; comparing treatment arms in a clinical trial; checking PH before fitting Cox.',alts:['Cox model (with covariate adjustment)','Cumulative incidence curves (competing risks)']},
+  R_aft:{result:true,name:'Accelerated failure time model',sub:'Parametric survival regression',use:'Model log(survival time) directly; robust when proportional hazards is violated.',q:'Does a covariate accelerate or decelerate time to event?',assumptions:['Specific distribution assumed (Weibull, log-normal, log-logistic)','Non-informative censoring'],when:'Biological or engineering lifetime data; when PH is clearly violated; when acceleration factors are more interpretable than hazard ratios.',alts:['Royston-Parmar flexible parametric model','Cox with time-varying effects']},
+  R_ordinal:{result:true,name:'Ordinal logistic regression',sub:'Proportional odds model',use:'Model an ordered categorical outcome; estimate a common log-odds ratio across all thresholds.',q:'Does the predictor shift the distribution toward higher or lower categories?',assumptions:['Proportional odds (parallel lines) assumption','Independence','Adequate cell counts at each level'],when:'Patient-reported outcomes on ordered scales, disease severity grades, any Likert-type item.',alts:['Adjacent-category logit','Continuation-ratio model','Treat as continuous if many symmetric levels']},
+  R_multinomial:{result:true,name:'Multinomial logistic regression',sub:'Nominal categorical outcome',use:'Model probabilities of each category relative to a reference category.',q:'What predicts which category a subject falls into?',assumptions:['Independence of irrelevant alternatives','Independence of observations','Adequate sample in each category'],when:'Choice models, nominal disease subtypes, any unordered polytomous outcome.',alts:['Mixed logit (relaxes IIA)','LDA (discriminant analysis)','Dirichlet regression (compositional)']}
+};
+function msGetNode(id){return id==='root'?MS_TREE:MS_NODES[id];}
+var msHist=[];
+function msRender(){
+  msBcRender();
+  var id=msHist.length===0?'root':msHist[msHist.length-1];
+  var node=msGetNode(id);
+  var pct=msHist.length===0?0:Math.min(100,Math.round(msHist.length/5*100));
+  document.getElementById('msPFill').style.width=pct+'%';
+  var main=document.getElementById('msMain');
+  main.innerHTML=node.result?msRenderResult(node):msRenderQ(node);
+}
+function msRenderQ(node){
+  var ltrs=['A','B','C','D','E'];
+  var h='<div class="ms-q-card"><div class="ms-q-tag">Decision</div><div class="ms-q-text">'+node.q+'</div>';
+  if(node.hint)h+='<div class="ms-q-hint">'+node.hint+'</div>';
+  h+='<div class="ms-choices">';
+  node.choices.forEach(function(c,i){
+    h+='<button class="ms-choice" onclick="msPick(\''+c.next+'\')"><div class="ms-choice-icon">'+ltrs[i]+'</div><div><div class="ms-choice-main">'+c.label+'</div><div class="ms-choice-sub">'+c.desc+'</div></div></button>';
+  });
+  h+='</div></div>';
+  return h;
+}
+function msRenderResult(node){
+  var h='<div class="ms-result"><div class="ms-result-name">'+node.name+'</div><div class="ms-result-sub">'+node.sub+'</div>';
+  h+='<div class="ms-result-grid"><div class="ms-box"><div class="ms-box-label">Use when</div><div class="ms-box-val">'+node.use+'</div></div><div class="ms-box"><div class="ms-box-label">Key question</div><div class="ms-box-val">'+node.q+'</div></div></div>';
+  h+='<div class="ms-box" style="margin-bottom:0.9rem"><div class="ms-box-label">Best for</div><div class="ms-box-val">'+node.when+'</div></div>';
+  h+='<div class="ms-assumptions"><div class="ms-assume-label">Assumptions to check</div>';
+  node.assumptions.forEach(function(a){h+='<div class="ms-assume-row"><div class="ms-dot"></div><span>'+a+'</span></div>';});
+  h+='</div>';
+  if(node.alts&&node.alts.length){h+='<div class="ms-alts"><div class="ms-alts-label">Related models</div><div class="ms-alt-pills">';node.alts.forEach(function(a){h+='<span class="ms-alt-pill">'+a+'</span>';});h+='</div></div>';}
+  h+='</div><button class="ms-restart" onclick="msRestart()">Start over</button>';
+  return h;
+}
+function msBcRender(){
+  var bc=document.getElementById('msBc');
+  if(msHist.length===0){bc.innerHTML='';return;}
+  var h='';
+  msHist.forEach(function(id,i){
+    var node=msGetNode(id);
+    var lbl=node.name||(node.q?node.q.substring(0,32)+'\u2026':id);
+    h+='<div class="ms-bc-step">';
+    if(i>0)h+='<span class="ms-bc-arrow">\u203a</span>';
+    h+='<span onclick="msJump('+i+')">'+lbl.substring(0,28)+(lbl.length>28?'\u2026':'')+'</span></div>';
+  });
+  bc.innerHTML=h;
+}
+function msPick(nextId){msHist.push(nextId);msRender();}
+function msJump(idx){msHist=msHist.slice(0,idx+1);msRender();}
+function msRestart(){msHist=[];msRender();}
+msRender();
 </script>
 </body>
 </html>
