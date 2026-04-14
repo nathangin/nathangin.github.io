@@ -154,7 +154,7 @@
     #gWidget{background:var(--bg2);border:1px solid var(--edge);border-radius:10px;overflow:hidden;min-height:480px;}
     .gscreen{display:none;padding:2rem;}
     .gscreen.active{display:block;}
-    #gStart{text-align:center;padding:3rem 2rem;}
+    #gStartScreen{text-align:center;padding:3rem 2rem;}
     .g-title{font-family:'Lora',serif;font-size:1.85rem;font-weight:400;color:var(--ink);margin-bottom:0.4rem;}
     .g-title em{font-style:italic;color:var(--violet);}
     .g-sub{font-size:0.86rem;color:var(--ink2);margin-bottom:2rem;line-height:1.65;max-width:340px;margin-left:auto;margin-right:auto;}
@@ -279,7 +279,7 @@
 
     /* RESPONSIVE */
     @media(max-width:900px){
-      .hero{padding:5rem 1.5rem 3rem;}
+      .hero{padding:0 1.5rem;}
       .hero-right{max-width:480px;}
       .scroll-hint{display:none;}
       nav{padding:0.9rem 1.5rem;}
@@ -339,12 +339,12 @@
   <div class="hero-left">
     <div class="hero-label">MS Statistics &middot; UC Irvine</div>
     <h1>Nathan<br><span>Gin</span></h1>
-    <p class="hero-sub">I work on data and AI at Tarsus Pharmaceuticals, and I'm finishing my master's in statistics at UC Irvine. Mostly I build things with Databricks, design agentic AI workflows, and do statistical analysis that actually influences decisions.</p>
+    <p class="hero-sub">I am currently working on data and AI at Tarsus Pharmaceuticals, and am finishing my Master's in Statistics at UC Irvine. I currently build with Databricks, designing agentic AI workflows, and do statistical analysis to help influence decisions.</p>
     <div class="hero-links">
       <a class="btn-fill" href="assets/Intern Resume Nathan Gin September 2025.pdf" target="_blank">Resume</a>
       <a class="btn-ghost" href="https://github.com/nathangin" target="_blank">GitHub</a>
       <a class="btn-ghost" href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">LinkedIn</a>
-      <a class="btn-ghost" href="mailto:nathanbsgin@gmail.com">Email</a>
+      <a class="btn-ghost" href="/cdn-cgi/l/email-protection#c0aea1b4a8a1aea2b3a7a9ae80a7ada1a9aceea3afad">Email</a>
     </div>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
@@ -353,9 +353,9 @@
 <!-- PROJECTS -->
 <div id="projects">
   <div class="sec">
-    <div class="eyebrow">Research &amp; engineering work</div>
+    <div class="eyebrow">Research &amp; coursework</div>
     <div class="sec-title">Projects</div>
-    <p class="sec-subtitle">A mix of coursework, research, and things I built to learn something. Click any card to read the paper.</p>
+    <p class="sec-subtitle">A mix of coursework, research, and things I built. Click any card to read the paper.</p>
     <div class="ftab-row">
       <div class="ftab on" data-f="all">All</div>
       <div class="ftab" data-f="bayes">Bayesian</div>
@@ -390,9 +390,9 @@
     <div class="about-grid reveal">
       <div class="photo-wrap"><img src="assets/Nathan Gin LinkedIn Photo.png" alt="Nathan Gin"/></div>
       <div class="about-body">
-        <p>Hi, I'm Nathan. I'm in the final stretch of my <strong>MS in Statistics at UC Irvine</strong> while working full-time at <strong>Tarsus Pharmaceuticals</strong>. At work I build Databricks pipelines, wire up MCP servers to Microsoft Copilot Studio, and help the commercial team make sense of their data.</p>
-        <p>On the academic side I've done a lot of Bayesian modeling, causal inference, and clinical stats. My qualifying exam was a full RCT analysis — 298 people, mixed-effects models, multiple imputation, ended up with R&sup2;=0.87 predicting week 2 activity. That kind of work is what I find genuinely interesting.</p>
-        <p>Looking for roles in <strong>data science or ML engineering</strong> where the work is technically serious and ships to production.</p>
+        <p>Hi, I'm Nathan. I'm in the final stretch of my <strong>MS in Statistics at UC Irvine</strong> while working part time at <strong>Tarsus Pharmaceuticals</strong>. At Tarsus I work with Databricks and all the new AI features to help analyze and give access to data across departments. This improves productivity while also managing security risks.</p>
+        <p>On the academic side I've done a lot of Bayesian modeling, causal inference, and clinical statistics. My qualifying exam received a PhD level score and was a full RCT analysis. It included 298 people, mixed-effects models, multiple imputation, and an R&sup2;=0.87 predicting week 2 activity.</p>
+        <p>Looking for roles in <strong>AI, data science, or ML engineering</strong> where the work is technically and can provide a positive impact at the enterprise level.</p>
         <div class="tag-row">
           <span class="tag tag-v">Agentic AI / MCP</span>
           <span class="tag tag-v">Bayesian modeling</span>
@@ -411,24 +411,24 @@
   <div class="sec">
     <div class="eyebrow">Personal builds</div>
     <div class="sec-title">Side projects</div>
-    <p class="sec-subtitle">Things I build outside of work and research &mdash; where the stakes are lower but the ideas are more experimental.</p>
+    <p class="sec-subtitle">Things I'm building outside of work.</p>
     <div class="side-grid">
       <div class="side-card reveal">
         <div class="side-card-icon">&#x1F4C8;</div>
         <h3>Kalshi edge model</h3>
-        <p>A prediction market trading system for Kalshi. The goal is the best possible probability estimate across any market &mdash; weather, politics, economics &mdash; combined with automated execution to systematically capture edge.</p>
+        <p>Trying to build the best probability model for Kalshi prediction markets — weather, politics, econ — and automate trading when there's real edge.</p>
         <div class="side-card-status">In progress</div>
       </div>
       <div class="side-card reveal">
         <div class="side-card-icon">&#x1F4F1;</div>
         <h3>Party game app</h3>
-        <p>A mobile app for playing games in long lines or waiting rooms. Built for the moments when you're stuck somewhere with friends and need something to do. Python backend, Figma-designed UI.</p>
+        <p>A mobile app for killing time in long lines with friends. Python backend, Figma for the UI.</p>
         <div class="side-card-status">In progress</div>
       </div>
       <div class="side-card reveal">
         <div class="side-card-icon">&#x1F5A5;</div>
         <h3>This portfolio</h3>
-        <p>Built entirely from scratch &mdash; no template, no framework. Includes a live weather API, an interactive distribution-guessing game built with Chart.js, and a statistical model selector. Pure HTML, CSS, and JS.</p>
+        <p>The game, model selector, and website are written in html/JS.</p>
         <div class="side-card-status">Live</div>
       </div>
     </div>
@@ -440,7 +440,7 @@
   <div class="sec-inner">
     <div class="eyebrow">Work history</div>
     <div class="sec-title">Experience</div>
-    <p class="sec-subtitle">From data labeling to production AI architecture &mdash; roughly chronological, most recent first.</p>
+    <p class="sec-subtitle">Most recent first.</p>
     <div class="timeline">
       <div class="tl-item reveal"><div class="tl-when">Jan 2026 &ndash; Present</div><div class="tl-co">Tarsus Pharmaceuticals</div><div class="tl-role">Data Engineer &amp; AI Consultant</div><div class="tl-body">Building production SQL pipelines and ingesting enterprise data into Databricks via Delta Live Tables and Unity Catalog. Architecting agentic AI workflows connecting Databricks Genie MCP servers and vector search indexes to Microsoft Copilot Studio, deploying custom chatbot fleets in Teams for cross-functional self-service analytics. Advising on experimental design and statistical analysis of commercial and marketing data to guide campaign performance and segmentation decisions.</div></div>
       <div class="tl-item reveal"><div class="tl-when">Jun 2025 &ndash; Sep 2025</div><div class="tl-co">Tarsus Pharmaceuticals</div><div class="tl-role">IT Intern &mdash; Data Analyst &amp; AI Engineer</div><div class="tl-body">Designed an enterprise RAG chatbot integrating ServiceNow, Databricks, vector search, and LLMs, cutting response time from days to seconds. Built OAuth 2.0 ingestion pipelines with full and incremental sync to Delta tables. Configured Azure API Management; built a single-page UI with Okta authentication.</div></div>
@@ -457,7 +457,7 @@
   <div class="sec">
     <div class="eyebrow">Technical toolkit</div>
     <div class="sec-title">Skills</div>
-    <p class="sec-subtitle">Things I use regularly &mdash; not a keyword list, an honest inventory.</p>
+    <p class="sec-subtitle">Things I actually use, not a keyword dump.</p>
     <div class="stab-row">
       <div class="stab on" data-p="lang">Languages</div>
       <div class="stab" data-p="libs">Libraries</div>
@@ -471,7 +471,7 @@
   </div>
 </div>
 
-<!-- HOBBIES + MUSIC -->
+<!-- HOBBIES COMMENTED OUT
 <div class="sec-alt">
   <div class="sec-inner">
     <div class="eyebrow">Outside of work</div>
@@ -488,6 +488,7 @@
     </div>
   </div>
 </div>
+END COMMENT -->
 
 <!-- GAME -->
 <div id="play">
@@ -496,7 +497,7 @@
     <div class="sec-title">Guess the distribution</div>
     <p class="sec-subtitle" style="margin-bottom:1.8rem;">A histogram appears. Pick which statistical distribution generated it. 8 rounds, 15 seconds each. Shape hints and a fun fact after every answer.</p>
     <div id="gWidget">
-      <div class="gscreen active" id="gStart">
+      <div class="gscreen active" id="gStartScreen">
         <div class="g-title">Guess the <em>Distribution</em></div>
         <p class="g-sub">A histogram appears. Pick which distribution generated it. 8 rounds, 15 seconds each. Shape hints and a fun fact after every answer.</p>
         <div class="g-pills"><span class="g-pill">Normal</span><span class="g-pill">Exponential</span><span class="g-pill">Uniform</span><span class="g-pill">Bimodal</span><span class="g-pill">Log-normal</span><span class="g-pill">Beta (0,1)</span><span class="g-pill">U-shaped Beta</span><span class="g-pill">Poisson</span></div>
@@ -556,17 +557,17 @@
 <div class="cta-wrap" id="contact">
   <div class="reveal">
     <div class="eyebrow" style="justify-content:center;">Contact</div>
-    <h2>Open to what's next. <em>Get in touch.</em></h2>
-    <p>Actively looking for senior data science and ML engineering roles. If you're working on something interesting, especially in AI infrastructure or healthcare, I'd like to hear about it.</p>
+    <h2>Let's talk. <em>Get in touch.</em></h2>
+    <p>Looking for DS and ML roles, especially anything touching AI infrastructure. Happy to chat even nonetheless.</p>
     <div class="cta-btns">
-      <a class="btn-fill" href="mailto:nathanbsgin@gmail.com">Send an email</a>
+      <a class="btn-fill" href="/cdn-cgi/l/email-protection#4b252a3f232a2529382c22250b2c262a222765282426">Send an email</a>
       <a class="btn-ghost" href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">LinkedIn</a>
     </div>
   </div>
 </div>
 
 <footer>
-  <p>&copy; 2025 Nathan Gin &mdash; built from scratch, no templates</p>
+  <p>&copy; 2025 Nathan Gin &mdash;</p>
   <p>MS Statistics &middot; UC Irvine</p>
 </footer>
 
@@ -581,7 +582,7 @@
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
 /* ---- CURSOR ---- */
 var cD=document.getElementById('curDot'),cR=document.getElementById('curRing'),mx=0,my=0,rx=0,ry=0;
