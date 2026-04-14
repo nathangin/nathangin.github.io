@@ -1,118 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Nathan Gin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#09090e;--bg2:#0f0f17;--ink:#e2e2ec;--ink2:#8888a0;--ink3:#44445a;--violet:#7c6dfa;--teal:#00c9a0;--edge:rgba(124,109,250,0.14);}
+    :root{--bg:#09090e;--bg2:#0f0f17;--ink:#e2e2ec;--ink2:#8888a0;--ink3:#44445a;--violet:#7c6dfa;--teal:#00c9a0;--rose:#f06080;--edge:rgba(124,109,250,0.14);}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;}
     body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,rgba(124,109,250,0.07) 1px,transparent 1px);background-size:32px 32px;pointer-events:none;z-index:0;}
-    nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(9,9,14,0.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--edge);}
-    .nav-logo{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--teal);letter-spacing:0.04em;}
+
+    /* NAV */
+    nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 3rem;display:flex;justify-content:space-between;align-items:center;background:rgba(9,9,14,0.85);backdrop-filter:blur(18px);border-bottom:1px solid var(--edge);}
+    .nav-logo{font-family:'JetBrains Mono',monospace;font-size:0.78rem;color:var(--teal);letter-spacing:0.04em;text-decoration:none;}
     .nav-links{list-style:none;display:flex;gap:2rem;}
-    .nav-links a{font-size:0.8rem;color:var(--ink2);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-links a{font-size:0.78rem;color:var(--ink2);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
     .nav-links a:hover{color:var(--ink);}
-    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 3rem;z-index:1;max-width:900px;}
-    .hero-label{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--teal);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:2rem;}
-    .hero h1{font-family:'Lora',serif;font-size:clamp(3.2rem,7vw,6.5rem);font-weight:400;line-height:1.05;color:var(--ink);margin-bottom:1.8rem;}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none;}
+    .nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--ink2);transition:all 0.3s;}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .nav-hamburger.open span:nth-child(2){opacity:0;}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+    .nav-mobile{display:none;position:fixed;top:57px;left:0;right:0;background:rgba(9,9,14,0.97);backdrop-filter:blur(18px);border-bottom:1px solid var(--edge);z-index:99;padding:1.5rem 2rem;flex-direction:column;gap:1.2rem;}
+    .nav-mobile.open{display:flex;}
+    .nav-mobile a{font-size:0.9rem;color:var(--ink2);text-decoration:none;letter-spacing:0.06em;text-transform:uppercase;transition:color 0.2s;}
+    .nav-mobile a:hover{color:var(--ink);}
+
+    /* HERO */
+    .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 6rem;z-index:1;}
+    .hero-left{max-width:580px;}
+    .orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(110px);opacity:0.08;will-change:transform;}
+    .orb-a{width:600px;height:600px;background:var(--violet);top:-220px;right:-100px;animation:floatOrb 9s ease-in-out infinite;}
+    .orb-b{width:380px;height:380px;background:var(--teal);bottom:-80px;right:80px;animation:floatOrb 13s ease-in-out infinite reverse;}
+    @keyframes floatOrb{0%,100%{transform:translate(0,0)}50%{transform:translate(-20px,14px)}}
+    .hero-label{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--teal);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:1.8rem;}
+    .hero h1{font-family:'Lora',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:400;line-height:1.05;color:var(--ink);margin-bottom:1.5rem;}
     .hero h1 span{font-style:italic;color:var(--violet);}
-    .hero-sub{font-size:1rem;font-weight:300;color:var(--ink2);max-width:480px;line-height:1.8;margin-bottom:2.5rem;}
-    .hero-links{display:flex;gap:0.8rem;flex-wrap:wrap;}
-    .orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(100px);opacity:0.12;}
-    .orb-a{width:520px;height:520px;background:var(--violet);top:-80px;right:-100px;animation:floatOrb 9s ease-in-out infinite;}
-    .orb-b{width:280px;height:280px;background:var(--teal);bottom:60px;right:180px;animation:floatOrb 13s ease-in-out infinite reverse;}
-    @keyframes floatOrb{0%,100%{transform:translate(0,0)}50%{transform:translate(-24px,16px)}}
-    .scroll-hint{position:absolute;bottom:2.5rem;left:3rem;display:flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--ink3);letter-spacing:0.1em;}
-    .scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:scrollPulse 2s ease-in-out infinite;}
-    @keyframes scrollPulse{0%,100%{opacity:0.3}50%{opacity:1}}
-    .btn-fill{display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.4rem;background:var(--violet);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:500;border-radius:5px;transition:opacity 0.2s,transform 0.2s;}
+    .hero-sub{font-size:0.97rem;font-weight:300;color:var(--ink2);max-width:460px;line-height:1.8;margin-bottom:2.2rem;}
+    .hero-links{display:flex;gap:0.7rem;flex-wrap:wrap;}
+    .scroll-hint{position:absolute;bottom:2rem;left:3rem;display:flex;align-items:center;gap:0.5rem;font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--ink3);letter-spacing:0.1em;}
+    .scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--ink3),transparent);animation:pulse 2s ease-in-out infinite;}
+    @keyframes pulse{0%,100%{opacity:0.3}50%{opacity:1}}
+
+    /* HERO RIGHT — rotating project card */
+    .hero-right{position:relative;z-index:1;}
+    .hero-card{background:rgba(255,255,255,0.03);border:1px solid var(--edge);border-radius:12px;padding:1.5rem 1.6rem;overflow:hidden;}
+    .hero-card-eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--teal);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.6rem;display:flex;align-items:center;justify-content:space-between;}
+    .hero-card-dots{display:flex;gap:5px;}
+    .hero-card-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.1);transition:background 0.3s;}
+    .hero-card-dot.active{background:var(--violet);}
+    .hero-card-title{font-family:'Lora',serif;font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:0.4rem;line-height:1.25;}
+    .hero-card-desc{font-size:0.82rem;font-weight:300;color:var(--ink2);line-height:1.65;margin-bottom:1rem;}
+    .hero-card-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1.1rem;}
+    .hero-card-tag{font-family:'JetBrains Mono',monospace;font-size:0.62rem;padding:0.22rem 0.6rem;border-radius:3px;background:rgba(124,109,250,0.1);border:1px solid rgba(124,109,250,0.22);color:#a99eff;}
+    .hero-card-stat{font-family:'JetBrains Mono',monospace;font-size:0.7rem;color:var(--teal);}
+    .hero-card-progress{height:2px;background:rgba(255,255,255,0.06);border-radius:1px;margin-top:1.2rem;overflow:hidden;}
+    .hero-card-bar{height:100%;background:var(--violet);border-radius:1px;transition:width 0.1s linear;}
+
+    /* BUTTONS */
+    .btn-fill{display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.3rem;background:var(--violet);color:#fff;text-decoration:none;font-size:0.82rem;font-weight:500;border-radius:5px;transition:opacity 0.2s,transform 0.2s;}
     .btn-fill:hover{opacity:0.85;transform:translateY(-1px);}
-    .btn-ghost{display:inline-flex;align-items:center;gap:0.4rem;padding:0.65rem 1.4rem;background:transparent;color:var(--ink2);text-decoration:none;font-size:0.82rem;border:1px solid var(--edge);border-radius:5px;transition:color 0.2s,border-color 0.2s;}
+    .btn-ghost{display:inline-flex;align-items:center;gap:0.4rem;padding:0.6rem 1.3rem;background:transparent;color:var(--ink2);text-decoration:none;font-size:0.82rem;border:1px solid var(--edge);border-radius:5px;transition:color 0.2s,border-color 0.2s;}
     .btn-ghost:hover{color:var(--ink);border-color:rgba(124,109,250,0.35);}
-    .section-inner{position:relative;z-index:1;padding:6rem 3rem;max-width:1000px;margin:0 auto;}
-    .eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--teal);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:0.8rem;display:flex;align-items:center;gap:0.6rem;}
-    .eyebrow::before{content:'';display:inline-block;width:1.4rem;height:1px;background:var(--teal);}
-    h2.title{font-family:'Lora',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;color:var(--ink);margin-bottom:3rem;line-height:1.15;}
-    .about-grid{display:grid;grid-template-columns:220px 1fr;gap:4rem;align-items:start;}
-    .photo-wrap{position:relative;}
-    .photo-wrap img{width:100%;border-radius:3px;display:block;filter:grayscale(15%);}
-    .photo-wrap::after{content:'';position:absolute;inset:8px -8px -8px 8px;border:1px solid rgba(124,109,250,0.25);border-radius:3px;z-index:-1;}
-    .about-body p{font-size:0.97rem;font-weight:300;color:var(--ink2);line-height:1.9;margin-bottom:1.1rem;}
-    .about-body p strong{color:var(--ink);font-weight:500;}
-    .tag-row{display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:1.4rem;}
-    .tag{font-family:'JetBrains Mono',monospace;font-size:0.68rem;padding:0.28rem 0.65rem;border-radius:3px;border:1px solid;}
-    .tag-v{color:#a99eff;border-color:rgba(124,109,250,0.28);background:rgba(124,109,250,0.07);}
-    .tag-t{color:#00c9a0;border-color:rgba(0,201,160,0.25);background:rgba(0,201,160,0.06);}
-    .tag-r{color:#f06080;border-color:rgba(240,96,128,0.25);background:rgba(240,96,128,0.06);}
-    /* LIVE STRIP */
-    .live-strip{background:var(--bg2);border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);position:relative;z-index:1;}
-    .live-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:1px;background:var(--edge);}
-    .live-card{background:var(--bg2);padding:2.2rem 2rem;display:flex;flex-direction:column;gap:0.55rem;}
-    .live-label{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--ink3);letter-spacing:0.14em;text-transform:uppercase;display:flex;align-items:center;}
-    .live-dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--teal);margin-right:0.45rem;flex-shrink:0;animation:blink 2s ease-in-out infinite;}
-    @keyframes blink{0%,100%{opacity:1}50%{opacity:0.25}}
-    .live-main{font-family:'Lora',serif;font-size:2rem;font-weight:400;color:var(--ink);line-height:1.1;}
-    .live-sub{font-size:0.8rem;font-weight:300;color:var(--ink2);}
-    .weather-row{display:flex;align-items:center;gap:0.7rem;}
-    .weather-icon{font-size:2rem;line-height:1;}
-    .clock-stack{display:flex;flex-direction:column;gap:0.7rem;}
-    .clock-row{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--edge);padding-bottom:0.5rem;}
-    .clock-row:last-child{border-bottom:none;padding-bottom:0;}
-    .clock-city{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--ink3);letter-spacing:0.08em;}
-    .clock-time{font-family:'Lora',serif;font-size:1.3rem;color:var(--ink);}
-    .currently-list{display:flex;flex-direction:column;gap:0.55rem;}
-    .currently-item{font-size:0.82rem;font-weight:300;color:var(--ink2);line-height:1.5;display:flex;gap:0.5rem;}
-    .currently-item::before{content:'/';color:var(--violet);font-family:'JetBrains Mono',monospace;flex-shrink:0;font-size:0.78rem;}
-    @media(max-width:700px){.live-inner{grid-template-columns:1fr;}}
-    /* SKILLS */
-    .skills-bg{background:var(--bg2);border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);position:relative;z-index:1;}
-    .stab-row{display:flex;border-bottom:1px solid var(--edge);margin-bottom:2.2rem;}
-    .stab{font-size:0.78rem;color:var(--ink3);padding:0.65rem 1.3rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.2s,border-color 0.2s;user-select:none;}
-    .stab:hover{color:var(--ink2);}
-    .stab.on{color:var(--violet);border-bottom-color:var(--violet);}
-    .spanel{display:none;}
-    .spanel.on{display:flex;flex-wrap:wrap;gap:0.5rem;}
-    .chip{font-family:'JetBrains Mono',monospace;font-size:0.72rem;padding:0.35rem 0.8rem;border-radius:3px;background:rgba(255,255,255,0.03);border:1px solid var(--edge);color:var(--ink2);transition:background 0.18s,color 0.18s,border-color 0.18s;cursor:default;}
-    .chip:hover{background:rgba(124,109,250,0.1);border-color:rgba(124,109,250,0.3);color:var(--ink);}
-    /* TIMELINE */
-    .timeline{padding-left:1.2rem;border-left:1px solid var(--edge);}
-    .tl-item{position:relative;padding-left:2rem;padding-bottom:2.8rem;}
-    .tl-item:last-child{padding-bottom:0;}
-    .tl-item::before{content:'';position:absolute;left:-0.42rem;top:6px;width:7px;height:7px;border-radius:50%;background:var(--violet);box-shadow:0 0 10px rgba(124,109,250,0.55);}
-    .tl-when{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--teal);letter-spacing:0.1em;margin-bottom:0.35rem;}
-    .tl-co{font-family:'Lora',serif;font-size:1.25rem;font-weight:400;color:var(--ink);margin-bottom:0.15rem;}
-    .tl-role{font-size:0.78rem;color:var(--ink3);margin-bottom:0.65rem;}
-    .tl-body{font-size:0.9rem;font-weight:300;color:var(--ink2);line-height:1.75;}
+
+    /* SHARED SECTION */
+    .sec{position:relative;z-index:1;padding:6rem 3rem;max-width:1000px;margin:0 auto;}
+    .sec-alt{background:var(--bg2);border-top:1px solid var(--edge);border-bottom:1px solid var(--edge);}
+    .sec-alt>.sec-inner{max-width:1000px;margin:0 auto;padding:6rem 3rem;position:relative;z-index:1;}
+    .eyebrow{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--teal);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:0.5rem;display:flex;align-items:center;gap:0.6rem;}
+    .eyebrow::before{content:'';display:inline-block;width:1.2rem;height:1px;background:var(--teal);}
+    .sec-title{font-family:'Lora',serif;font-size:clamp(1.7rem,3.2vw,2.4rem);font-weight:400;color:var(--ink);margin-bottom:0.5rem;line-height:1.15;}
+    .sec-subtitle{font-size:0.85rem;font-weight:300;color:var(--ink2);margin-bottom:2.8rem;line-height:1.6;max-width:560px;}
+
     /* PROJECTS */
-    .proj-bg{background:var(--bg2);border-top:1px solid var(--edge);position:relative;z-index:1;}
-    .ftab-row{display:flex;border-bottom:1px solid var(--edge);margin-bottom:2.2rem;flex-wrap:wrap;}
-    .ftab{font-size:0.78rem;color:var(--ink3);padding:0.65rem 1.3rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.2s,border-color 0.2s;user-select:none;}
-    .ftab:hover{color:var(--ink2);}
-    .ftab.on{color:var(--teal);border-bottom-color:var(--teal);}
-    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;}
-    .pcard{background:rgba(255,255,255,0.025);border:1px solid var(--edge);border-radius:6px;padding:1.4rem 1.6rem;cursor:pointer;transition:transform 0.22s,border-color 0.22s,background 0.22s;position:relative;overflow:hidden;}
+    .proj-featured{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+    .pcard{background:rgba(255,255,255,0.025);border:1px solid var(--edge);border-radius:8px;padding:1.4rem 1.6rem;cursor:pointer;transition:transform 0.22s,border-color 0.22s,background 0.22s;position:relative;overflow:hidden;}
     .pcard::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--violet),var(--teal));opacity:0;transition:opacity 0.22s;}
     .pcard:hover{transform:translateY(-3px);border-color:rgba(124,109,250,0.3);background:rgba(124,109,250,0.05);}
     .pcard:hover::after{opacity:1;}
     .pcard.hide{display:none;}
+    .pcard.featured{border-color:rgba(124,109,250,0.22);background:rgba(124,109,250,0.04);}
     .pcard-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.4rem;}
-    .ptag{font-family:'JetBrains Mono',monospace;font-size:0.63rem;color:var(--teal);letter-spacing:0.1em;}
-    .pfeat{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--teal);border:1px solid rgba(0,201,160,0.28);padding:0.1rem 0.45rem;border-radius:2px;}
-    .pcard h3{font-family:'Lora',serif;font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:0.55rem;line-height:1.25;}
-    .pcard p{font-size:0.84rem;font-weight:300;color:var(--ink2);line-height:1.7;margin-bottom:1rem;}
-    .pnums{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem;}
-    .pnum{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--teal);background:rgba(0,201,160,0.07);border:1px solid rgba(0,201,160,0.18);padding:0.18rem 0.5rem;border-radius:2px;}
+    .ptag{font-family:'JetBrains Mono',monospace;font-size:0.62rem;color:var(--teal);letter-spacing:0.08em;}
+    .pfeat{font-family:'JetBrains Mono',monospace;font-size:0.58rem;color:var(--teal);border:1px solid rgba(0,201,160,0.28);padding:0.1rem 0.45rem;border-radius:2px;}
+    .pcard h3{font-family:'Lora',serif;font-size:1.05rem;font-weight:400;color:var(--ink);margin-bottom:0.5rem;line-height:1.25;}
+    .pcard p{font-size:0.83rem;font-weight:300;color:var(--ink2);line-height:1.7;margin-bottom:1rem;}
+    .pnums{display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:0.9rem;}
+    .pnum{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--teal);background:rgba(0,201,160,0.07);border:1px solid rgba(0,201,160,0.18);padding:0.16rem 0.5rem;border-radius:2px;}
     .plink{font-size:0.78rem;color:var(--violet);font-weight:500;display:inline-flex;align-items:center;gap:0.25rem;transition:gap 0.18s;}
     .pcard:hover .plink{gap:0.5rem;}
+    .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1rem;}
+    .ftab-row{display:flex;border-bottom:1px solid var(--edge);margin-bottom:2rem;flex-wrap:wrap;}
+    .ftab{font-size:0.78rem;color:var(--ink3);padding:0.6rem 1.2rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.2s,border-color 0.2s;user-select:none;}
+    .ftab:hover{color:var(--ink2);}
+    .ftab.on{color:var(--teal);border-bottom-color:var(--teal);}
+
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:200px 1fr;gap:3.5rem;align-items:start;}
+    .photo-wrap{position:relative;}
+    .photo-wrap img{width:100%;border-radius:3px;display:block;filter:grayscale(15%);}
+    .photo-wrap::after{content:'';position:absolute;inset:8px -8px -8px 8px;border:1px solid rgba(124,109,250,0.22);border-radius:3px;z-index:-1;}
+    .about-body p{font-size:0.95rem;font-weight:300;color:var(--ink2);line-height:1.9;margin-bottom:1rem;}
+    .about-body p strong{color:var(--ink);font-weight:500;}
+    .tag-row{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:1.2rem;}
+    .tag{font-family:'JetBrains Mono',monospace;font-size:0.66rem;padding:0.25rem 0.6rem;border-radius:3px;border:1px solid;}
+    .tag-v{color:#a99eff;border-color:rgba(124,109,250,0.28);background:rgba(124,109,250,0.07);}
+    .tag-t{color:#00c9a0;border-color:rgba(0,201,160,0.25);background:rgba(0,201,160,0.06);}
+    .tag-r{color:#f06080;border-color:rgba(240,96,128,0.25);background:rgba(240,96,128,0.06);}
+
+    /* SIDE PROJECTS */
+    .side-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
+    .side-card{background:rgba(255,255,255,0.025);border:1px solid var(--edge);border-radius:8px;padding:1.3rem 1.5rem;}
+    .side-card-icon{font-size:1.6rem;margin-bottom:0.7rem;line-height:1;}
+    .side-card h3{font-family:'Lora',serif;font-size:1rem;font-weight:400;color:var(--ink);margin-bottom:0.4rem;}
+    .side-card p{font-size:0.82rem;font-weight:300;color:var(--ink2);line-height:1.7;}
+    .side-card-status{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--teal);letter-spacing:0.1em;margin-top:0.8rem;display:flex;align-items:center;gap:0.4rem;}
+    .side-card-status::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--teal);}
+
+    /* HOBBIES */
+    .hobby-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:0.8rem;}
+    .hobby-card{background:rgba(255,255,255,0.02);border:1px solid var(--edge);border-radius:8px;padding:1.1rem 1.2rem;text-align:center;}
+    .hobby-icon{font-size:1.8rem;margin-bottom:0.5rem;line-height:1;}
+    .hobby-name{font-size:0.85rem;font-weight:500;color:var(--ink);margin-bottom:0.2rem;}
+    .hobby-desc{font-size:0.75rem;font-weight:300;color:var(--ink2);}
+    .spotify-wrap{margin-top:2rem;border-radius:12px;overflow:hidden;}
+
+    /* TIMELINE */
+    .timeline{padding-left:1.2rem;border-left:1px solid var(--edge);}
+    .tl-item{position:relative;padding-left:2rem;padding-bottom:2.6rem;}
+    .tl-item:last-child{padding-bottom:0;}
+    .tl-item::before{content:'';position:absolute;left:-0.42rem;top:6px;width:7px;height:7px;border-radius:50%;background:var(--violet);box-shadow:0 0 10px rgba(124,109,250,0.55);}
+    .tl-when{font-family:'JetBrains Mono',monospace;font-size:0.67rem;color:var(--teal);letter-spacing:0.1em;margin-bottom:0.3rem;}
+    .tl-co{font-family:'Lora',serif;font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:0.12rem;}
+    .tl-role{font-size:0.77rem;color:var(--ink3);margin-bottom:0.6rem;}
+    .tl-body{font-size:0.88rem;font-weight:300;color:var(--ink2);line-height:1.75;}
+
+    /* SKILLS */
+    .stab-row{display:flex;border-bottom:1px solid var(--edge);margin-bottom:2rem;}
+    .stab{font-size:0.78rem;color:var(--ink3);padding:0.6rem 1.2rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color 0.2s,border-color 0.2s;user-select:none;}
+    .stab:hover{color:var(--ink2);}
+    .stab.on{color:var(--violet);border-bottom-color:var(--violet);}
+    .spanel{display:none;}
+    .spanel.on{display:flex;flex-wrap:wrap;gap:0.5rem;}
+    .chip{font-family:'JetBrains Mono',monospace;font-size:0.7rem;padding:0.32rem 0.75rem;border-radius:3px;background:rgba(255,255,255,0.03);border:1px solid var(--edge);color:var(--ink2);transition:background 0.18s,color 0.18s,border-color 0.18s;cursor:default;}
+    .chip:hover{background:rgba(124,109,250,0.1);border-color:rgba(124,109,250,0.3);color:var(--ink);}
+
     /* GAME */
-    .game-bg{border-top:1px solid var(--edge);position:relative;z-index:1;}
-    .game-bg>.section-inner{max-width:740px;}
+    .game-wrap{position:relative;z-index:1;padding:6rem 3rem;max-width:740px;margin:0 auto;}
     #gWidget{background:var(--bg2);border:1px solid var(--edge);border-radius:10px;overflow:hidden;min-height:480px;}
     .gscreen{display:none;padding:2rem;}
     .gscreen.active{display:block;}
@@ -140,8 +178,8 @@
     .g-dot.ok{background:var(--teal);}
     .g-dot.bad{background:#f06080;}
     .g-qlabel{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--ink3);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:0.5rem;}
-    .g-chart{position:relative;width:100%;height:165px;margin-bottom:0.4rem;}
-    .g-axis{display:flex;justify-content:space-between;margin-bottom:0.8rem;padding:0 2px;}
+    .g-chart{position:relative;width:100%;height:165px;margin-bottom:0.35rem;}
+    .g-axis{display:flex;justify-content:space-between;margin-bottom:0.3rem;padding:0 2px;}
     .g-axis span{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--ink3);}
     .g-choices{display:grid;grid-template-columns:1fr 1fr;gap:0.55rem;margin-bottom:0.9rem;}
     .g-choice{background:rgba(255,255,255,0.025);border:1px solid rgba(124,109,250,0.16);border-radius:6px;padding:0.65rem 0.85rem;cursor:pointer;text-align:left;transition:background 0.15s,border-color 0.15s;font-family:'Inter',sans-serif;}
@@ -172,18 +210,17 @@
     .g-end-msg{font-size:0.86rem;color:var(--ink2);margin-bottom:1.6rem;line-height:1.65;max-width:380px;margin-left:auto;margin-right:auto;}
     .g-btn-again{background:transparent;color:var(--violet);border:1px solid rgba(124,109,250,0.35);border-radius:6px;padding:0.6rem 1.6rem;font-size:0.84rem;cursor:pointer;transition:background 0.2s;font-family:'Inter',sans-serif;}
     .g-btn-again:hover{background:rgba(124,109,250,0.09);}
+
     /* MODEL SELECTOR */
-    .model-bg{background:var(--bg2);border-top:1px solid var(--edge);position:relative;z-index:1;}
-    .model-bg>.section-inner{max-width:740px;}
-    #mSelector{background:var(--bg);border:1px solid var(--edge);border-radius:10px;overflow:hidden;min-height:300px;padding:1.6rem;}
+    .model-wrap{position:relative;z-index:1;padding:6rem 3rem;max-width:740px;margin:0 auto;}
+    #mSelector{background:var(--bg2);border:1px solid var(--edge);border-radius:10px;overflow:hidden;min-height:300px;padding:1.6rem;}
     .ms-progress{height:2px;background:rgba(255,255,255,0.06);border-radius:1px;margin-bottom:1.4rem;overflow:hidden;}
     .ms-pfill{height:100%;background:var(--teal);border-radius:1px;transition:width 0.35s ease;}
     .ms-bc{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:1.4rem;min-height:22px;}
     .ms-bc-step{font-size:0.72rem;color:var(--ink3);display:flex;align-items:center;gap:5px;}
     .ms-bc-step span{background:rgba(255,255,255,0.04);border:1px solid var(--edge);border-radius:3px;padding:2px 8px;cursor:pointer;transition:border-color 0.15s;}
     .ms-bc-step span:hover{border-color:rgba(124,109,250,0.3);}
-    .ms-bc-arrow{font-size:0.65rem;color:var(--ink3);}
-    .ms-q-card{background:var(--bg2);border:1px solid var(--edge);border-radius:8px;padding:1.2rem 1.4rem;margin-bottom:1rem;}
+    .ms-q-card{background:var(--bg);border:1px solid var(--edge);border-radius:8px;padding:1.2rem 1.4rem;margin-bottom:1rem;}
     .ms-q-tag{font-family:'JetBrains Mono',monospace;font-size:0.6rem;color:var(--ink3);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.45rem;}
     .ms-q-text{font-size:1rem;font-weight:500;color:var(--ink);line-height:1.4;margin-bottom:0.8rem;}
     .ms-q-hint{font-size:0.8rem;color:var(--ink2);line-height:1.6;padding-left:0.7rem;border-left:2px solid var(--edge);margin-bottom:0.9rem;}
@@ -193,7 +230,7 @@
     .ms-choice-icon{width:20px;height:20px;border-radius:50%;background:rgba(124,109,250,0.15);flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:500;color:#a99eff;}
     .ms-choice-main{font-size:0.88rem;font-weight:500;color:var(--ink);}
     .ms-choice-sub{font-size:0.75rem;color:var(--ink2);margin-top:2px;}
-    .ms-result{background:var(--bg2);border:1px solid var(--edge);border-radius:8px;padding:1.2rem 1.4rem;margin-bottom:1rem;}
+    .ms-result{background:var(--bg);border:1px solid var(--edge);border-radius:8px;padding:1.2rem 1.4rem;margin-bottom:1rem;}
     .ms-result-name{font-family:'Lora',serif;font-size:1.4rem;font-weight:400;color:var(--ink);margin-bottom:0.2rem;}
     .ms-result-sub{font-size:0.8rem;color:var(--ink2);margin-bottom:1rem;}
     .ms-result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:1rem;}
@@ -210,138 +247,115 @@
     .ms-alt-pill{font-size:0.72rem;padding:2px 9px;background:rgba(255,255,255,0.03);border:1px solid var(--edge);border-radius:3px;color:var(--ink2);cursor:default;}
     .ms-restart{background:transparent;border:1px solid var(--edge);border-radius:6px;padding:0.5rem 1.1rem;font-size:0.8rem;color:var(--ink2);cursor:pointer;transition:background 0.15s;margin-top:0.5rem;font-family:'Inter',sans-serif;}
     .ms-restart:hover{background:rgba(255,255,255,0.04);}
+
     /* MODAL */
-    .overlay{display:none;position:fixed;inset:0;background:rgba(5,5,10,0.88);backdrop-filter:blur(14px);z-index:200;align-items:center;justify-content:center;}
+    .overlay{display:none;position:fixed;inset:0;background:rgba(5,5,10,0.9);backdrop-filter:blur(14px);z-index:200;align-items:center;justify-content:center;}
     .overlay.open{display:flex;}
-    .modal{background:var(--bg2);border:1px solid var(--edge);border-radius:8px;width:90%;max-width:820px;max-height:88vh;overflow:hidden;display:flex;flex-direction:column;}
+    .modal{background:var(--bg2);border:1px solid var(--edge);border-radius:10px;width:90%;max-width:820px;max-height:88vh;overflow:hidden;display:flex;flex-direction:column;}
     .modal-hd{display:flex;justify-content:space-between;align-items:flex-start;padding:1.4rem 1.8rem;border-bottom:1px solid var(--edge);}
-    .modal-hd h3{font-family:'Lora',serif;font-size:1.25rem;font-weight:400;color:var(--ink);}
-    .modal-hd p{font-size:0.8rem;font-weight:300;color:var(--ink2);margin-top:0.25rem;max-width:560px;line-height:1.6;}
-    .modal-close{background:none;border:none;color:var(--ink3);font-size:1.4rem;cursor:pointer;padding:0 0.2rem;transition:color 0.2s;line-height:1;flex-shrink:0;}
+    .modal-hd h3{font-family:'Lora',serif;font-size:1.2rem;font-weight:400;color:var(--ink);}
+    .modal-hd p{font-size:0.78rem;font-weight:300;color:var(--ink2);margin-top:0.2rem;max-width:560px;line-height:1.6;}
+    .modal-close{background:none;border:none;color:var(--ink3);font-size:1.4rem;cursor:pointer;transition:color 0.2s;line-height:1;flex-shrink:0;}
     .modal-close:hover{color:var(--ink);}
     .modal-bd{flex:1;overflow:auto;}
     .modal-bd iframe{width:100%;height:600px;border:none;display:block;}
+
     /* CTA / FOOTER */
     .cta-wrap{text-align:center;padding:8rem 3rem;position:relative;z-index:1;}
     .cta-wrap h2{font-family:'Lora',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;color:var(--ink);margin:0.6rem 0 1rem;line-height:1.15;}
     .cta-wrap h2 em{font-style:italic;color:var(--teal);}
-    .cta-wrap p{color:var(--ink2);font-weight:300;font-size:0.97rem;max-width:480px;margin:0 auto 2rem;line-height:1.8;}
+    .cta-wrap p{color:var(--ink2);font-weight:300;font-size:0.95rem;max-width:460px;margin:0 auto 2rem;line-height:1.8;}
     .cta-btns{display:flex;gap:0.8rem;justify-content:center;flex-wrap:wrap;}
     footer{border-top:1px solid var(--edge);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1;}
     footer p{font-family:'JetBrains Mono',monospace;font-size:0.65rem;color:var(--ink3);}
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease;}
     .reveal.in{opacity:1;transform:translateY(0);}
+
+    /* CURSOR */
     .cur-dot{width:5px;height:5px;background:var(--violet);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;}
     .cur-ring{width:32px;height:32px;border:1px solid rgba(124,109,250,0.45);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transition:width 0.28s,height 0.28s,border-color 0.28s;}
-    @media(max-width:860px){nav{padding:0.8rem 1.5rem;}.section-inner{padding:4rem 1.5rem;}.hero{padding:0 1.5rem;}.scroll-hint{left:1.5rem;}.about-grid{grid-template-columns:1fr;gap:2.5rem;}.photo-wrap{max-width:200px;}footer{padding:2rem 1.5rem;flex-direction:column;gap:0.8rem;}.cta-wrap{padding:6rem 1.5rem;}}
-    @media(max-width:540px){.nav-links{gap:1.2rem;}.hero h1{font-size:2.8rem;}}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .hero{padding:5rem 1.5rem 3rem;}
+      .hero-right{max-width:480px;}
+      .scroll-hint{display:none;}
+      nav{padding:0.9rem 1.5rem;}
+      .nav-links{display:none;}
+      .nav-hamburger{display:flex;}
+      .sec{padding:4rem 1.5rem;}
+      .sec-alt>.sec-inner{padding:4rem 1.5rem;}
+      .proj-featured{grid-template-columns:1fr;}
+      .about-grid{grid-template-columns:1fr;gap:2rem;}
+      .photo-wrap{max-width:180px;}
+      .ms-result-grid{grid-template-columns:1fr;}
+      footer{padding:1.5rem;flex-direction:column;gap:0.8rem;text-align:center;}
+      .cta-wrap{padding:6rem 1.5rem;}
+      .game-wrap{padding:4rem 1.5rem;}
+      .model-wrap{padding:4rem 1.5rem;}
+    }
+    @media(max-width:540px){
+      .hero h1{font-size:2.8rem;}
+      .proj-grid{grid-template-columns:1fr;}
+      .hobby-grid{grid-template-columns:repeat(2,1fr);}
+      .g-choices{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
 <div class="cur-dot" id="curDot"></div>
 <div class="cur-ring" id="curRing"></div>
+
+<!-- NAV -->
 <nav>
-  <span class="nav-logo">nathangin.github.io</span>
+  <a class="nav-logo" href="#top">nathangin.github.io</a>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#game">Play</a></li>
-    <li><a href="#models">Models</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#play">Play</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+<div class="nav-mobile" id="mobileNav">
+  <a href="#projects" onclick="closeMenu()">Projects</a>
+  <a href="#about" onclick="closeMenu()">About</a>
+  <a href="#experience" onclick="closeMenu()">Experience</a>
+  <a href="#skills" onclick="closeMenu()">Skills</a>
+  <a href="#play" onclick="closeMenu()">Play</a>
+  <a href="#contact" onclick="closeMenu()">Contact</a>
+</div>
+
+<!-- HERO -->
 <section class="hero" id="top">
   <div class="orb orb-a"></div>
   <div class="orb orb-b"></div>
-  <div class="hero-label">MS Statistics, UC Irvine</div>
-  <h1>Nathan<br><span>Gin</span></h1>
-  <p class="hero-sub">Data engineer and AI consultant at Tarsus Pharmaceuticals. MS Statistics at UC Irvine. Building agentic AI systems, Databricks pipelines, and statistical models that actually matter.</p>
-  <div class="hero-links">
-    <a class="btn-fill" href="assets/Intern Resume Nathan Gin September 2025.pdf" target="_blank">Resume</a>
-    <a class="btn-ghost" href="https://github.com/nathangin" target="_blank">GitHub</a>
-    <a class="btn-ghost" href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">LinkedIn</a>
-    <a class="btn-ghost" href="/cdn-cgi/l/email-protection#ee808f9a868f808c9d898780ae89838f8782c08d8183">Email</a>
+  <div class="hero-left">
+    <div class="hero-label">MS Statistics &middot; UC Irvine</div>
+    <h1>Nathan<br><span>Gin</span></h1>
+    <p class="hero-sub">I work on data and AI at Tarsus Pharmaceuticals, and I'm finishing my master's in statistics at UC Irvine. Mostly I build things with Databricks, design agentic AI workflows, and do statistical analysis that actually influences decisions.</p>
+    <div class="hero-links">
+      <a class="btn-fill" href="assets/Intern Resume Nathan Gin September 2025.pdf" target="_blank">Resume</a>
+      <a class="btn-ghost" href="https://github.com/nathangin" target="_blank">GitHub</a>
+      <a class="btn-ghost" href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">LinkedIn</a>
+      <a class="btn-ghost" href="mailto:nathanbsgin@gmail.com">Email</a>
+    </div>
   </div>
   <div class="scroll-hint"><div class="scroll-line"></div>scroll</div>
 </section>
-<div id="about">
-  <div class="section-inner">
-    <div class="eyebrow">About</div>
-    <h2 class="title">A bit about me</h2>
-    <div class="about-grid reveal">
-      <div class="photo-wrap"><img src="assets/Nathan Gin LinkedIn Photo.png" alt="Nathan Gin" /></div>
-      <div class="about-body">
-        <p>Hi, I'm Nathan. I'm finishing a <strong>Master's in Statistics at UC Irvine</strong> while working full-time at <strong>Tarsus Pharmaceuticals</strong> as a Data Engineer and AI Consultant. My day-to-day spans building production Databricks pipelines, designing agentic AI workflows with MCP servers and Microsoft Copilot Studio, and advising on statistical analysis of commercial data.</p>
-        <p>On the research side I've worked on Bayesian spatial models, causal inference, clinical biostatistics, and longitudinal modeling. I like problems where the statistical rigor actually changes the answer.</p>
-        <p>I'm open to <strong>data science and ML roles</strong> that sit at the intersection of rigorous statistics and production engineering.</p>
-        <div class="tag-row">
-          <span class="tag tag-v">Bayesian modeling</span>
-          <span class="tag tag-v">Agentic AI / MCP</span>
-          <span class="tag tag-t">Databricks / Delta Lake</span>
-          <span class="tag tag-t">Clinical trials</span>
-          <span class="tag tag-r">Machine learning</span>
-          <span class="tag tag-r">Causal inference</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="live-strip">
-  <div class="live-inner">
-    <div class="live-card">
-      <div class="live-label"><span class="live-dot"></span>San Mateo, CA</div>
-      <div class="weather-row">
-        <span class="weather-icon" id="wxIcon">&#x2026;</span>
-        <span class="live-main" id="wxTemp">--</span>
-      </div>
-      <div class="live-sub" id="wxDesc">loading weather</div>
-      <div class="live-sub" id="wxExtra"></div>
-    </div>
-    <div class="live-card">
-      <div class="live-label"><span class="live-dot"></span>Local time</div>
-      <div class="clock-stack">
-        <div class="clock-row"><span class="clock-city">San Mateo (PT)</span><span class="clock-time" id="clockSM">--:--</span></div>
-        <div class="clock-row"><span class="clock-city">Tokyo (JST)</span><span class="clock-time" id="clockTokyo">--:--</span></div>
-      </div>
-      <div class="live-sub" id="clockDate"></div>
-    </div>
-  </div>
-</div>
-<div class="skills-bg" id="skills">
-  <div class="section-inner">
-    <div class="eyebrow">Skills</div>
-    <h2 class="title">What I work with</h2>
-    <div class="stab-row">
-      <div class="stab on" data-p="lang">Languages</div>
-      <div class="stab" data-p="libs">Libraries</div>
-      <div class="stab" data-p="tools">Tools</div>
-      <div class="stab" data-p="areas">Methods</div>
-    </div>
-    <div class="spanel on" id="sp-lang"><span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL / PostgreSQL</span><span class="chip">C++</span><span class="chip">HTML / CSS / JS</span></div>
-    <div class="spanel" id="sp-libs"><span class="chip">scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">PyTorch</span><span class="chip">DeepLabCut</span><span class="chip">lme4 / lmerTest</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">FastAPI</span><span class="chip">CARBayes</span></div>
-    <div class="spanel" id="sp-tools"><span class="chip">Databricks</span><span class="chip">Delta Live Tables</span><span class="chip">Unity Catalog</span><span class="chip">Microsoft Copilot Studio</span><span class="chip">Azure API Management</span><span class="chip">ServiceNow</span><span class="chip">Okta</span><span class="chip">Salesforce</span><span class="chip">Tableau</span><span class="chip">Google Data Studio</span><span class="chip">Smartsheet</span></div>
-    <div class="spanel" id="sp-areas"><span class="chip">Agentic AI workflows</span><span class="chip">MCP server integration</span><span class="chip">RAG systems</span><span class="chip">Bayesian modeling</span><span class="chip">Spatial statistics</span><span class="chip">Causal inference</span><span class="chip">Longitudinal analysis</span><span class="chip">Machine learning</span><span class="chip">ETL pipelines</span><span class="chip">Clinical trial design</span></div>
-  </div>
-</div>
-<div id="experience">
-  <div class="section-inner">
-    <div class="eyebrow">Experience</div>
-    <h2 class="title">Where I've worked</h2>
-    <div class="timeline">
-      <div class="tl-item reveal"><div class="tl-when">Jan 2026 &ndash; Present</div><div class="tl-co">Tarsus Pharmaceuticals</div><div class="tl-role">Data Engineer &amp; AI Consultant</div><div class="tl-body">Building production data pipelines in Databricks using Delta Live Tables and Unity Catalog. Architecting agentic AI workflows that connect Databricks Genie MCP servers and vector search to Microsoft Copilot Studio, deploying chatbot fleets in Teams for cross-functional self-service. Advising on experimental design and statistical analysis of commercial and marketing data.</div></div>
-      <div class="tl-item reveal"><div class="tl-when">Jun 2025 &ndash; Sep 2025</div><div class="tl-co">Tarsus Pharmaceuticals</div><div class="tl-role">IT Intern &mdash; Data Analyst &amp; AI Engineer</div><div class="tl-body">Designed an enterprise RAG chatbot integrating ServiceNow, Databricks, vector search, and LLMs, cutting response time from days to seconds. Built OAuth 2.0 ingestion pipelines with full/incremental sync to Delta tables. Configured Azure API Management for routing, auth, and CORS; built a single-page HTML/CSS/JS UI with Okta authentication.</div></div>
-      <div class="tl-item reveal"><div class="tl-when">Jan 2024 &ndash; Mar 2025 &nbsp;&middot;&nbsp; Oct 2025 &ndash; Jan 2026</div><div class="tl-co">Outlier AI / Handshake AI</div><div class="tl-role">Data Science AI Trainer</div><div class="tl-body">Evaluated LLM outputs for technical correctness across data science and math tasks. Wrote rubrics and flagged systematic failure modes in model reasoning.</div></div>
-      <div class="tl-item reveal"><div class="tl-when">Mar 2025 &ndash; Jun 2025</div><div class="tl-co">UC Irvine</div><div class="tl-role">Teaching Assistant &mdash; ICS 31 Intro to Python</div><div class="tl-body">Ran weekly review sessions and assisted students in labs and lectures for Introduction to Programming in Python.</div></div>
-      <div class="tl-item reveal"><div class="tl-when">May 2024 &ndash; Oct 2024</div><div class="tl-co">Field AI</div><div class="tl-role">Data Labeler</div><div class="tl-body">Annotated sensor data for autonomous vehicle navigation, with a focus on precision for safety-critical edge cases.</div></div>
-      <div class="tl-item reveal"><div class="tl-when">Jun 2021 &ndash; Sep 2022</div><div class="tl-co">Cepheid</div><div class="tl-role">Global Access Digital Research &amp; Analysis Intern</div><div class="tl-body">Built interactive dashboards in Google Data Studio to visualize QC metrics. Improved search performance 7% in impressions and 15% in position. Analyzed media sentiment and tracked sales data in Salesforce and Smartsheet.</div></div>
-    </div>
-  </div>
-</div>
-<div class="proj-bg" id="projects">
-  <div class="section-inner">
-    <div class="eyebrow">Projects</div>
-    <h2 class="title">Selected work</h2>
+
+<!-- PROJECTS -->
+<div id="projects">
+  <div class="sec">
+    <div class="eyebrow">Research &amp; engineering work</div>
+    <div class="sec-title">Projects</div>
+    <p class="sec-subtitle">A mix of coursework, research, and things I built to learn something. Click any card to read the paper.</p>
     <div class="ftab-row">
       <div class="ftab on" data-f="all">All</div>
       <div class="ftab" data-f="bayes">Bayesian</div>
@@ -352,25 +366,139 @@
     </div>
     <div class="proj-grid">
       <div class="pcard reveal" data-c="bayes bio" onclick="openModal('Bayesian CAR Model: Obesity in Texas','Fit a Bayesian hierarchical model with a conditional autoregressive prior on all 254 Texas counties. Physical inactivity and insufficient sleep were the dominant predictors. Spatial model outperformed OLS by 13 DIC points.','assets/STATS295_Spatial_Final_Reformatted.pdf')"><div class="pcard-top"><div class="ptag">Bayesian / Spatial / R</div><span class="pfeat">Featured</span></div><h3>Bayesian CAR Model: Obesity in Texas</h3><p>County-level obesity rates modeled with a Bayesian hierarchical CAR prior and MCMC across all 254 Texas counties.</p><div class="pnums"><span class="pnum">254 counties</span><span class="pnum">Moran I = 0.41</span><span class="pnum">DIC -13 vs OLS</span></div><span class="plink">View paper &rarr;</span></div>
-      <div class="pcard reveal" data-c="causal ml" onclick="openModal('Multi-Arm A/B Test and Causal Evaluation','Analyzed a 64,000-customer randomized marketing experiment using DiM, Direct Method with Gradient Boosting, and Double Robust estimators. Causal Forests for CATE. Validated on synthetic data.','assets/newreport.pdf')"><div class="pcard-top"><div class="ptag">Causal inference / Python</div><span class="pfeat">Featured</span></div><h3>Multi-Arm A/B Test: Marketing Emails</h3><p>Full causal analysis of a 64K-customer email experiment with heterogeneous treatment effect estimation.</p><div class="pnums"><span class="pnum">64K customers</span><span class="pnum">3 estimators</span><span class="pnum">Causal Forests</span></div><span class="plink">View paper &rarr;</span></div>
-      <div class="pcard reveal" data-c="ml bio" onclick="openModal('Hospital Readmission Prediction','Compared LR, Random Forests, SVM, and MLP on 100K+ diabetic patient encounters. Tuned Random Forest achieved ROC-AUC of 0.69.','assets/Stroke Data Analysis ML.pdf')"><div class="pcard-top"><div class="ptag">ML / Healthcare / scikit-learn</div><span class="pfeat">Featured</span></div><h3>Hospital Readmission Prediction</h3><p>Four-model comparison on 100K+ diabetic patient encounters with feature engineering from ICD-9 codes.</p><div class="pnums"><span class="pnum">100K+ encounters</span><span class="pnum">ROC-AUC 0.69</span><span class="pnum">4 model families</span></div><span class="plink">View paper &rarr;</span></div>
-      <div class="pcard reveal" data-c="bio" onclick="openModal('Spinal Cord Injury and Stem Cell Treatment','Analyzed stem cell treatment effectiveness using statistical models and automated motion tracking with DeepLabCut.','assets/CapstoneProject.pdf')"><div class="pcard-top"><div class="ptag">Biostatistics / DeepLabCut</div></div><h3>Spinal Cord Injury: Stem Cell Study</h3><p>Assessed stem cell treatment efficacy in preclinical spinal cord injury research using statistical models.</p><span class="plink">View paper &rarr;</span></div>
+      <div class="pcard reveal" data-c="causal ml" onclick="openModal('Multi-Arm A/B Test and Causal Evaluation','Analyzed a 64,000-customer randomized marketing experiment using DiM, Direct Method, and Double Robust estimators. Causal Forests for CATE. Validated on synthetic data with known ground truth.','assets/newreport.pdf')"><div class="pcard-top"><div class="ptag">Causal inference / Python</div><span class="pfeat">Featured</span></div><h3>Multi-Arm A/B Test: Marketing Emails</h3><p>Full causal analysis of a 64K-customer email experiment with heterogeneous treatment effects via Causal Forests.</p><div class="pnums"><span class="pnum">64K customers</span><span class="pnum">3 estimators</span><span class="pnum">Causal Forests</span></div><span class="plink">View paper &rarr;</span></div>
+      <div class="pcard reveal" data-c="bio causal" onclick="openModal('Digital Health Intervention Analysis','Analyzed a randomized trial (n=298) on motivational text messaging and physical activity over 14 days. Mixed-effects models and multiple imputation (mice). Both generic and tailored messages increased step counts 52-57% vs. control. Built Week-2 predictive models with R\u00b2 = 0.87.','assets/Stats-Qual-DA.pdf')"><div class="pcard-top"><div class="ptag">RCT / Mixed effects / R</div><span class="pfeat">Featured</span></div><h3>Digital Health Intervention: RCT Analysis</h3><p>Randomized trial (n=298) on motivational texts and physical activity. Mixed-effects models, multiple imputation, quadratic time trajectories, and predictive modeling.</p><div class="pnums"><span class="pnum">n=298 participants</span><span class="pnum">52&#x2013;57% lift</span><span class="pnum">R&#x00B2;=0.87</span></div><span class="plink">View paper &rarr;</span></div>
+      <div class="pcard reveal" data-c="ml bio" onclick="openModal('Hospital Readmission Prediction','Compared LR, Random Forests, SVM, and MLP on 100K+ diabetic patient encounters. Tuned Random Forest achieved ROC-AUC of 0.69.','assets/Stroke Data Analysis ML.pdf')"><div class="pcard-top"><div class="ptag">ML / Healthcare / scikit-learn</div></div><h3>Hospital Readmission Prediction</h3><p>Four-model comparison on 100K+ diabetic patient encounters with feature engineering from ICD-9 codes.</p><div class="pnums"><span class="pnum">100K+ encounters</span><span class="pnum">ROC-AUC 0.69</span></div><span class="plink">View paper &rarr;</span></div>
+      <div class="pcard reveal" data-c="bio" onclick="openModal('Spinal Cord Injury and Stem Cell Treatment','Analyzed stem cell treatment effectiveness using statistical models and automated motion tracking with DeepLabCut.','assets/CapstoneProject.pdf')"><div class="pcard-top"><div class="ptag">Biostatistics / DeepLabCut</div></div><h3>Spinal Cord Injury: Stem Cell Study</h3><p>Assessed stem cell treatment efficacy in preclinical SCI research. Automated motion tracking achieving 0.096% error.</p><span class="plink">View paper &rarr;</span></div>
       <div class="pcard reveal" data-c="bio" onclick="openModal('Beta-Carotene Dose-Response Analysis','Longitudinal study modeling dose-response effects on serum concentrations across 46 participants.','assets/BetaCarotene-Final-2.pdf')"><div class="pcard-top"><div class="ptag">Longitudinal / Mixed models / R</div></div><h3>Beta-Carotene Dose-Response</h3><p>Longitudinal modeling of supplementation effects including decay curves and gender interactions.</p><span class="plink">View paper &rarr;</span></div>
-      <div class="pcard reveal" data-c="llm bio" onclick="openModal('TrialGPT: AI in Clinical Trials','Presentation on AI-powered patient-to-trial matching using large language models.','assets/TrialGPT Stats 295 Clinical Trials (1).pdf')"><div class="pcard-top"><div class="ptag">LLMs / Clinical trials</div></div><h3>TrialGPT: Patient-Trial Matching</h3><p>How large language models can improve patient matching in clinical trials.</p><span class="plink">View slides &rarr;</span></div>
-      <div class="pcard reveal" data-c="ml bio" onclick="openModal('Stroke Data Analysis','Comparing logistic regression and decision tree models on stroke-related clinical data.','assets/Stroke Data Analysis.pdf')"><div class="pcard-top"><div class="ptag">ML / Clinical data</div></div><h3>Stroke Risk: Model Comparison</h3><p>Logistic regression vs. decision trees on stroke clinical data.</p><span class="plink">View paper &rarr;</span></div>
-      <div class="pcard reveal" data-c="ml" onclick="openModal('Classification Methods for Fashion-MNIST','Comparative evaluation of classifiers on Fashion-MNIST analyzing accuracy and generalization.','assets/An Investigation of Classification Methods for Fashion-MNIST.pdf')"><div class="pcard-top"><div class="ptag">Computer vision / Classification</div></div><h3>Fashion-MNIST Classification</h3><p>Compared multiple classifiers on Fashion-MNIST across accuracy, generalization, and cost.</p><span class="plink">View paper &rarr;</span></div>
+      <div class="pcard reveal" data-c="ml" onclick="openModal('AI Game Agents','Checkers AI in Python using Monte Carlo Tree Search (top 10% in class). Othello AI in C++ using heuristic search strategies (top 15% in class).','')"><div class="pcard-top"><div class="ptag">Algorithms / Python / C++</div></div><h3>AI Game Agents</h3><p>Checkers AI with Monte Carlo Tree Search (top 10% in class) and Othello AI with heuristic search in C++ (top 15%). Classic adversarial search implemented from scratch.</p><div class="pnums"><span class="pnum">Top 10% MCTS</span><span class="pnum">Top 15% heuristic</span></div><span class="plink">Course project</span></div>
+      <div class="pcard reveal" data-c="ml" onclick="openModal('Property Price Prediction','Random forests, neural nets, logistic regression, and KNN to predict property prices. Cleaned missing and inconsistent data, evaluated with MAPE.','')"><div class="pcard-top"><div class="ptag">ML / pandas / scikit-learn</div></div><h3>Property Price Prediction</h3><p>Random forests, neural nets, logistic regression, and KNN with MAPE evaluation. Heavy data cleaning of missing and inconsistent records.</p><span class="plink">Course project</span></div>
+      <div class="pcard reveal" data-c="llm bio" onclick="openModal('TrialGPT: AI in Clinical Trials','Presentation on AI-powered patient-to-trial matching using large language models.','assets/TrialGPT Stats 295 Clinical Trials (1).pdf')"><div class="pcard-top"><div class="ptag">LLMs / Clinical trials</div></div><h3>TrialGPT: Patient-Trial Matching</h3><p>How large language models can improve patient matching in clinical trials, reducing enrollment friction.</p><span class="plink">View slides &rarr;</span></div>
+      <div class="pcard reveal" data-c="ml bio" onclick="openModal('Stroke Data Analysis','Comparing logistic regression and decision tree models on stroke-related clinical data.','assets/Stroke Data Analysis.pdf')"><div class="pcard-top"><div class="ptag">ML / Clinical data</div></div><h3>Stroke Risk: Model Comparison</h3><p>Logistic regression vs. decision trees on stroke clinical data with RACE score and age as predictors.</p><span class="plink">View paper &rarr;</span></div>
+      <div class="pcard reveal" data-c="ml" onclick="openModal('Classification Methods for Fashion-MNIST','Comparative evaluation of classifiers on Fashion-MNIST analyzing accuracy and generalization.','assets/An Investigation of Classification Methods for Fashion-MNIST.pdf')"><div class="pcard-top"><div class="ptag">Computer vision / Classification</div></div><h3>Fashion-MNIST Classification</h3><p>Compared multiple classifiers on Fashion-MNIST across accuracy, generalization, and computational cost.</p><span class="plink">View paper &rarr;</span></div>
       <div class="pcard reveal" data-c="bio causal" onclick="openModal('Clinical Trial Design and Analysis','Final report covering clinical trial design, analysis methods, and statistical inference.','assets/Stats%20295%20Clinical%20Trials%20Final.pdf')"><div class="pcard-top"><div class="ptag">Clinical trials / Statistics</div></div><h3>Clinical Trial Design and Analysis</h3><p>Trial design methodology and statistical inference applied to real clinical study frameworks.</p><span class="plink">View report &rarr;</span></div>
     </div>
   </div>
 </div>
-<div class="game-bg" id="game">
-  <div class="section-inner">
-    <div class="eyebrow">Mini game</div>
-    <h2 class="title">Guess the distribution</h2>
+
+<!-- ABOUT -->
+<div class="sec-alt" id="about">
+  <div class="sec-inner">
+    <div class="eyebrow">Background</div>
+    <div class="sec-title">About me</div>
+    <p class="sec-subtitle">Based in San Mateo, studying and working in Irvine.</p>
+    <div class="about-grid reveal">
+      <div class="photo-wrap"><img src="assets/Nathan Gin LinkedIn Photo.png" alt="Nathan Gin"/></div>
+      <div class="about-body">
+        <p>Hi, I'm Nathan. I'm in the final stretch of my <strong>MS in Statistics at UC Irvine</strong> while working full-time at <strong>Tarsus Pharmaceuticals</strong>. At work I build Databricks pipelines, wire up MCP servers to Microsoft Copilot Studio, and help the commercial team make sense of their data.</p>
+        <p>On the academic side I've done a lot of Bayesian modeling, causal inference, and clinical stats. My qualifying exam was a full RCT analysis — 298 people, mixed-effects models, multiple imputation, ended up with R&sup2;=0.87 predicting week 2 activity. That kind of work is what I find genuinely interesting.</p>
+        <p>Looking for roles in <strong>data science or ML engineering</strong> where the work is technically serious and ships to production.</p>
+        <div class="tag-row">
+          <span class="tag tag-v">Agentic AI / MCP</span>
+          <span class="tag tag-v">Bayesian modeling</span>
+          <span class="tag tag-t">Databricks / Delta Lake</span>
+          <span class="tag tag-t">Clinical trials</span>
+          <span class="tag tag-r">Machine learning</span>
+          <span class="tag tag-r">Causal inference</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SIDE PROJECTS -->
+<div id="sideprojects">
+  <div class="sec">
+    <div class="eyebrow">Personal builds</div>
+    <div class="sec-title">Side projects</div>
+    <p class="sec-subtitle">Things I build outside of work and research &mdash; where the stakes are lower but the ideas are more experimental.</p>
+    <div class="side-grid">
+      <div class="side-card reveal">
+        <div class="side-card-icon">&#x1F4C8;</div>
+        <h3>Kalshi edge model</h3>
+        <p>A prediction market trading system for Kalshi. The goal is the best possible probability estimate across any market &mdash; weather, politics, economics &mdash; combined with automated execution to systematically capture edge.</p>
+        <div class="side-card-status">In progress</div>
+      </div>
+      <div class="side-card reveal">
+        <div class="side-card-icon">&#x1F4F1;</div>
+        <h3>Party game app</h3>
+        <p>A mobile app for playing games in long lines or waiting rooms. Built for the moments when you're stuck somewhere with friends and need something to do. Python backend, Figma-designed UI.</p>
+        <div class="side-card-status">In progress</div>
+      </div>
+      <div class="side-card reveal">
+        <div class="side-card-icon">&#x1F5A5;</div>
+        <h3>This portfolio</h3>
+        <p>Built entirely from scratch &mdash; no template, no framework. Includes a live weather API, an interactive distribution-guessing game built with Chart.js, and a statistical model selector. Pure HTML, CSS, and JS.</p>
+        <div class="side-card-status">Live</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="sec-alt" id="experience">
+  <div class="sec-inner">
+    <div class="eyebrow">Work history</div>
+    <div class="sec-title">Experience</div>
+    <p class="sec-subtitle">From data labeling to production AI architecture &mdash; roughly chronological, most recent first.</p>
+    <div class="timeline">
+      <div class="tl-item reveal"><div class="tl-when">Jan 2026 &ndash; Present</div><div class="tl-co">Tarsus Pharmaceuticals</div><div class="tl-role">Data Engineer &amp; AI Consultant</div><div class="tl-body">Building production SQL pipelines and ingesting enterprise data into Databricks via Delta Live Tables and Unity Catalog. Architecting agentic AI workflows connecting Databricks Genie MCP servers and vector search indexes to Microsoft Copilot Studio, deploying custom chatbot fleets in Teams for cross-functional self-service analytics. Advising on experimental design and statistical analysis of commercial and marketing data to guide campaign performance and segmentation decisions.</div></div>
+      <div class="tl-item reveal"><div class="tl-when">Jun 2025 &ndash; Sep 2025</div><div class="tl-co">Tarsus Pharmaceuticals</div><div class="tl-role">IT Intern &mdash; Data Analyst &amp; AI Engineer</div><div class="tl-body">Designed an enterprise RAG chatbot integrating ServiceNow, Databricks, vector search, and LLMs, cutting response time from days to seconds. Built OAuth 2.0 ingestion pipelines with full and incremental sync to Delta tables. Configured Azure API Management; built a single-page UI with Okta authentication.</div></div>
+      <div class="tl-item reveal"><div class="tl-when">Jan 2024 &ndash; Mar 2025 &nbsp;&middot;&nbsp; Oct 2025 &ndash; Jan 2026</div><div class="tl-co">Outlier AI / Handshake AI</div><div class="tl-role">Data Science AI Trainer</div><div class="tl-body">Evaluated LLM outputs for technical correctness across data science and math tasks. Wrote evaluation rubrics and flagged systematic failure modes in model reasoning.</div></div>
+      <div class="tl-item reveal"><div class="tl-when">Mar 2025 &ndash; Jun 2025</div><div class="tl-co">UC Irvine</div><div class="tl-role">Teaching Assistant &mdash; ICS 31 Intro to Python</div><div class="tl-body">Ran weekly review sessions and assisted students in labs and lectures for Introduction to Programming in Python.</div></div>
+      <div class="tl-item reveal"><div class="tl-when">May 2024 &ndash; Oct 2024</div><div class="tl-co">Field AI</div><div class="tl-role">Data Labeler</div><div class="tl-body">Annotated sensor data for autonomous vehicle navigation with a focus on precision for safety-critical edge cases.</div></div>
+      <div class="tl-item reveal"><div class="tl-when">Jun 2021 &ndash; Sep 2022</div><div class="tl-co">Cepheid</div><div class="tl-role">Global Access Digital Research &amp; Analysis Intern</div><div class="tl-body">Built interactive dashboards in Google Data Studio to visualize QC metrics. Improved search performance 7% in impressions and 15% in position. Analyzed media sentiment and tracked sales data in Salesforce and Smartsheet.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div id="skills">
+  <div class="sec">
+    <div class="eyebrow">Technical toolkit</div>
+    <div class="sec-title">Skills</div>
+    <p class="sec-subtitle">Things I use regularly &mdash; not a keyword list, an honest inventory.</p>
+    <div class="stab-row">
+      <div class="stab on" data-p="lang">Languages</div>
+      <div class="stab" data-p="libs">Libraries</div>
+      <div class="stab" data-p="tools">Tools &amp; platforms</div>
+      <div class="stab" data-p="areas">Methods</div>
+    </div>
+    <div class="spanel on" id="sp-lang"><span class="chip">Python</span><span class="chip">R</span><span class="chip">SQL / PostgreSQL</span><span class="chip">C++</span><span class="chip">HTML / CSS / JS</span></div>
+    <div class="spanel" id="sp-libs"><span class="chip">scikit-learn</span><span class="chip">TensorFlow</span><span class="chip">PyTorch</span><span class="chip">DeepLabCut</span><span class="chip">lme4 / lmerTest</span><span class="chip">pandas</span><span class="chip">NumPy</span><span class="chip">ggplot2</span><span class="chip">tidyr / dplyr</span><span class="chip">mice</span><span class="chip">emmeans</span><span class="chip">FastAPI</span><span class="chip">CARBayes</span></div>
+    <div class="spanel" id="sp-tools"><span class="chip">Databricks</span><span class="chip">Delta Live Tables</span><span class="chip">Unity Catalog</span><span class="chip">Microsoft Copilot Studio</span><span class="chip">Azure API Management</span><span class="chip">OAuth 2.0 / REST</span><span class="chip">ServiceNow</span><span class="chip">Okta</span><span class="chip">Git</span><span class="chip">Salesforce</span><span class="chip">Tableau</span><span class="chip">Google Data Studio</span><span class="chip">Conductor</span><span class="chip">Meltwater</span><span class="chip">Smartsheet</span></div>
+    <div class="spanel" id="sp-areas"><span class="chip">Agentic AI workflows</span><span class="chip">MCP server integration</span><span class="chip">RAG systems</span><span class="chip">Bayesian modeling</span><span class="chip">Spatial statistics</span><span class="chip">Causal inference</span><span class="chip">Longitudinal analysis</span><span class="chip">Multiple imputation</span><span class="chip">A/B testing</span><span class="chip">Machine learning</span><span class="chip">ETL pipelines</span><span class="chip">Clinical trial design</span></div>
+  </div>
+</div>
+
+<!-- HOBBIES + MUSIC -->
+<div class="sec-alt">
+  <div class="sec-inner">
+    <div class="eyebrow">Outside of work</div>
+    <div class="sec-title">Hobbies</div>
+    <div class="hobby-grid reveal">
+      <div class="hobby-card"><div class="hobby-icon">&#x1F3B5;</div><div class="hobby-name">Music</div></div>
+      <div class="hobby-card"><div class="hobby-icon">&#x2708;&#xFE0F;</div><div class="hobby-name">Travel</div></div>
+      <div class="hobby-card"><div class="hobby-icon">&#x1F373;</div><div class="hobby-name">Cooking</div></div>
+      <div class="hobby-card"><div class="hobby-icon">&#x1F3AE;</div><div class="hobby-name">Gaming</div></div>
+      <div class="hobby-card"><div class="hobby-icon">&#x1F3AF;</div><div class="hobby-name">Darts</div></div>
+    </div>
+    <div class="spotify-wrap reveal">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7GHNsos0McJbkf5nhw45iX?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- GAME -->
+<div id="play">
+  <div class="game-wrap">
+    <div class="eyebrow">Interactive &mdash; built with Chart.js, pure JS</div>
+    <div class="sec-title">Guess the distribution</div>
+    <p class="sec-subtitle" style="margin-bottom:1.8rem;">A histogram appears. Pick which statistical distribution generated it. 8 rounds, 15 seconds each. Shape hints and a fun fact after every answer.</p>
     <div id="gWidget">
       <div class="gscreen active" id="gStart">
         <div class="g-title">Guess the <em>Distribution</em></div>
-        <p class="g-sub">A histogram appears. Pick which distribution generated it. 8 rounds, 15 seconds each. The x-axis shows real data values. Fun fact after every answer.</p>
+        <p class="g-sub">A histogram appears. Pick which distribution generated it. 8 rounds, 15 seconds each. Shape hints and a fun fact after every answer.</p>
         <div class="g-pills"><span class="g-pill">Normal</span><span class="g-pill">Exponential</span><span class="g-pill">Uniform</span><span class="g-pill">Bimodal</span><span class="g-pill">Log-normal</span><span class="g-pill">Beta (0,1)</span><span class="g-pill">U-shaped Beta</span><span class="g-pill">Poisson</span></div>
         <button class="g-btn-play" onclick="gStart()">Play</button>
       </div>
@@ -409,10 +537,13 @@
     </div>
   </div>
 </div>
-<div class="model-bg" id="models">
-  <div class="section-inner">
-    <div class="eyebrow">Tool</div>
-    <h2 class="title">Which model should I use?</h2>
+
+<!-- MODEL SELECTOR -->
+<div class="sec-alt">
+  <div class="model-wrap" id="models">
+    <div class="eyebrow">Interactive tool &mdash; built with pure JS</div>
+    <div class="sec-title">Which statistical model?</div>
+    <p class="sec-subtitle" style="margin-bottom:1.8rem;">Answer a few questions about your data and outcome type. The tree walks you to the right model with assumptions, use cases, and alternatives.</p>
     <div id="mSelector">
       <div class="ms-progress"><div class="ms-pfill" id="msPFill" style="width:0%"></div></div>
       <div class="ms-bc" id="msBc"></div>
@@ -420,21 +551,26 @@
     </div>
   </div>
 </div>
+
+<!-- CTA -->
 <div class="cta-wrap" id="contact">
   <div class="reveal">
     <div class="eyebrow" style="justify-content:center;">Contact</div>
     <h2>Open to what's next. <em>Get in touch.</em></h2>
-    <p>Actively looking for data science and ML roles. If you're working on something interesting, especially in healthcare or AI, I'd like to hear about it.</p>
+    <p>Actively looking for senior data science and ML engineering roles. If you're working on something interesting, especially in AI infrastructure or healthcare, I'd like to hear about it.</p>
     <div class="cta-btns">
-      <a class="btn-fill" href="/cdn-cgi/l/email-protection#2e404f5a464f404c5d4947406e49434f4742004d4143">Send an email</a>
+      <a class="btn-fill" href="mailto:nathanbsgin@gmail.com">Send an email</a>
       <a class="btn-ghost" href="https://www.linkedin.com/in/nathan-gin-bb464b194/" target="_blank">LinkedIn</a>
     </div>
   </div>
 </div>
+
 <footer>
-  <p>&copy; 2025 Nathan Gin</p>
+  <p>&copy; 2025 Nathan Gin &mdash; built from scratch, no templates</p>
   <p>MS Statistics &middot; UC Irvine</p>
 </footer>
+
+<!-- MODAL -->
 <div class="overlay" id="overlay" onclick="if(event.target===this)closeModal()">
   <div class="modal">
     <div class="modal-hd">
@@ -444,44 +580,40 @@
     <div class="modal-bd"><iframe id="mFrame" src="" title="PDF viewer"></iframe></div>
   </div>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script>
 /* ---- CURSOR ---- */
-var cDot=document.getElementById('curDot'),cRing=document.getElementById('curRing'),mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cDot.style.left=(mx-2.5)+'px';cDot.style.top=(my-2.5)+'px';});
-(function tick(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;cRing.style.left=(rx-16)+'px';cRing.style.top=(ry-16)+'px';requestAnimationFrame(tick);})();
-document.querySelectorAll('a,button,.pcard,.stab,.ftab,.chip,.g-choice,.ms-choice').forEach(function(el){
-  el.addEventListener('mouseenter',function(){cRing.style.width='46px';cRing.style.height='46px';cRing.style.borderColor='rgba(124,109,250,0.75)';});
-  el.addEventListener('mouseleave',function(){cRing.style.width='32px';cRing.style.height='32px';cRing.style.borderColor='rgba(124,109,250,0.45)';});
+var cD=document.getElementById('curDot'),cR=document.getElementById('curRing'),mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;cD.style.left=(mx-2.5)+'px';cD.style.top=(my-2.5)+'px';});
+(function t(){rx+=(mx-rx)*0.1;ry+=(my-ry)*0.1;cR.style.left=(rx-16)+'px';cR.style.top=(ry-16)+'px';requestAnimationFrame(t);})();
+document.querySelectorAll('a,button,.pcard,.stab,.ftab,.chip,.g-choice,.ms-choice,.side-card,.hobby-card').forEach(function(el){
+  el.addEventListener('mouseenter',function(){cR.style.width='44px';cR.style.height='44px';cR.style.borderColor='rgba(124,109,250,0.75)';});
+  el.addEventListener('mouseleave',function(){cR.style.width='32px';cR.style.height='32px';cR.style.borderColor='rgba(124,109,250,0.45)';});
 });
+
+/* ---- MOBILE NAV ---- */
+document.getElementById('hamburger').addEventListener('click',function(){
+  this.classList.toggle('open');
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+function closeMenu(){document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileNav').classList.remove('open');}
+
 /* ---- REVEAL ---- */
 var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.08});
 document.querySelectorAll('.reveal').forEach(function(el){ro.observe(el);});
-/* ---- WEATHER ---- */
-var WX={0:['&#9728;','Clear'],1:['&#127780;','Mostly clear'],2:['&#9925;','Partly cloudy'],3:['&#9729;','Overcast'],45:['&#127787;','Foggy'],48:['&#127787;','Icy fog'],51:['&#127782;','Light drizzle'],53:['&#127782;','Drizzle'],55:['&#127783;','Heavy drizzle'],61:['&#127783;','Light rain'],63:['&#127783;','Rain'],65:['&#127783;','Heavy rain'],71:['&#127784;','Light snow'],73:['&#127784;','Snow'],75:['&#10052;','Heavy snow'],80:['&#127782;','Showers'],81:['&#127783;','Heavy showers'],95:['&#9928;','Thunderstorm'],99:['&#9928;','Thunderstorm + hail']};
-fetch('https://api.open-meteo.com/v1/forecast?latitude=37.563&longitude=-122.3255&current=temperature_2m,apparent_temperature,weather_code,relative_humidity_2m,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America%2FLos_Angeles')
-  .then(function(r){return r.json();})
-  .then(function(d){
-    var c=d.current,wx=WX[c.weather_code]||['&#127777;',''];
-    document.getElementById('wxIcon').innerHTML=wx[0];
-    document.getElementById('wxTemp').textContent=Math.round(c.temperature_2m)+'\u00b0F';
-    document.getElementById('wxDesc').textContent=wx[1]+', feels like '+Math.round(c.apparent_temperature)+'\u00b0F';
-    document.getElementById('wxExtra').textContent='Humidity '+Math.round(c.relative_humidity_2m)+'%  \u00b7  Wind '+Math.round(c.wind_speed_10m)+' mph';
-  })
-  .catch(function(){document.getElementById('wxDesc').textContent='Check weather.com for San Mateo';});
-/* ---- CLOCKS ---- */
-function fmtT(tz){return new Date().toLocaleTimeString('en-US',{timeZone:tz,hour:'numeric',minute:'2-digit',hour12:true});}
-function fmtD(tz){return new Date().toLocaleDateString('en-US',{timeZone:tz,weekday:'long',month:'long',day:'numeric'});}
-function tickC(){document.getElementById('clockSM').textContent=fmtT('America/Los_Angeles');document.getElementById('clockTokyo').textContent=fmtT('Asia/Tokyo');document.getElementById('clockDate').textContent=fmtD('America/Los_Angeles');}
-tickC();setInterval(tickC,1000);
+
+/* ---- PROJECT FILTER ---- */
+document.querySelectorAll('.ftab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.ftab').forEach(function(t){t.classList.remove('on');});tab.classList.add('on');var f=tab.getAttribute('data-f');document.querySelectorAll('.proj-grid .pcard').forEach(function(card){if(f==='all'){card.classList.remove('hide');}else{var c=card.getAttribute('data-c')||'';card.classList.toggle('hide',c.indexOf(f)===-1);}});});});
+
 /* ---- SKILL TABS ---- */
 document.querySelectorAll('.stab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.stab').forEach(function(t){t.classList.remove('on');});document.querySelectorAll('.spanel').forEach(function(p){p.classList.remove('on');});tab.classList.add('on');var panel=document.getElementById('sp-'+tab.getAttribute('data-p'));if(panel)panel.classList.add('on');});});
-/* ---- PROJECT FILTER ---- */
-document.querySelectorAll('.ftab').forEach(function(tab){tab.addEventListener('click',function(){document.querySelectorAll('.ftab').forEach(function(t){t.classList.remove('on');});tab.classList.add('on');var f=tab.getAttribute('data-f');document.querySelectorAll('.pcard').forEach(function(card){if(f==='all'){card.classList.remove('hide');}else{var c=card.getAttribute('data-c')||'';card.classList.toggle('hide',c.indexOf(f)===-1);}});});});
+
 /* ---- MODAL ---- */
 function openModal(title,desc,src){document.getElementById('mTitle').textContent=title;document.getElementById('mDesc').textContent=desc;document.getElementById('mFrame').src=src;document.getElementById('overlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeModal(){document.getElementById('overlay').classList.remove('open');document.getElementById('mFrame').src='';document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+
 /* ---- GAME ---- */
 function gNorm(){var u=0,v=0;while(!u)u=Math.random();while(!v)v=Math.random();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v);}
 function gGam(a){if(a<1)return gGam(1+a)*Math.pow(Math.random(),1/a);var d=a-1/3,c=1/Math.sqrt(9*d),x,v;do{do{x=gNorm();v=1+c*x;}while(v<=0);v=v*v*v;}while(Math.random()>=1-0.331*x*x*x*x&&Math.log(Math.random())>=0.5*x*x+d*(1-v+Math.log(v)));return d*v;}
@@ -618,6 +750,8 @@ function gEnd(){
   document.getElementById('gEndMsg').textContent=msg;
   gShow('gEnd');
 }
+
+/* ---- MODEL SELECTOR ---- */
 /* ---- MODEL SELECTOR ---- */
 var MS_TREE={id:'root',q:'What type of outcome variable do you have?',hint:'The outcome type is the most important factor. It determines which distributional assumptions are reasonable.',choices:[{label:'Continuous',desc:'Numeric, any value \u2014 height, income, blood pressure, test score',next:'continuous'},{label:'Binary',desc:'Two outcomes \u2014 yes/no, survived/died, disease/healthy',next:'binary'},{label:'Count or rate',desc:'Non-negative integers \u2014 ER visits, events per interval',next:'count'},{label:'Time to event',desc:'How long until something happens \u2014 death, relapse, failure',next:'survival'},{label:'Ordinal or nominal categorical',desc:'Ordered levels or unordered groups \u2014 mild/moderate/severe',next:'categorical'}]};
 var MS_NODES={
