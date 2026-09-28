@@ -184,8 +184,6 @@ body.has-cursor .cur-dot,body.has-cursor .cur-ring{opacity:1;}
 /* ---------- FOOTER ---------- */
 footer.site-foot{position:relative;z-index:1;border-top:1px solid var(--edge);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
 footer.site-foot p{font-family:var(--mono);font-size:0.65rem;color:var(--ink3);}
-footer.site-foot .konami-hint{letter-spacing:.2em;opacity:.55;transition:opacity .3s,color .3s;cursor:default;}
-footer.site-foot .konami-hint:hover{opacity:1;color:var(--violet2);}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:1060px){
@@ -810,13 +808,12 @@ button.cchip:disabled{opacity:.35;cursor:default;}
 
 <footer class="site-foot">
   <p>&copy; <span data-year>2026</span> Nathan Gin &mdash; built from scratch, no templates</p>
-  <p class="konami-hint" title="Try it">&uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr;BA</p>
   <p><a href="index.html" style="text-decoration:none">&larr; Back to portfolio</a></p>
 </footer>
 
 <script>
 /* ==========================================================================
-   NG — shared runtime (nav, cursor, reveal, toasts, sound, achievements)
+   NG — shared runtime (nav, cursor, reveal, toasts, sound, challenges)
    ========================================================================== */
 var NG = (function () {
   'use strict';
@@ -910,20 +907,20 @@ var NG = (function () {
     return api;
   })();
 
-  /* ---------- achievements (shared across pages) ---------- */
+  /* ---------- challenges (shared across pages) ---------- */
   var ACH = [
-    { id: 'bell', t: 'Bell Curve', d: 'Drop 1,000 balls through the Galton board.', g: 'portfolio' },
-    { id: 'calibrated', t: 'Well Calibrated', d: 'Score 8/8 in Guess the Distribution.', g: 'portfolio' },
-    { id: 'model', t: 'Model Citizen', d: 'Reach a recommendation in the model selector.', g: 'portfolio' },
+    { id: 'bell', t: 'Bell curve', d: 'Drop 1,000 balls through the Galton board.', g: 'portfolio' },
+    { id: 'paper', t: 'Read a paper', d: 'Open any paper in Projects.', g: 'portfolio' },
+    { id: 'calibrated', t: 'Perfect score', d: 'Get 8 of 8 in Guess the Distribution.', g: 'portfolio' },
+    { id: 'model', t: 'Model chosen', d: 'Reach a recommendation in the model selector.', g: 'portfolio' },
     { id: 'bull', t: 'Bullseye', d: 'Hit the inner bull in darts.', g: 'portfolio' },
-    { id: 'ton', t: 'Ton Up', d: 'Score 100+ in one darts turn.', g: 'portfolio' },
-    { id: 'konami', t: '↑↑↓↓←→←→BA', d: 'You know the code.', g: 'portfolio' },
-    { id: 'natural', t: 'Natural', d: 'Get dealt a blackjack.', g: 'blackjack' },
-    { id: 'counter', t: 'Counter', d: 'Nail 10 running-count checks in a row.', g: 'blackjack' },
-    { id: 'book', t: 'By the Book', d: 'Make 25 correct strategy decisions in a row.', g: 'blackjack' },
-    { id: 'speed', t: 'Deck in 30', d: 'Count down a full deck correctly in under 30 seconds.', g: 'blackjack' },
-    { id: 'ship', t: 'Ship It', d: 'Win a Hold’em pot at showdown.', g: 'poker' },
-    { id: 'double', t: 'Double Up', d: 'Reach 4,000 chips in Hold’em.', g: 'poker' }
+    { id: 'ton', t: '100+ turn', d: 'Score 100 or more in one darts turn.', g: 'portfolio' },
+    { id: 'natural', t: 'Natural 21', d: 'Get dealt a blackjack.', g: 'blackjack' },
+    { id: 'counter', t: 'Count streak', d: 'Get 10 running-count checks right in a row.', g: 'blackjack' },
+    { id: 'book', t: 'Strategy streak', d: 'Make 25 correct strategy decisions in a row.', g: 'blackjack' },
+    { id: 'speed', t: 'Fast count', d: 'Count down a full deck correctly in under 30 seconds.', g: 'blackjack' },
+    { id: 'ship', t: 'Showdown win', d: 'Win a Hold’em pot at showdown.', g: 'poker' },
+    { id: 'double', t: 'Double up', d: 'Reach 4,000 chips in Hold’em.', g: 'poker' }
   ];
   var ach = {
     list: ACH,
@@ -933,7 +930,7 @@ var NG = (function () {
       var g = ach.got(); if (g[id]) return false;
       var a = ACH.filter(function (x) { return x.id === id; })[0]; if (!a) return false;
       g[id] = Date.now(); store.set('ng_ach', g);
-      toast({ ach: true, kind: 'Achievement unlocked', title: a.t, desc: a.d, ms: 4200 });
+      toast({ ach: true, kind: 'Challenge completed', title: a.t, desc: a.d, icon: I.check, ms: 4200 });
       sfx.play('coin');
       try { document.dispatchEvent(new CustomEvent('ng:ach', { detail: id })); } catch (e) { }
       return true;
@@ -1026,8 +1023,7 @@ var NG = (function () {
   function onKonami(fn) { konamiFns.push(fn); }
   function fireKonami() {
     confetti({ n: 90 });
-    toast({ kind: 'Cheat code accepted', title: '+30 lives', desc: 'Some things on this site just changed. Look around.', icon: I.spark, ms: 4200 });
-    ach.unlock('konami');
+    toast({ kind: 'Easter egg', title: 'Konami code', desc: 'A few things on this page just changed.', icon: I.spark, ms: 4200 });
     konamiFns.forEach(function (f) { try { f(); } catch (e) { } });
   }
 

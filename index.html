@@ -184,8 +184,6 @@ body.has-cursor .cur-dot,body.has-cursor .cur-ring{opacity:1;}
 /* ---------- FOOTER ---------- */
 footer.site-foot{position:relative;z-index:1;border-top:1px solid var(--edge);padding:2rem 3rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;}
 footer.site-foot p{font-family:var(--mono);font-size:0.65rem;color:var(--ink3);}
-footer.site-foot .konami-hint{letter-spacing:.2em;opacity:.55;transition:opacity .3s,color .3s;cursor:default;}
-footer.site-foot .konami-hint:hover{opacity:1;color:var(--violet2);}
 
 /* ---------- RESPONSIVE ---------- */
 @media(max-width:1060px){
@@ -270,17 +268,11 @@ footer.site-foot .konami-hint:hover{opacity:1;color:var(--violet2);}
 .photo-fallback{position:absolute;inset:0;z-index:1;border-radius:4px;display:none;place-items:center;font-family:var(--serif);font-style:italic;font-size:3.2rem;color:#fff;background:radial-gradient(circle at 30% 20%,rgba(0,201,160,.35),transparent 55%),linear-gradient(145deg,#2a2468,#141427);}
 .photo-wrap.noimg .photo-fallback{display:grid;}
 .photo-wrap.noimg img{display:none;}
-.p1-tag{position:absolute;z-index:2;top:.6rem;left:.6rem;font-family:var(--mono);font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal);background:rgba(9,9,14,.72);border:1px solid rgba(0,201,160,.35);padding:.22rem .5rem;border-radius:4px;backdrop-filter:blur(4px);}
-.char-sheet{margin-top:1.7rem;border:1px solid var(--edge);border-radius:12px;padding:.75rem .9rem .85rem;background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));}
-.cs-row{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem;padding:.38rem 0;border-bottom:1px dashed rgba(124,109,250,.13);}
-.cs-row dt{font-family:var(--mono);font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);white-space:nowrap;}
-.cs-row dd{font-size:.74rem;color:var(--ink);text-align:right;}
-.xp{margin-top:.75rem;}
-.xp-top{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.54rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3);margin-bottom:.4rem;}
-.xp-top b{color:var(--teal);font-weight:500;}
-.xp-bar{height:6px;border-radius:3px;background:rgba(255,255,255,.06);overflow:hidden;}
-.xp-fill{height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--violet),var(--teal));box-shadow:0 0 12px rgba(0,201,160,.5);transition:width 1.8s var(--ease) .4s;}
-.reveal.in .xp-fill{width:var(--xp,88%);}
+.facts{margin-top:1.7rem;border:1px solid var(--edge);border-radius:12px;padding:.45rem .9rem;background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.008));}
+.fact{display:flex;flex-direction:column;gap:.22rem;padding:.6rem 0;border-bottom:1px solid rgba(124,109,250,.12);}
+.fact:last-child{border-bottom:0;}
+.fact dt{font-family:var(--mono);font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink3);white-space:nowrap;}
+.fact dd{font-size:.8rem;color:var(--ink);line-height:1.4;}
 .about-body p{font-size:0.95rem;font-weight:300;color:var(--ink2);line-height:1.9;margin-bottom:1rem;}
 .about-body p strong{color:var(--ink);font-weight:500;}
 .tag-row{display:flex;flex-wrap:wrap;gap:0.42rem;margin-top:1.3rem;}
@@ -677,7 +669,9 @@ footer.site-foot .konami-hint:hover{opacity:1;color:var(--violet2);}
   #galton{height:330px;}
   .about-grid{grid-template-columns:1fr;gap:2.4rem;}
   .about-side{display:grid;grid-template-columns:170px 1fr;gap:1.6rem;align-items:start;}
-  .char-sheet{margin-top:0;}
+  .facts{margin-top:0;}
+  .fact{flex-direction:row;justify-content:space-between;align-items:baseline;gap:.8rem;padding:.5rem 0;}
+  .fact dd{text-align:right;}
   .proj-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .side-grid{grid-template-columns:1fr;}
   .arcade-grid{grid-template-columns:1fr;}
@@ -735,7 +729,7 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
         <a href="#hobbies" role="menuitem"><span class="dd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span><span><b>Darts</b><small>With a statistician's aiming guide</small></span></a>
         <div class="dd-sep"></div>
         <a href="blackjack.html" role="menuitem"><span class="dd-ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5c-3 3.4-7.5 6.2-7.5 10a4 4 0 0 0 6.6 3c-.3 2-1 3.6-2.6 5h7c-1.6-1.4-2.3-3-2.6-5a4 4 0 0 0 6.6-3c0-3.8-4.5-6.6-7.5-10z"/></svg></span><span><b>Blackjack Counter</b><small>Hi-Lo trainer with a real shoe</small></span></a>
-        <a href="poker.html" role="menuitem"><span class="dd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="M12 3.5v3M12 17.5v3M3.5 12h3M17.5 12h3"/></svg></span><span><b>Texas Hold&rsquo;em</b><small>6-max vs five AI personalities</small></span></a>
+        <a href="poker.html" role="menuitem"><span class="dd-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><path d="M12 3.5v3M12 17.5v3M3.5 12h3M17.5 12h3"/></svg></span><span><b>Texas Hold&rsquo;em</b><small>6-max or heads-up vs AI</small></span></a>
       </div>
     </div>
     <a href="#hobbies" data-spy="hobbies">Hobbies</a>
@@ -821,14 +815,12 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
         <div class="photo-wrap" id="photoWrap">
           <img src="assets/Nathan Gin LinkedIn Photo.png" alt="Nathan Gin" onerror="this.parentNode.classList.add('noimg')"/>
           <div class="photo-fallback" aria-hidden="true">NG</div>
-          <span class="p1-tag">Player 1</span>
         </div>
-        <dl class="char-sheet">
-          <div class="cs-row"><dt>Class</dt><dd>Statistician &middot; ML</dd></div>
-          <div class="cs-row"><dt>Base</dt><dd>San Mateo, CA</dd></div>
-          <div class="cs-row"><dt>Now</dt><dd>Tarsus Pharmaceuticals</dd></div>
-          <div class="cs-row"><dt>Guild</dt><dd>UC Irvine</dd></div>
-          <div class="xp"><div class="xp-top"><span>MS Statistics</span><b>Final stretch</b></div><div class="xp-bar"><div class="xp-fill" style="--xp:88%"></div></div></div>
+        <dl class="facts">
+          <div class="fact"><dt>Focus</dt><dd>Statistics &amp; machine learning</dd></div>
+          <div class="fact"><dt>Location</dt><dd>San Mateo, CA</dd></div>
+          <div class="fact"><dt>Currently</dt><dd>Tarsus Pharmaceuticals</dd></div>
+          <div class="fact"><dt>Education</dt><dd>M.S. Statistics, UC Irvine</dd></div>
         </dl>
       </div>
       <div class="about-body reveal" style="--d:.1s">
@@ -980,7 +972,7 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
     </div>
     <div class="arcade-grid">
       <div class="screen reveal" id="gWidget">
-        <div class="screen-bar"><span>Cabinet 01 &middot; <b>Guess the Distribution</b></span><span id="gBarRight">Press play</span></div>
+        <div class="screen-bar"><span>Stats quiz &middot; <b>Guess the Distribution</b></span><span id="gBarRight">Press play</span></div>
         <div class="gscreen active" id="gStart">
           <canvas id="gAttract" aria-hidden="true"></canvas>
           <div class="g-title">Guess the <em>Distribution</em></div>
@@ -1033,7 +1025,7 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
             <span class="chipdeco" style="--cc:#d9435b;left:16%;top:64px"></span>
             <span class="chipdeco" style="--cc:#1f9d6e;right:15%;top:74px"></span>
           </div>
-          <div class="cab-k">Cabinet 02 &middot; Hi-Lo trainer</div>
+          <div class="cab-k">Card counting &middot; Hi-Lo trainer</div>
           <div class="cab-t">Blackjack <em>Counter</em></div>
           <div class="cab-d">Six-deck shoe, learning &amp; practice modes, index plays, and counting drills.</div>
           <div class="cab-row"><span class="cab-go">Play <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="cab-rec">Bankroll <b id="recBJnow">$1,000</b></span></div>
@@ -1045,7 +1037,7 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
             <span class="chipdeco" style="--cc:#22222c;left:18%;top:70px"></span>
             <span class="chipdeco" style="--cc:#6b4fd8;right:17%;top:62px"></span>
           </div>
-          <div class="cab-k">Cabinet 03 &middot; No-Limit 6-max</div>
+          <div class="cab-k">No-Limit &middot; 6-max or heads-up</div>
           <div class="cab-t">Texas <em>Hold&rsquo;em</em></div>
           <div class="cab-d">Five AI personalities and a Monte Carlo equity coach that shows its work.</div>
           <div class="cab-row"><span class="cab-go">Play <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="cab-rec">Stack <b id="recPKnow">2,000</b></span></div>
@@ -1063,7 +1055,7 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
         </div>
       </div>
       <div>
-        <div class="meta-head"><h3>Achievements</h3><span><b id="achCount">0</b> / <span id="achTotal">12</span> unlocked</span></div>
+        <div class="meta-head"><h3>Challenges</h3><span><b id="achCount">0</b> of <span id="achTotal">12</span> completed</span></div>
         <div class="ach-grid" id="achGrid"></div>
       </div>
     </div>
@@ -1198,7 +1190,6 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
 
 <footer class="site-foot">
   <p>&copy; <span data-year>2026</span> Nathan Gin &mdash; built from scratch, no templates</p>
-  <p class="konami-hint" title="Try it">&uarr;&uarr;&darr;&darr;&larr;&rarr;&larr;&rarr;BA</p>
   <p>MS Statistics &middot; UC Irvine</p>
 </footer>
 
@@ -1218,7 +1209,7 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
 
 <script>
 /* ==========================================================================
-   NG — shared runtime (nav, cursor, reveal, toasts, sound, achievements)
+   NG — shared runtime (nav, cursor, reveal, toasts, sound, challenges)
    ========================================================================== */
 var NG = (function () {
   'use strict';
@@ -1312,20 +1303,20 @@ var NG = (function () {
     return api;
   })();
 
-  /* ---------- achievements (shared across pages) ---------- */
+  /* ---------- challenges (shared across pages) ---------- */
   var ACH = [
-    { id: 'bell', t: 'Bell Curve', d: 'Drop 1,000 balls through the Galton board.', g: 'portfolio' },
-    { id: 'calibrated', t: 'Well Calibrated', d: 'Score 8/8 in Guess the Distribution.', g: 'portfolio' },
-    { id: 'model', t: 'Model Citizen', d: 'Reach a recommendation in the model selector.', g: 'portfolio' },
+    { id: 'bell', t: 'Bell curve', d: 'Drop 1,000 balls through the Galton board.', g: 'portfolio' },
+    { id: 'paper', t: 'Read a paper', d: 'Open any paper in Projects.', g: 'portfolio' },
+    { id: 'calibrated', t: 'Perfect score', d: 'Get 8 of 8 in Guess the Distribution.', g: 'portfolio' },
+    { id: 'model', t: 'Model chosen', d: 'Reach a recommendation in the model selector.', g: 'portfolio' },
     { id: 'bull', t: 'Bullseye', d: 'Hit the inner bull in darts.', g: 'portfolio' },
-    { id: 'ton', t: 'Ton Up', d: 'Score 100+ in one darts turn.', g: 'portfolio' },
-    { id: 'konami', t: '↑↑↓↓←→←→BA', d: 'You know the code.', g: 'portfolio' },
-    { id: 'natural', t: 'Natural', d: 'Get dealt a blackjack.', g: 'blackjack' },
-    { id: 'counter', t: 'Counter', d: 'Nail 10 running-count checks in a row.', g: 'blackjack' },
-    { id: 'book', t: 'By the Book', d: 'Make 25 correct strategy decisions in a row.', g: 'blackjack' },
-    { id: 'speed', t: 'Deck in 30', d: 'Count down a full deck correctly in under 30 seconds.', g: 'blackjack' },
-    { id: 'ship', t: 'Ship It', d: 'Win a Hold’em pot at showdown.', g: 'poker' },
-    { id: 'double', t: 'Double Up', d: 'Reach 4,000 chips in Hold’em.', g: 'poker' }
+    { id: 'ton', t: '100+ turn', d: 'Score 100 or more in one darts turn.', g: 'portfolio' },
+    { id: 'natural', t: 'Natural 21', d: 'Get dealt a blackjack.', g: 'blackjack' },
+    { id: 'counter', t: 'Count streak', d: 'Get 10 running-count checks right in a row.', g: 'blackjack' },
+    { id: 'book', t: 'Strategy streak', d: 'Make 25 correct strategy decisions in a row.', g: 'blackjack' },
+    { id: 'speed', t: 'Fast count', d: 'Count down a full deck correctly in under 30 seconds.', g: 'blackjack' },
+    { id: 'ship', t: 'Showdown win', d: 'Win a Hold’em pot at showdown.', g: 'poker' },
+    { id: 'double', t: 'Double up', d: 'Reach 4,000 chips in Hold’em.', g: 'poker' }
   ];
   var ach = {
     list: ACH,
@@ -1335,7 +1326,7 @@ var NG = (function () {
       var g = ach.got(); if (g[id]) return false;
       var a = ACH.filter(function (x) { return x.id === id; })[0]; if (!a) return false;
       g[id] = Date.now(); store.set('ng_ach', g);
-      toast({ ach: true, kind: 'Achievement unlocked', title: a.t, desc: a.d, ms: 4200 });
+      toast({ ach: true, kind: 'Challenge completed', title: a.t, desc: a.d, icon: I.check, ms: 4200 });
       sfx.play('coin');
       try { document.dispatchEvent(new CustomEvent('ng:ach', { detail: id })); } catch (e) { }
       return true;
@@ -1428,8 +1419,7 @@ var NG = (function () {
   function onKonami(fn) { konamiFns.push(fn); }
   function fireKonami() {
     confetti({ n: 90 });
-    toast({ kind: 'Cheat code accepted', title: '+30 lives', desc: 'Some things on this site just changed. Look around.', icon: I.spark, ms: 4200 });
-    ach.unlock('konami');
+    toast({ kind: 'Easter egg', title: 'Konami code', desc: 'A few things on this page just changed.', icon: I.spark, ms: 4200 });
     konamiFns.forEach(function (f) { try { f(); } catch (e) { } });
   }
 
@@ -1793,7 +1783,7 @@ var NG = (function () {
       $('#mTag').textContent = $('.ptag', c).textContent;
       $('#mTitle').textContent = c.getAttribute('data-title');
       $('#mDesc').textContent = c.getAttribute('data-desc');
-      if (pdf) { mBody.innerHTML = '<iframe title="' + NG.esc(c.getAttribute('data-title')) + '" src="' + NG.esc(pdf) + '"></iframe>'; mOpen.href = pdf; mOpen.style.display = ''; }
+      if (pdf) { mBody.innerHTML = '<iframe title="' + NG.esc(c.getAttribute('data-title')) + '" src="' + NG.esc(pdf) + '"></iframe>'; mOpen.href = pdf; mOpen.style.display = ''; NG.ach.unlock('paper'); }
       else { mBody.innerHTML = '<div class="modal-empty"><b>Course project</b>No write-up posted for this one yet.</div>'; mOpen.style.display = 'none'; }
       lastFocus = c; ov.classList.add('open'); ov.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
       setTimeout(function () { $('#mClose').focus(); }, 60);
@@ -2153,7 +2143,7 @@ var NG = (function () {
   })();
 
   /* ======================================================================
-     ARCADE META — high scores + achievements
+     ARCADE META — high scores + challenges
      ====================================================================== */
   (function () {
     var grid = $('#achGrid'); if (!grid) return;
@@ -2163,7 +2153,7 @@ var NG = (function () {
       model: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="4.5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><path d="M12 6.5V11M12 11c-5 0-7 2-7 6M12 11c5 0 7 2 7 6"/></svg>',
       bull: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>',
       ton: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l9-9M13 11l2-6 4 4-6 2zM6 14l4 4"/></svg>',
-      konami: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="16" cy="11" r=".9" fill="currentColor"/><circle cx="18" cy="13.5" r=".9" fill="currentColor"/></svg>',
+      paper: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>',
       natural: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-2.6 3-6.5 5.4-6.5 8.7a3.5 3.5 0 0 0 5.8 2.6c-.3 1.8-.9 3.1-2.3 4.4h6c-1.4-1.3-2-2.6-2.3-4.4a3.5 3.5 0 0 0 5.8-2.6C18.5 8.4 14.6 6 12 3z"/></svg>',
       counter: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 8h4M8 6v4M14 8h4M6 16h4M14 15l4 2M14 17l4-2"/></svg>',
       book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/></svg>',
