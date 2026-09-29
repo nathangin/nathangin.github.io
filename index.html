@@ -313,6 +313,9 @@ footer.site-foot p{font-family:var(--mono);font-size:0.65rem;color:var(--ink3);}
 .plink svg{width:13px;height:13px;}
 .pcard:hover .plink{gap:0.55rem;}
 .plink.muted{color:var(--ink3);}
+.pc-links{display:inline-flex;align-items:center;gap:1rem;}
+a.pcode{color:var(--ink2);text-decoration:none;}
+a.pcode:hover,a.pcode:focus-visible{color:var(--teal);}
 .pc-no{font-family:var(--mono);font-size:.54rem;color:var(--ink3);letter-spacing:.14em;}
 .pcard.hide{display:none;}
 .pcard.fading{opacity:0;transform:scale(.96);}
@@ -333,7 +336,9 @@ footer.site-foot p{font-family:var(--mono);font-size:0.65rem;color:var(--ink3);}
 .modal-empty b{display:block;font-family:var(--serif);font-weight:400;font-size:1.1rem;color:var(--ink);margin-bottom:.4rem;}
 
 /* ---------- SIDE PROJECTS ---------- */
-.side-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.1rem;}
+.side-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1.1rem;}
+.side-grid>.side-card{grid-column:span 2;}
+.side-grid>.side-card:nth-child(3n+1):nth-last-child(2),.side-grid>.side-card:nth-child(3n+1):nth-last-child(2)~.side-card{grid-column:span 3;}
 .side-card{position:relative;display:flex;flex-direction:column;background:var(--glass);border:1px solid var(--edge);border-radius:14px;overflow:hidden;transition:var(--rv,opacity .3s),border-color .25s,transform .4s var(--ease),box-shadow .35s;}
 .side-card:hover{border-color:var(--edge2);transform:translateY(-3px);box-shadow:0 24px 50px -30px rgba(0,201,160,.45);}
 .side-vis{position:relative;height:128px;border-bottom:1px solid var(--edge);background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.1));overflow:hidden;}
@@ -342,6 +347,34 @@ footer.site-foot p{font-family:var(--mono);font-size:0.65rem;color:var(--ink3);}
 .side-card p{font-size:0.82rem;font-weight:300;color:var(--ink2);line-height:1.7;}
 .side-card-status{margin-top:auto;padding-top:.95rem;font-family:var(--mono);font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;display:flex;align-items:center;gap:0.55rem;color:var(--amber);}
 .side-card-status.live{color:var(--teal);}
+a.side-gh{color:var(--ink2);text-decoration:none;transition:color .2s;}
+a.side-gh svg{width:14px;height:14px;flex-shrink:0;}
+a.side-gh:hover,a.side-gh:focus-visible{color:var(--teal);}
+.side-code{margin-left:auto;color:var(--ink2);text-decoration:none;transition:color .2s;}
+.side-code:hover,.side-code:focus-visible{color:var(--teal);}
+/* eBay deal scanner visual */
+.ds-rows{position:absolute;inset:14px 16px;display:flex;flex-direction:column;justify-content:center;gap:7px;}
+.ds-row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:5px 9px;border:1px solid var(--edge);border-radius:7px;background:rgba(255,255,255,.025);font-family:var(--mono);font-size:.6rem;color:var(--ink2);}
+.ds-n{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--ink);}
+.ds-n i{font-style:normal;color:var(--ink3);margin-left:.35rem;}
+.ds-p{font-variant-numeric:tabular-nums;}
+.ds-d{color:var(--bg);background:var(--teal);border-radius:4px;padding:1px 6px;font-weight:600;font-variant-numeric:tabular-nums;}
+.ds-scan{position:absolute;left:0;right:0;top:0;height:40px;background:linear-gradient(180deg,transparent,rgba(0,201,160,.12),transparent);transform:translateY(-44px);animation:dsScan 3.8s linear infinite;pointer-events:none;z-index:1;}
+@keyframes dsScan{to{transform:translateY(132px);}}
+/* Whatnot overlay visual */
+.wo-stream{position:absolute;left:16px;top:14px;bottom:14px;width:calc(50% - 24px);border-radius:8px;border:1px solid var(--edge);overflow:hidden;background:radial-gradient(circle at 28% 25%,rgba(124,109,250,.32),transparent 60%),linear-gradient(135deg,#1b1830,#0f0f18);}
+.wo-live{position:absolute;left:7px;top:7px;font-family:var(--mono);font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:#e5484d;border-radius:3px;padding:1px 5px;}
+.wo-card{position:absolute;left:50%;top:54%;width:36px;height:50px;border-radius:4px;transform:translate(-50%,-50%) rotate(-6deg);background:linear-gradient(160deg,#f5c96a,#e0773a);box-shadow:0 8px 18px rgba(0,0,0,.45);}
+.wo-card::after{content:"";position:absolute;inset:5px 5px 18px;border-radius:2px;background:rgba(255,255,255,.35);}
+.wo-panel{position:absolute;right:16px;top:12px;bottom:12px;width:calc(50% - 24px);border-radius:10px;border:1px solid var(--edge2);background:rgba(15,15,23,.94);box-shadow:0 12px 28px -14px rgba(124,109,250,.7);padding:8px 11px;display:flex;flex-direction:column;gap:3px;}
+.wo-name{font-family:var(--serif);font-size:.8rem;color:var(--ink);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.wo-line{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.58rem;color:var(--ink3);}
+.wo-line b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums;}
+.wo-line b.wo-mkt{color:var(--teal);}
+.wo-deal{margin-top:auto;display:flex;align-items:center;justify-content:center;gap:.4rem;font-family:var(--mono);font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);border-top:1px solid var(--edge);padding-top:5px;}
+.wo-deal span{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(0,201,160,.6);animation:woPulse 2s ease-out infinite;}
+@keyframes woPulse{70%{box-shadow:0 0 0 7px rgba(0,201,160,0);}100%{box-shadow:0 0 0 0 rgba(0,201,160,0);}}
+@media (prefers-reduced-motion:reduce){.ds-scan{display:none;}.wo-deal span{animation:none;}}
 #kalshi{display:block;width:100%;height:100%;}
 .kv-legend{position:absolute;left:.7rem;top:.55rem;display:flex;gap:.8rem;font-family:var(--mono);font-size:.54rem;letter-spacing:.08em;color:var(--ink3);}
 .kv-legend i{display:inline-block;width:10px;height:2px;vertical-align:middle;margin-right:.3rem;}
@@ -674,6 +707,7 @@ footer.site-foot p{font-family:var(--mono);font-size:0.65rem;color:var(--ink3);}
   .fact dd{text-align:right;}
   .proj-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
   .side-grid{grid-template-columns:1fr;}
+  .side-grid>.side-card,.side-grid>.side-card:nth-child(3n+1):nth-last-child(2),.side-grid>.side-card:nth-child(3n+1):nth-last-child(2)~.side-card{grid-column:auto;}
   .arcade-grid{grid-template-columns:1fr;}
   .cab-list{flex-direction:row;}
   .cab{min-height:250px;}
@@ -859,17 +893,16 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
     </div>
     <div class="proj-grid" id="projGrid" data-stagger="0.05">
       <article class="pcard holo reveal" tabindex="0" data-c="bayes bio" data-title="Bayesian CAR Model: Obesity in Texas" data-desc="Fit a Bayesian hierarchical model with a conditional autoregressive prior on all 254 Texas counties. Physical inactivity and insufficient sleep were the dominant predictors. Spatial model outperformed OLS by 13 DIC points." data-pdf="assets/STATS295_Spatial_Final_Reformatted.pdf"><div class="pc-glow"></div><div class="pc-foil"></div><div class="pcard-top"><div class="ptag">Bayesian / Spatial / R</div><span class="pfeat">&#9733; Featured</span></div><h3>Bayesian CAR Model: Obesity in Texas</h3><p>County-level obesity rates modeled with a Bayesian hierarchical CAR prior and MCMC across all 254 Texas counties.</p><div class="pnums"><span class="pnum">254 counties</span><span class="pnum">Moran I = 0.41</span><span class="pnum">DIC -13 vs OLS</span></div><div class="pc-foot"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="pc-no">No. 01</span></div></article>
-      <article class="pcard holo reveal" tabindex="0" data-c="causal ml" data-title="Multi-Arm A/B Test and Causal Evaluation" data-desc="Analyzed a 64,000-customer randomized marketing experiment using DiM, Direct Method, and Double Robust estimators. Causal Forests for CATE. Validated on synthetic data with known ground truth." data-pdf="assets/newreport.pdf"><div class="pc-glow"></div><div class="pc-foil"></div><div class="pcard-top"><div class="ptag">Causal inference / Python</div><span class="pfeat">&#9733; Featured</span></div><h3>Multi-Arm A/B Test: Marketing Emails</h3><p>Full causal analysis of a 64K-customer email experiment with heterogeneous treatment effects via Causal Forests.</p><div class="pnums"><span class="pnum">64K customers</span><span class="pnum">3 estimators</span><span class="pnum">Causal Forests</span></div><div class="pc-foot"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="pc-no">No. 02</span></div></article>
+      <article class="pcard holo reveal" tabindex="0" data-c="causal ml" data-title="Multi-Arm A/B Test and Causal Evaluation" data-desc="Analyzed a 64,000-customer randomized marketing experiment using DiM, Direct Method, and Double Robust estimators. Causal Forests for CATE. Validated on synthetic data with known ground truth." data-code="https://github.com/camerosf/stats295" data-pdf="assets/Stats%20295%20Clinical%20Trials%20Final.pdf"><div class="pc-glow"></div><div class="pc-foil"></div><div class="pcard-top"><div class="ptag">Causal inference / Python</div><span class="pfeat">&#9733; Featured</span></div><h3>Multi-Arm A/B Test: Marketing Emails</h3><p>Full causal analysis of a 64K-customer email experiment with heterogeneous treatment effects via Causal Forests.</p><div class="pnums"><span class="pnum">64K customers</span><span class="pnum">3 estimators</span><span class="pnum">Causal Forests</span></div><div class="pc-foot"><span class="pc-links"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><a class="plink pcode" href="https://github.com/camerosf/stats295" target="_blank" rel="noopener">Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a></span><span class="pc-no">No. 02</span></div></article>
       <article class="pcard holo reveal" tabindex="0" data-c="bio causal" data-title="Digital Health Intervention Analysis" data-desc="Analyzed a randomized trial (n=298) on motivational text messaging and physical activity over 14 days. Mixed-effects models and multiple imputation (mice). Both generic and tailored messages increased step counts 52-57% vs. control. Built Week-2 predictive models with R&#178; = 0.87." data-pdf="assets/Stats-Qual-DA.pdf"><div class="pc-glow"></div><div class="pc-foil"></div><div class="pcard-top"><div class="ptag">RCT / Mixed effects / R</div><span class="pfeat">&#9733; Featured</span></div><h3>Digital Health Intervention: RCT Analysis</h3><p>Randomized trial (n=298) on motivational texts and physical activity. Mixed-effects models, multiple imputation, quadratic time trajectories, and predictive modeling.</p><div class="pnums"><span class="pnum">n=298 participants</span><span class="pnum">52&#x2013;57% lift</span><span class="pnum">R&#x00B2;=0.87</span></div><div class="pc-foot"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="pc-no">No. 03</span></div></article>
-      <article class="pcard reveal" tabindex="0" data-c="ml bio" data-title="Hospital Readmission Prediction" data-desc="Compared LR, Random Forests, SVM, and MLP on 100K+ diabetic patient encounters. Tuned Random Forest achieved ROC-AUC of 0.69." data-pdf="assets/Stroke Data Analysis ML.pdf"><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">ML / Healthcare / scikit-learn</div></div><h3>Hospital Readmission Prediction</h3><p>Four-model comparison on 100K+ diabetic patient encounters with feature engineering from ICD-9 codes.</p><div class="pnums"><span class="pnum">100K+ encounters</span><span class="pnum">ROC-AUC 0.69</span></div><div class="pc-foot"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="pc-no">No. 04</span></div></article>
-      <article class="pcard reveal" tabindex="0" data-c="bio" data-title="Spinal Cord Injury and Stem Cell Treatment" data-desc="Analyzed stem cell treatment effectiveness using statistical models and automated motion tracking with DeepLabCut." data-pdf="assets/CapstoneProject.pdf"><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">Biostatistics / DeepLabCut</div></div><h3>Spinal Cord Injury: Stem Cell Study</h3><p>Assessed stem cell treatment efficacy in preclinical SCI research. Automated motion tracking achieving 0.096% error.</p><div class="pc-foot"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="pc-no">No. 05</span></div></article>
+      <article class="pcard reveal" tabindex="0" data-c="ml bio" data-title="Hospital Readmission Prediction" data-desc="Compared LR, Random Forests, SVM, and MLP on 100K+ diabetic patient encounters. Tuned Random Forest achieved ROC-AUC of 0.69." data-code="https://github.com/ntnkan089/CS273A-proj" data-pdf="assets/newreport.pdf"><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">ML / Healthcare / scikit-learn</div></div><h3>Hospital Readmission Prediction</h3><p>Four-model comparison on 100K+ diabetic patient encounters with feature engineering from ICD-9 codes.</p><div class="pnums"><span class="pnum">100K+ encounters</span><span class="pnum">ROC-AUC 0.69</span></div><div class="pc-foot"><span class="pc-links"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><a class="plink pcode" href="https://github.com/ntnkan089/CS273A-proj" target="_blank" rel="noopener">Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a></span><span class="pc-no">No. 04</span></div></article>
+      <article class="pcard reveal" tabindex="0" data-c="bio" data-title="Spinal Cord Injury and Stem Cell Treatment" data-desc="Analyzed stem cell treatment effectiveness using statistical models and automated motion tracking with DeepLabCut." data-code="https://github.com/gilescarlos/Stats-170-Cap-Stone" data-pdf="assets/CapstoneProject.pdf"><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">Biostatistics / DeepLabCut</div></div><h3>Spinal Cord Injury: Stem Cell Study</h3><p>Assessed stem cell treatment efficacy in preclinical SCI research. Automated motion tracking achieving 0.096% error.</p><div class="pc-foot"><span class="pc-links"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><a class="plink pcode" href="https://github.com/gilescarlos/Stats-170-Cap-Stone" target="_blank" rel="noopener">Code <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a></span><span class="pc-no">No. 05</span></div></article>
       <article class="pcard reveal" tabindex="0" data-c="bio" data-title="Beta-Carotene Dose-Response Analysis" data-desc="Modeled longitudinal beta-carotene serum data from a Phase II clinical trial (n=46) using linear mixed-effects models with random intercepts and slopes, identifying a statistically significant dose-dependent pharmacokinetic trend and informing optimal dosing intervals. Also modeled decay curves and gender interactions." data-pdf="assets/BetaCarotene-Final-2.pdf"><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">Longitudinal / Mixed models / R</div></div><h3>Beta-Carotene Dose-Response</h3><p>Mixed-effects models on Phase II trial data: a significant dose-dependent pharmacokinetic trend that informed dosing intervals, plus decay curves and gender interactions.</p><div class="pnums"><span class="pnum">Phase II trial</span><span class="pnum">n=46</span></div><div class="pc-foot"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="pc-no">No. 06</span></div></article>
       <article class="pcard reveal" tabindex="0" data-c="ml" data-title="AI Game Agents" data-desc="Checkers AI in Python using Monte Carlo Tree Search (top 10% in class). Othello AI in C++ using heuristic search strategies (top 15% in class)." data-pdf=""><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">Algorithms / Python / C++</div></div><h3>AI Game Agents</h3><p>Checkers AI with Monte Carlo Tree Search (top 10% in class) and Othello AI with heuristic search in C++ (top 15%). Classic adversarial search implemented from scratch.</p><div class="pnums"><span class="pnum">Top 10% MCTS</span><span class="pnum">Top 15% heuristic</span></div><div class="pc-foot"><span class="plink muted">Course project</span><span class="pc-no">No. 07</span></div></article>
       <article class="pcard reveal" tabindex="0" data-c="ml" data-title="Property Price Prediction" data-desc="Random forests, neural nets, logistic regression, and KNN to predict property prices. Cleaned missing and inconsistent data, evaluated with MAPE." data-pdf=""><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">ML / pandas / scikit-learn</div></div><h3>Property Price Prediction</h3><p>Random forests, neural nets, logistic regression, and KNN with MAPE evaluation. Heavy data cleaning of missing and inconsistent records.</p><div class="pc-foot"><span class="plink muted">Course project</span><span class="pc-no">No. 08</span></div></article>
       <article class="pcard reveal" tabindex="0" data-c="llm bio" data-title="TrialGPT: AI in Clinical Trials" data-desc="Presentation on AI-powered patient-to-trial matching using large language models." data-pdf="assets/TrialGPT Stats 295 Clinical Trials (1).pdf" data-kind="slides"><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">LLMs / Clinical trials</div></div><h3>TrialGPT: Patient-Trial Matching</h3><p>How large language models can improve patient matching in clinical trials, reducing enrollment friction.</p><div class="pc-foot"><span class="plink">View slides <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="pc-no">No. 09</span></div></article>
-      <article class="pcard reveal" tabindex="0" data-c="ml bio" data-title="Stroke Data Analysis" data-desc="Comparing logistic regression and decision tree models on stroke-related clinical data." data-pdf="assets/Stroke Data Analysis.pdf"><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">ML / Clinical data</div></div><h3>Stroke Risk: Model Comparison</h3><p>Logistic regression vs. decision trees on stroke clinical data with RACE score and age as predictors.</p><div class="pc-foot"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="pc-no">No. 10</span></div></article>
+      <article class="pcard reveal" tabindex="0" data-c="ml bio" data-title="Stroke Detection: Model Comparison" data-desc="Compared two logistic regression models (clinical variables with and without EEG features) against k-nearest neighbors, a decision tree, and a random forest for detecting stroke before hospital arrival. Logistic regression without EEG and 7-nearest neighbors performed best at about 75% accuracy; the decision tree was worst at about 45%." data-pdf="assets/Stroke Data Analysis ML.pdf"><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">ML / Clinical data</div></div><h3>Stroke Detection: Model Comparison</h3><p>Logistic regression vs. KNN, decision trees, and random forests for pre-hospital stroke detection from RACE score, clinical variables, and EEG features.</p><div class="pnums"><span class="pnum">5 models</span><span class="pnum">~75% best accuracy</span></div><div class="pc-foot"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="pc-no">No. 10</span></div></article>
       <article class="pcard reveal" tabindex="0" data-c="ml" data-title="Classification Methods for Fashion-MNIST" data-desc="Comparative evaluation of classifiers on Fashion-MNIST analyzing accuracy and generalization." data-pdf="assets/An Investigation of Classification Methods for Fashion-MNIST.pdf"><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">Computer vision / Classification</div></div><h3>Fashion-MNIST Classification</h3><p>Compared multiple classifiers on Fashion-MNIST across accuracy, generalization, and computational cost.</p><div class="pc-foot"><span class="plink">View paper <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="pc-no">No. 11</span></div></article>
-      <article class="pcard reveal" tabindex="0" data-c="bio causal" data-title="Clinical Trial Design and Analysis" data-desc="Final report covering clinical trial design, analysis methods, and statistical inference." data-pdf="assets/Stats%20295%20Clinical%20Trials%20Final.pdf" data-kind="report"><div class="pc-glow"></div><div class="pcard-top"><div class="ptag">Clinical trials / Statistics</div></div><h3>Clinical Trial Design and Analysis</h3><p>Trial design methodology and statistical inference applied to real clinical study frameworks.</p><div class="pc-foot"><span class="plink">View report <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><span class="pc-no">No. 12</span></div></article>
     </div>
   </div>
 </section>
@@ -896,6 +929,37 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
         </div>
       </div>
       <div class="side-card reveal">
+        <div class="side-vis ds-vis" aria-hidden="true">
+          <div class="ds-scan"></div>
+          <div class="ds-rows">
+            <div class="ds-row"><span class="ds-n">Umbreon VMAX <i>NM</i></span><span class="ds-p">$704</span><span class="ds-d">&minus;51%</span></div>
+            <div class="ds-row"><span class="ds-n">Mew <i>Southern Islands</i></span><span class="ds-p">$15.75</span><span class="ds-d">&minus;49%</span></div>
+            <div class="ds-row"><span class="ds-n">Lugia <i>BGS 9</i></span><span class="ds-p">$780</span><span class="ds-d">&minus;36%</span></div>
+          </div>
+        </div>
+        <div class="side-body">
+          <h3>eBay deal scanner</h3>
+          <p>Finds underpriced Pok&eacute;mon cards through eBay&rsquo;s official Browse API. It matches listing titles to about 20,000 printings, prices them from TCGPlayer data adjusted for condition and grade, and flags listings well below fair value. Streamlit dashboard and Discord alerts.</p>
+          <a class="side-card-status side-gh" href="https://github.com/nathangin/ebay-scanner" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>View code on GitHub &nearr;</a>
+        </div>
+      </div>
+      <div class="side-card reveal">
+        <div class="side-vis wo-vis" aria-hidden="true">
+          <div class="wo-stream"><span class="wo-live">Live</span><span class="wo-card"></span></div>
+          <div class="wo-panel">
+            <div class="wo-name">Charizard ex</div>
+            <div class="wo-line"><span>Stream</span><b>$40.00</b></div>
+            <div class="wo-line"><span>Market</span><b class="wo-mkt">$55.00</b></div>
+            <div class="wo-deal"><span></span>Great deal</div>
+          </div>
+        </div>
+        <div class="side-body">
+          <h3>Whatnot price overlay</h3>
+          <p>Watches a Whatnot live stream on screen, reads each card and its price with Claude vision, and shows the TCGPlayer market price in a floating overlay with a deal rating.</p>
+          <a class="side-card-status side-gh" href="https://github.com/nathangin/whatnot-pricer" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>View code on GitHub &nearr;</a>
+        </div>
+      </div>
+      <div class="side-card reveal">
         <div class="side-vis" aria-hidden="true">
           <div class="pa-stage">
             <div class="pa-phone"><div class="pa-card"><div class="pa-front">?</div><div class="pa-back">&#x1F3A4;</div></div></div>
@@ -915,7 +979,7 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
         <div class="side-body">
           <h3>This portfolio</h3>
           <p>No template, no framework. The games, model selector, and Spotify embed are all hand-written JS.</p>
-          <div class="side-card-status live"><span class="pulse-dot"></span>Live</div>
+          <div class="side-card-status live"><span class="pulse-dot"></span>Live<a class="side-code" href="https://github.com/nathangin/nathangin.github.io" target="_blank" rel="noopener">Code &nearr;</a></div>
         </div>
       </div>
     </div>
@@ -1202,6 +1266,7 @@ body.konami .hero-name .it{background:linear-gradient(90deg,var(--gold),var(--ro
     <div class="modal-hd">
       <div><span class="ptag" id="mTag"></span><h3 id="mTitle"></h3><p id="mDesc"></p></div>
       <div class="modal-actions">
+        <a class="btn btn-ghost btn-sm" id="mCode" href="#" target="_blank" rel="noopener" style="display:none">Code &nearr;</a>
         <a class="btn btn-ghost btn-sm" id="mOpen" href="#" target="_blank" rel="noopener">Open &nearr;</a>
         <button class="icon-btn" id="mClose" aria-label="Close">&#215;</button>
       </div>
@@ -1776,13 +1841,14 @@ var NG = (function () {
         if (!NG.reduce) { c.classList.add('tilting'); c.style.transform = 'perspective(900px) rotateX(' + ((0.5 - y) * 7).toFixed(2) + 'deg) rotateY(' + ((x - 0.5) * 9).toFixed(2) + 'deg) translateY(-4px)'; }
       });
       c.addEventListener('pointerleave', function () { c.classList.remove('tilting'); c.style.transform = ''; });
-      c.addEventListener('click', function () { openModal(c); });
-      c.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(c); } });
+      c.addEventListener('click', function (e) { if (e.target.closest('a')) return; openModal(c); });
+      c.addEventListener('keydown', function (e) { if (e.target !== c) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(c); } });
     });
 
-    var ov = $('#overlay'), mBody = $('#mBody'), mOpen = $('#mOpen'), lastFocus = null;
+    var ov = $('#overlay'), mBody = $('#mBody'), mOpen = $('#mOpen'), mCode = $('#mCode'), lastFocus = null;
     function openModal(c) {
-      var pdf = c.getAttribute('data-pdf');
+      var pdf = c.getAttribute('data-pdf'), code = c.getAttribute('data-code');
+      if (mCode) { if (code) { mCode.href = code; mCode.style.display = ''; } else mCode.style.display = 'none'; }
       $('#mTag').textContent = $('.ptag', c).textContent;
       $('#mTitle').textContent = c.getAttribute('data-title');
       $('#mDesc').textContent = c.getAttribute('data-desc');
