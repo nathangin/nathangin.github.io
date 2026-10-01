@@ -1,6 +1,6 @@
 // Loop Quest service worker: keeps the game playable offline once it has
 // loaded, and picks up new versions the next time you're online.
-const CACHE = "loopquest-1.16.0";
+const CACHE = "loopquest-1.17.0";
 const FONTS = "loopquest-fonts";
 const CORE = ["./", "index.html", "manifest.webmanifest", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "apple-touch-icon.png", "LoopQuest-FL-scripts.zip"];
 
